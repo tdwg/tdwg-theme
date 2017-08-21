@@ -1,15 +1,10 @@
 {% extends "base.html" %}
 {% block title %}Search - {{ SITENAME }} {% endblock %}
 
-{% block head %}
-{{ super() }}
-<link rel="stylesheet" href="{{ SITEURL }}/theme/tipuesearch/css/tipuesearch.css">
-{% endblock %}
-
 {% block content %}
 {% if "tipue_search" in PLUGINS %}
 <form action="search.html">
-    <input type="text" name="q" id="tipue_search_input">
+    <input class="form-control form-control-lg" type="text" placeholder="Search" name="q" id="tipue_search_input">
 </form>
 <div id="tipue_search_content"></div>
 {% else %}
