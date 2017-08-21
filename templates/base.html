@@ -24,12 +24,12 @@
         {% endblock head %}    
     </head>
 
-    <body id="index" class="home">
-        <header id="banner" class="body">
+    <body>
+        <header>
             <h1><a href="{{ SITEURL }}/">{{ SITENAME }} <strong>{{ SITESUBTITLE }}</strong></a></h1>
         </header>
         
-        <nav id="menu">
+        <nav>
             <ul>
             {% for title, link in MENUITEMS %}
                 <li><a href="{{ link }}">{{ title }}</a></li>
@@ -52,11 +52,8 @@
         {% block content %}
         {% endblock %}
         
-        <footer id="contentinfo" class="body">
-            <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
-                which takes great advantage of <a href="http://python.org">Python</a>.
-            </address>
+        <footer>
+            
         </footer>
 
         <!-- Optional JavaScript -->
