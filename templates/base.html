@@ -27,36 +27,35 @@
     </head>
 
     <body>
-        <header>
-            <h1><a href="{{ SITEURL }}/">{{ SITENAME }} <strong>{{ SITESUBTITLE }}</strong></a></h1>
-        </header>
-        
-        <nav>
-            <ul>
-            {% for title, link in MENUITEMS %}
-                <li><a href="{{ link }}">{{ title }}</a></li>
-            {% endfor %}
-        
-            {% if DISPLAY_PAGES_ON_MENU %}
-                {% for p in pages %}
-                <li{% if p == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
-                {% endfor %}
-            {% else %}
-                {% if DISPLAY_CATEGORIES_ON_MENU %}
-                {% for cat, null in categories %}
-                <li{% if cat == category %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
-                {% endfor %}
-                {% endif %}
-            {% endif %}
-            </ul>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+            <a class="navbar-brand" href="{{Â SITEURL }}">{{ SITENAME }}</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navigation" aria-controls="main-navigation" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="main-navigation">
+                <ul class="navbar-nav mr-auto">
+                    {% if DISPLAY_PAGES_ON_MENU %}
+                    {% for p in pages %}
+                    <li class="nav-item{% if p == page %} active{% endif %}">
+                        <a class="nav-link" href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>
+                    </li>
+                    {% endfor %}
+                    {% endif %}
+
+                    {% for title, link in MENUITEMS %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ link }}">{{ title }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
         </nav>
 
-        {% block content %}
-        {% endblock %}
-        
-        <footer>
-            
-        </footer>
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
 
         <!-- JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
