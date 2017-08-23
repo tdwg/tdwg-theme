@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Search - {{ SITENAME }} {% endblock %}
+
+{% block content %}
+{% if "tipue_search" in PLUGINS %}
+<form action="search.html">
+    <input class="form-control form-control-lg" type="text" placeholder="Search" name="q" id="tipue_search_input">
+</form>
+<div id="tipue_search_content"></div>
+{% else %}
+<p>Search requires the Pelican plugin <a href="https://github.com/getpelican/pelican-plugins/tree/master/tipue_search">tipue_search</a>, which is not enabled.</p>
+{% endif %}
+{% endblock %}
+
+{% block javascript %}
+{{ super() }}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script src="{{ SITEURL }}/theme/js/tipuesearch_set.js"></script>
+<script src="{{ SITEURL }}/theme/js/tipuesearch.min.js"></script>
+<script>
+    $(document).ready(function() {
+    $("#tipue_search_input").tipuesearch({
+        "show": 8,
+        "mode": "json",
+        "contentLocation": "{{ SITEURL }}/tipuesearch_content.json"
+        });
+    });
+</script>
+{% endblock %}

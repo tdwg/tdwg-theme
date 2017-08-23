@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Metadata -->
-        <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
+        <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
         <meta name="description" content="{{ SITEDESCRIPTION }}">
         <meta name="author" content="{{ AUTHOR }}">
         
@@ -22,17 +22,17 @@
         {% if FEED_ALL_RSS %}
         <link rel="alternate" type="application/rss+xml" href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" title="{{ SITENAME }} RSS feed" />
         {% endif %}
-        {% endblock head %}    
+        {% endblock%}    
     </head>
 
     <body>
         <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
             <a class="navbar-brand" href="{{ SITEURL }}">{{ SITENAME }}</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navigation" aria-controls="main-navigation" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_navigation" aria-controls="main_navigation" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="main-navigation">
+            <div class="collapse navbar-collapse" id="main_navigation">
                 <ul class="navbar-nav mr-auto">
                     {% if DISPLAY_PAGES_ON_MENU %}
                     {% for p in pages %}
@@ -51,15 +51,16 @@
             </div>
         </nav>
 
-        <div class="container">
+        <div class="container pt-3">
             {% block content %}
             {% endblock %}
         </div>
 
-        <!-- JavaScript -->
+        {% block javascript %}
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
         <script src="{{ SITEURL }}/theme/js/bootstrap.min.js"></script>
+        {% endblock %}
     </body>
 </html>
