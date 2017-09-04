@@ -44,7 +44,13 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="{{ p.url }}">
                         {% for child in p.children|sort(attribute="page_order") %}
+                            {% if child.divider == "above" %}
+                            <div class="dropdown-divider"></div>
+                            {% endif %}
                             <a class="dropdown-item{% if child == page %} active{% endif %}" href="{{ SITEURL }}/{{ child.url}}">{{ child.title }}</a>
+                            {% if child.divider == "below" %}
+                            <div class="dropdown-divider"></div>
+                            {% endif %}
                         {% endfor %}
                         </div>
                     </li>
