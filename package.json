@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "scss": "node-sass src/scss --output static/css --output-style nested --source-map true",
-    "scss-watch": "node-sass src/scss --output static/css --output-style nested --source-map true --watch src/scss"
+    "watch:css": "onchange 'src/scss/*.scss' -- npm run scss"
   },
   "dependencies": {
     "bootstrap": "4.0.0-beta",
@@ -14,6 +14,7 @@
     "popper.js": "^1.11.1"
   },
   "devDependencies": {
-    "node-sass": "^4.5.3"
+    "node-sass": "^4.5.3",
+    "onchange": "^3.2.1"
   }
 }
