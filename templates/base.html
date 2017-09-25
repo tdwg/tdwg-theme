@@ -27,7 +27,7 @@
     <body>
         <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
             <a class="navbar-brand" href="{{ SITEURL }}">{{ SITENAME }}</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_navigation" aria-controls="main_navigation" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#main_navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -38,10 +38,10 @@
                 {% if p.parent == None %} {# Top level pages only #}
                     {% if p.children %} {# If children, create dropdown #}
                     <li class="nav-item dropdown{% if p == page %} active{% endif %}">
-                        <a class="nav-link dropdown-toggle" href="{{ SITEURL }}/{{ p.url }}" id="{{ p.url }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="{{ SITEURL }}/{{ p.url }}" id="{{ p.url }}" data-toggle="dropdown">
                             {{ p.title }}
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="{{ p.url }}">
+                        <div class="dropdown-menu">
                         {% for child in p.children|sort(attribute="page_order") %}
                             {% if child.divider == "above" %}
                             <div class="dropdown-divider"></div>
