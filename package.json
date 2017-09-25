@@ -3,10 +3,16 @@
   "description": "A Pelican theme for the TDWG website",
   "version": "0.1.0",
   "license": "MIT",
+  "scripts": {
+    "scss": "node-sass --output-style compressed -o static/css src/scss"
+  },
   "dependencies": {
     "bootstrap": "4.0.0-beta",
     "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
     "popper.js": "^1.11.1"
+  },
+  "devDependencies": {
+    "node-sass": "^4.5.3"
   }
 }
