@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
-    "scss": "node-sass --output-style compressed -o static/css src/scss"
+    "scss": "node-sass src/scss --output static/css --output-style nested"
   },
   "dependencies": {
     "bootstrap": "4.0.0-beta",
