@@ -4,8 +4,9 @@
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
-    "scss": "node-sass src/scss --output static/css --output-style nested --source-map true",
     "watch:css": "onchange 'src/scss/*.scss' -- npm run scss"
+    "scss": "node-sass src/scss --output-style nested --source-map true --output static/css",
+    "copyjs:custom": "rm -r static/js/ && cp -r src/js/ static/js/",
   },
   "dependencies": {
     "bootstrap": "4.0.0-beta",
