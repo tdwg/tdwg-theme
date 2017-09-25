@@ -4,8 +4,8 @@
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
-    "scss": "node-sass src/scss --output static/css --output-style nested",
-    "scss-watch": "node-sass src/scss --output static/css --output-style nested --watch src/scss"
+    "scss": "node-sass src/scss --output static/css --output-style nested --source-map true",
+    "scss-watch": "node-sass src/scss --output static/css --output-style nested --source-map true --watch src/scss"
   },
   "dependencies": {
     "bootstrap": "4.0.0-beta",
