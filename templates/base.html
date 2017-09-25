@@ -26,52 +26,54 @@
 
     <body>
         <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
-            <a class="navbar-brand" href="{{ SITEURL }}">{{ SITENAME }}</a>
-            <button class="navbar-toggler" data-toggle="collapse" data-target="#main_navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <div class="container">
+                <a class="navbar-brand" href="{{ SITEURL }}">{{ SITENAME }}</a>
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#main_navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <div class="collapse navbar-collapse" id="main_navigation">
-                {% if DISPLAY_PAGES_ON_MENU %}
-                <ul class="navbar-nav mr-auto">
-                {% for p in pages|sort(attribute="page_order") %}
-                {% if p.parent == None %} {# Top level pages only #}
-                    {% if p.children %} {# If children, create dropdown #}
-                    <li class="nav-item dropdown{% if p == page %} active{% endif %}">
-                        <a class="nav-link dropdown-toggle" href="{{ SITEURL }}/{{ p.url }}" id="{{ p.url }}" data-toggle="dropdown">
-                            {{ p.title }}
-                        </a>
-                        <div class="dropdown-menu">
-                        {% for child in p.children|sort(attribute="page_order") %}
-                            {% if child.divider == "above" %}
-                            <div class="dropdown-divider"></div>
-                            {% endif %}
-                            <a class="dropdown-item{% if child == page %} active{% endif %}" href="{{ SITEURL }}/{{ child.url}}">{{ child.title }}</a>
-                            {% if child.divider == "below" %}
-                            <div class="dropdown-divider"></div>
-                            {% endif %}
-                        {% endfor %}
-                        </div>
-                    </li>
-                    {% else %}
-                    <li class="nav-item{% if p == page %} active{% endif %}">
-                        <a class="nav-link" href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>
-                    </li>
+                <div class="collapse navbar-collapse" id="main_navigation">
+                    {% if DISPLAY_PAGES_ON_MENU %}
+                    <ul class="navbar-nav mr-auto">
+                    {% for p in pages|sort(attribute="page_order") %}
+                    {% if p.parent == None %} {# Top level pages only #}
+                        {% if p.children %} {# If children, create dropdown #}
+                        <li class="nav-item dropdown{% if p == page %} active{% endif %}">
+                            <a class="nav-link dropdown-toggle" href="{{ SITEURL }}/{{ p.url }}" id="{{ p.url }}" data-toggle="dropdown">
+                                {{ p.title }}
+                            </a>
+                            <div class="dropdown-menu">
+                            {% for child in p.children|sort(attribute="page_order") %}
+                                {% if child.divider == "above" %}
+                                <div class="dropdown-divider"></div>
+                                {% endif %}
+                                <a class="dropdown-item{% if child == page %} active{% endif %}" href="{{ SITEURL }}/{{ child.url}}">{{ child.title }}</a>
+                                {% if child.divider == "below" %}
+                                <div class="dropdown-divider"></div>
+                                {% endif %}
+                            {% endfor %}
+                            </div>
+                        </li>
+                        {% else %}
+                        <li class="nav-item{% if p == page %} active{% endif %}">
+                            <a class="nav-link" href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>
+                        </li>
+                        {% endif %}
                     {% endif %}
-                {% endif %}
-                {% endfor %}
-                </ul>
-                {% endif %}
-
-                {% if MENUITEMS %}
-                <ul class="navbar-nav">
-                    {% for title, link in MENUITEMS %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ link }}">{{ title }}</a>
-                    </li>
                     {% endfor %}
-                </ul>
-                {% endif %}
+                    </ul>
+                    {% endif %}
+
+                    {% if MENUITEMS %}
+                    <ul class="navbar-nav">
+                        {% for title, link in MENUITEMS %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ link }}">{{ title }}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
             </div>
         </nav>
 
