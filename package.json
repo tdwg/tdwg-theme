@@ -1,0 +1,27 @@
+{
+  "name": "tdwg-theme",
+  "description": "A Pelican theme for the TDWG website",
+  "version": "0.1.0",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "scss": "node-sass src/scss --output-style nested --source-map true --output static/css",
+    "copyjs:custom": "rm -r static/js/ && cp -r src/js/ static/js/",
+    "copyjs:bootstrap": "cp node_modules/jquery/dist/jquery.min.js static/js/jquery.min.js && cp node_modules/popper.js/dist/umd/popper.min.js static/js/popper.min.js && cp node_modules/bootstrap/dist/js/bootstrap.min.js static/js/bootstrap.min.js",
+    "build:css": "npm run scss",
+    "build:js": "npm run copyjs:custom && npm run copyjs:bootstrap",
+    "build:all": "npm run build:css && npm run build:js",
+    "watch:css": "onchange 'src/scss/*.scss' -- npm run build:css",
+    "watch:js": "onchange 'src/js/*.js' -- npm run build:js"
+  },
+  "dependencies": {
+    "bootstrap": "4.0.0-beta",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.2.1",
+    "popper.js": "^1.11.1"
+  },
+  "devDependencies": {
+    "node-sass": "^4.5.3",
+    "onchange": "^3.2.1"
+  }
+}
