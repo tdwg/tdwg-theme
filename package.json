@@ -3,6 +3,7 @@
   "description": "A Pelican theme for the TDWG website",
   "version": "0.1.0",
   "license": "MIT",
+  "private": true,
   "scripts": {
     "scss": "node-sass src/scss --output-style nested --source-map true --output static/css",
     "copyjs:custom": "rm -r static/js/ && cp -r src/js/ static/js/",
