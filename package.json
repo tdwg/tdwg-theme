@@ -8,6 +8,8 @@
     "scss": "node-sass src/scss --output-style nested --source-map true --output static/css",
     "copyjs:custom": "rm -r static/js/ && cp -r src/js/ static/js/",
     "copyjs:bootstrap": "cp node_modules/jquery/dist/jquery.min.js static/js/jquery.min.js && cp node_modules/popper.js/dist/umd/popper.min.js static/js/popper.min.js && cp node_modules/bootstrap/dist/js/bootstrap.min.js static/js/bootstrap.min.js",
+    "build:js": "npm run copyjs:custom && npm run copyjs:bootstrap",
+    "watch:js": "onchange 'src/js/*.js' -- npm run build:js"
   },
   "dependencies": {
     "bootstrap": "4.0.0-beta",
