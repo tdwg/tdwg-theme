@@ -3,3 +3,7 @@
 @import "variables"; // Custom variables and overwrites for Bootstrap variables 
 @import "../../node_modules/bootstrap/scss/bootstrap"; // Bootstrap scss
 
+body {
+    word-wrap: break-word; // Wrap long content (e.g. long URLs), so it does not break out of container
+    hyphens: auto; // Try to hyphenate wrapped words
+}
