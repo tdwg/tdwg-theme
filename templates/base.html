@@ -77,11 +77,9 @@
             </div>
         </nav>
 
-        <div class="container pt-3">
-            {% block content %}
-            {% endblock %}
-        </div>
-
+        {% block content %}
+        {% endblock %}
+        
         {% block javascript %}
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="{{ SITEURL }}/theme/js/jquery.min.js"></script>
