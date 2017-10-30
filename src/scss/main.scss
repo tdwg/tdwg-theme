@@ -7,3 +7,28 @@ body {
     word-wrap: break-word; // Wrap long content (e.g. long URLs), so it does not break out of container
     hyphens: auto; // Try to hyphenate wrapped words
 }
+
+.tdwg-jumbotron {
+    // background-image: applied in page.html template
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 0;
+    }
+    .tdwg-jumbotron h1,
+    .tdwg-jumbotron p {
+        background-color: rgba($gray-900, 0.75);
+        color: $white;
+        display: inline-block;  // To contain text background.
+                                // As a result of the inline-block, both h1 & p need to be 
+                                // wrapped in their own div or they'll float next to each other
+        padding: 0.25rem 1rem;
+    }
+    .tdwg-jumbotron-caption {
+        color: $gray-600;
+        font-size: 0.8rem;
+        text-align: right;
+        }
+        .tdwg-jumbotron-caption a {
+            color: $gray-800;
+        }
