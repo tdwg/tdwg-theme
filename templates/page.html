@@ -7,9 +7,7 @@
 
     {{ page.content }}
 
-	{% if page.modified %}
-		<p>
-		Last updated: {{ page.locale_modified }}
-		</p>
-	{% endif %}
+    <div class="container pt-3">
+        {{ page.content }}
+    </div>
 {% endblock %}
