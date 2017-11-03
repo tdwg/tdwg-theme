@@ -1,18 +1,21 @@
 {% extends "base.html" %}
 
 {% block title %}{{ page.title }}{% endblock %}
+
+{# set jumbotron_background_image and caption based on cover_image metadata #}
 {% if page.cover_image %}
-        {% if page.cover_image.startswith("http") %}
-            {% set jumbotron_background_image = "background-image: url('" + page.cover_image + "')" %}
-        {% else %}
-            {% set jumbotron_background_image = "background-image: url('" + SITEURL + "/static/cover_images/" + page.cover_image + "')" %}
-        {% endif %}
-        {% if page.cover_image_ref and page.cover_image_by %}
-            {%set jumbotron_caption = '<a href="' + page.cover_image_ref + '">Image</a> by ' + page.cover_image_by %}
-        {% endif %}
+    {% if page.cover_image.startswith("http") %}
+        {% set jumbotron_background_image = "background-image: url('" + page.cover_image + "')" %}
     {% else %}
-        {% set jumbotron_background_image = "" %}
+        {% set jumbotron_background_image = "background-image: url('" + SITEURL + "/static/cover_images/" + page.cover_image + "')" %}
     {% endif %}
+    {% if page.cover_image_ref and page.cover_image_by %}
+        {%set jumbotron_caption = '<a href="' + page.cover_image_ref + '">Image</a> by ' + page.cover_image_by %}
+    {% endif %}
+{% else %}
+    {% set jumbotron_background_image = "" %}
+{% endif %}
+
 {% block content %}
     <div class="jumbotron tdwg-jumbotron" style="{{ jumbotron_background_image }}">
         <div class="container">
