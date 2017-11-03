@@ -19,12 +19,7 @@
 {% block content %}
     <div class="jumbotron tdwg-jumbotron" style="{{ jumbotron_background_image }}">
         <div class="container">
-            <div>
-                <h1>{{ page.title }}</h1>
-            </div>
-            <div>
-                {% if page.subtitle %}<p>{{ page.subtitle }}</p>{% endif %}
-            </div>
+            <h1>{{ page.title }}</h1>
         </div>
     </div>
     {% if jumbotron_caption %}
@@ -33,7 +28,7 @@
     </div>
     {% endif %}
 
-    <div class="container pt-3">
+    <div class="container pt-3 tdwg-first-p-lead">
         {{ page.content }}
     </div>
 {% endblock %}
