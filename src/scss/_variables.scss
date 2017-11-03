@@ -6,6 +6,7 @@ $tdwg-orange: #ca6500;
 $tdwg-blue: #617694;
 $tdwg-yellow: #ffcc00;
 
+
 // Overwrites for Bootstrap variables
 
 // Color system
@@ -76,11 +77,48 @@ $theme-colors: (
 
 $enable-rounded: false;
 
+// Spacing
+// Body
+
+$body-bg:       $white !default;
+$body-color:    $gray-900 !default;
+
+// Links
+// Paragraphs
+// Grid breakpoints
+// Grid containers
+// Grid columns
+// Fonts
+// Components
+// Tables
+// Buttons
+// Forms
+// Dropdowns
+// Z-index master list
+// Navs
 // Navbar
 
-$navbar-dark-color:                 $tdwg-yellow;
+$navbar-dark-color:                 $tdwg-yellow; // Top navigation links
 $navbar-dark-hover-color:           $white;
+$navbar-dark-active-color:          $white;
 
+// Pagination
+// Jumbotron
+
+// Form states and alerts
+// Cards
+// Tooltips
+// Popovers
+// Badges
+// Modals
+// Alerts
+// Progress bars
+// List group
+// Image thumbnails
+// Figures
+// Breadcrumbs
+// Carousel
+// Close
 // Code
 
 $code-color:                  $tdwg-blue;
