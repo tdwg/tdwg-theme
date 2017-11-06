@@ -35,7 +35,3 @@ body {
             color: $body-color;
         }
 
-.tdwg-first-p-lead p:first-of-type { // Apply css of .lead class to first paragraph
-    font-size: $lead-font-size;
-    font-weight: $lead-font-weight;
-}

@@ -28,7 +28,10 @@
     </div>
     {% endif %}
 
-    <div class="container pt-3 tdwg-first-p-lead">
+    <div class="container pt-3 tdwg-page-content">
+        {% if page.intro %}
+        <p class="lead">{{ page.intro }}</p>
+        {% endif %}
         {{ page.content }}
     </div>
 {% endblock %}
