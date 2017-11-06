@@ -58,17 +58,17 @@ To update the SCSS and/or JS, [npm](https://www.npmjs.com/get-npm) is required. 
 
 1. Go to the `src/scss`
 2. Update the relevant `.scss` files
-3. Generate the CSS in `static/css` with: `npm run build:css`
-4. Or, do step 3 automatically on every change with: `npm run watch:css`
+3. Generate the CSS in `static/css` with `npm run build:css`
+4. Or, do step 3 automatically on every change with `npm run watch:css`
 
 #### Update JS
 
 1. Go to the `src/js`
 2. Update or add the relevant `.js` files
-3. Copy the updated JS files to `static/js` (will be emptied) as well as the required JS files for Bootstrap with: `npm run build:js`
+3. Copy the updated JS files to `static/js` (will be emptied) as well as the required JS files for Bootstrap with `npm run build:js`
 4. Or, do step 3 automatically on every change with `npm run watch:js`
 
-**Important**: do not touch files in the `static` directory: those are all generated! Look for the files in `src` instead.
+**Important**: do not touch files in the `static` directory: those are all generated! Look for the files in `src` instead. To completely rebuild the `static` directory, do `npm run build:all`
 
 ## Contributors
 
