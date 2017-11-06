@@ -7,6 +7,11 @@ $tdwg-blue: #617694;
 $tdwg-yellow: #ffcc00;
 
 
+// Overwrites for Font Awesome variables
+
+$fa-font-path: "../fonts/font-awesome"; // Path relative to generated css (in static dir)
+
+
 // Overwrites for Bootstrap variables
 
 // Color system

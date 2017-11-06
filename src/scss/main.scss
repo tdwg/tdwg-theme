@@ -1,7 +1,10 @@
 // Main SASS file for TDWG theme
 
-@import "variables"; // Custom variables and overwrites for Bootstrap variables 
-@import "../../node_modules/bootstrap/scss/bootstrap"; // Bootstrap scss
+// Imports
+
+@import "variables"; // Custom variables and overwrites for Bootstrap & Font Awesome variables 
+@import "../../node_modules/bootstrap/scss/bootstrap.scss"; // Bootstrap scss
+@import "../../node_modules/font-awesome/scss/font-awesome.scss"; // Font Awesome scss
 
 
 // Custom CSS
