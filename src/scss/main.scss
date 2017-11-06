@@ -38,3 +38,10 @@ body {
             color: $body-color;
         }
 
+.tdwg-page-content {
+    }
+    .tdwg-page-content a[href^="https://github.com"]:before {
+        @include fa-icon();
+        content: $fa-var-github;
+        padding-right: 0.3rem;
+    }
