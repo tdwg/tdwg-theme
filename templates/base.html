@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ DEFAULT_LANG }}">
     <head>
-        {% block head %}
+    {% block head %}
         <!-- Required meta tags -->
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,12 +16,12 @@
 
         <!-- Feeds -->
         {% if FEED_ALL_ATOM %}
-        <link rel="alternate" type="application/atom+xml" href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" title="{{ SITENAME }} Atom feed" />
+            <link rel="alternate" type="application/atom+xml" href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" title="{{ SITENAME }} Atom feed" />
         {% endif %}
         {% if FEED_ALL_RSS %}
-        <link rel="alternate" type="application/rss+xml" href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" title="{{ SITENAME }} RSS feed" />
+            <link rel="alternate" type="application/rss+xml" href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" title="{{ SITENAME }} RSS feed" />
         {% endif %}
-        {% endblock%}    
+    {% endblock%}    
     </head>
 
     <body>
@@ -33,46 +33,47 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="main_navigation">
-                    {% if DISPLAY_PAGES_ON_MENU %}
+                {% if DISPLAY_PAGES_ON_MENU %}
                     <ul class="navbar-nav mr-auto">
                     {% for p in pages|sort(attribute="page_order") %}
-                    {% if p.parent == None %} {# Top level pages only #}
-                        {% if p.children %} {# If children, create dropdown #}
-                        <li class="nav-item dropdown{% if p == page %} active{% endif %}">
-                            <a class="nav-link dropdown-toggle" href="{{ SITEURL }}/{{ p.url }}" id="{{ p.url }}" data-toggle="dropdown">
-                                {{ p.title }}
-                            </a>
-                            <div class="dropdown-menu">
-                            {% for child in p.children|sort(attribute="page_order") %}
-                                {% if child.divider == "above" %}
-                                <div class="dropdown-divider"></div>
-                                {% endif %}
-                                <a class="dropdown-item{% if child == page %} active{% endif %}" href="{{ SITEURL }}/{{ child.url}}">{{ child.title }}</a>
-                                {% if child.divider == "below" %}
-                                <div class="dropdown-divider"></div>
-                                {% endif %}
-                            {% endfor %}
-                            </div>
-                        </li>
-                        {% else %}
-                        <li class="nav-item{% if p == page %} active{% endif %}">
-                            <a class="nav-link" href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>
-                        </li>
+                        {% if p.parent == None %} {# List top-level pages #}
+                            {% if p.children %} {# List children as dropdown #}
+                                <li class="nav-item dropdown{% if p == page %} active{% endif %}">
+                                    <a class="nav-link dropdown-toggle" href="{{ SITEURL }}/{{ p.url }}" id="{{ p.url }}" data-toggle="dropdown">
+                                        {{ p.title }}
+                                    </a>
+                                    <div class="dropdown-menu">
+                                    {% for child in p.children|sort(attribute="page_order") %}
+                                        {% if child.divider == "above" %}
+                                            <div class="dropdown-divider"></div>
+                                        {% endif %}
+                                        <a class="dropdown-item{% if child == page %} active{% endif %}" href="{{ SITEURL }}/{{ child.url}}">{{ child.title }}</a>
+                                        {% if child.divider == "below" %}
+                                            <div class="dropdown-divider"></div>
+                                        {% endif %}
+                                    {% endfor %}
+                                    </div>
+                                </li>
+                            {% else %} {# No children #}
+                                <li class="nav-item{% if p == page %} active{% endif %}">
+                                    <a class="nav-link" href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>
+                                </li>
+                            {% endif %}
                         {% endif %}
-                    {% endif %}
                     {% endfor %}
                     </ul>
-                    {% endif %}
+                {% endif %}
 
-                    {% if MENUITEMS %}
+                {% if MENUITEMS %}
                     <ul class="navbar-nav">
-                        {% for title, link in MENUITEMS %}
+                    {% for title, link in MENUITEMS %}
                         <li class="nav-item">
                             <a class="nav-link" href="{{ link }}">{{ title }}</a>
                         </li>
-                        {% endfor %}
+                    {% endfor %}
+                        <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-github"></i> Edit on GitHub</a></li>
                     </ul>
-                    {% endif %}
+                {% endif %}
                 </div>
             </div>
         </nav>
@@ -81,20 +82,19 @@
         {% endblock %}
         
         {% block javascript %}
-        <!-- First jQuery, then Popper.js, then Bootstrap JS -->
-        <script src="{{ SITEURL }}/theme/js/jquery.min.js"></script>
-        <script src="{{ SITEURL }}/theme/js/popper.min.js"></script>
-        <script src="{{ SITEURL }}/theme/js/bootstrap.min.js"></script>
+            <!-- First jQuery, then Popper.js, then Bootstrap JS -->
+            <script src="{{ SITEURL }}/theme/js/jquery.min.js"></script>
+            <script src="{{ SITEURL }}/theme/js/popper.min.js"></script>
+            <script src="{{ SITEURL }}/theme/js/bootstrap.min.js"></script>
 
-        <!-- Allow to open parent page of a dropdown-menu -->
-        <script>
-        $(".dropdown-toggle").click(function(){
-            if ($(this).next().is(":visible")) {
-                location.href = $(this).attr("href");
-            }
-        });
-        </script>
-
+            <!-- Allow to open parent page of a dropdown-menu -->
+            <script>
+            $(".dropdown-toggle").click(function(){
+                if ($(this).next().is(":visible")) {
+                    location.href = $(this).attr("href");
+                }
+            });
+            </script>
         {% endblock %}
     </body>
 </html>

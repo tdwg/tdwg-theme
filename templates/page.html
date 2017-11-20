@@ -1,8 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}{{ page.title }}{% endblock %}
-
-{# set jumbotron_background_image and caption based on cover_image metadata #}
+{# Template settings: set jumbotron_background_image and caption based on metadata #}
 {% if page.cover_image %}
     {% if page.cover_image.startswith("http") %}
         {% set jumbotron_background_image = "background-image: url('" + page.cover_image + "')" %}
@@ -16,6 +14,9 @@
     {% set jumbotron_background_image = "" %}
 {% endif %}
 
+{# Page template #}
+{% block title %}{{ page.title }}{% endblock %}
+
 {% block content %}
     <div class="jumbotron tdwg-jumbotron" style="{{ jumbotron_background_image }}">
         <div class="container">
@@ -23,14 +24,14 @@
         </div>
     </div>
     {% if jumbotron_caption %}
-    <div class="container tdwg-jumbotron-caption">
-        <p>{{ jumbotron_caption }}</p>
-    </div>
+        <div class="container tdwg-jumbotron-caption">
+            <p>{{ jumbotron_caption }}</p>
+        </div>
     {% endif %}
 
     <div class="container pt-3 tdwg-page-content">
         {% if page.intro %}
-        <p class="lead">{{ page.intro }}</p>
+            <p class="lead">{{ page.intro }}</p>
         {% endif %}
 
         {% if page.learn_more %}
