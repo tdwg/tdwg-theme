@@ -58,8 +58,12 @@
             </div>
         </nav>
 
-        {% block content %}
-        {% endblock %}                
+        <div class="container">
+            <div class="row flex-xl-nowrap">
+            {% block content %}
+            {% endblock %}
+            </div>
+        </div>
         
         {% block javascript %}
             <!-- First jQuery, then Popper.js, then Bootstrap JS -->
