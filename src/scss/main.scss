@@ -14,34 +14,55 @@ body {
     // hyphens: auto; // Don't use: tries to hyphenate wrapped words, but does it too much
 }
 
-.tdwg-jumbotron {
-    // background-image: applied in page.html template
-    background-color: $jumbotron-bg;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin-bottom: 0;
     }
-    .tdwg-jumbotron h1 {
-        background-color: rgba($jumbotron-bg, 0.75);
-        color: $white;
-        display: inline-block; // To reduce background to text only, not full width
-        padding: 0.25rem 1rem;
-        letter-spacing: 0.15rem;
+
+// Main page content
+
+.tdwg-main {
+    padding-top: $grid-gutter-width / 2;
+
+    .tdwg-jumbotron {
+        // background-image: applied in page.html template
+        background-color: $jumbotron-bg;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin-bottom: 0;
+        
+        h1 {
+            background-color: rgba($jumbotron-bg, 0.75);
+            color: $white;
+            display: inline-block; // To reduce background to text only, not full width
+            padding: 0.25rem 1rem;
+            letter-spacing: 0.15rem;
+        }
+
+        .tdwg-tags {
+            text-transform: lowercase;
+        }
     }
+
     .tdwg-jumbotron-caption {
         color: $gray-600;
         font-size: 0.8rem;
         text-align: right;
-        }
-        .tdwg-jumbotron-caption a {
+    
+        a {
             color: $body-color;
         }
+    }
 
-.tdwg-page-content {
+    .tdwg-page-content {
+    
+        a[href^="https://github.com"] {
+            // font-family: inherit;
+
+            &:before {
+                @include fa-icon();
+                content: $fa-var-github;
+                padding-right: 0.3rem;
+            }
+        }
     }
-    .tdwg-page-content a[href^="https://github.com"]:before {
-        @include fa-icon();
-        content: $fa-var-github;
-        padding-right: 0.3rem;
-    }
+}
+
