@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{# Template settings: set jumbotron_background_image and caption based on metadata #}
+{# Set jumbotron_background_image and caption based on metadata #}
 {% if page.cover_image %}
     {% if page.cover_image.startswith("http") %}
         {% set jumbotron_background_image = "background-image: url('" + page.cover_image + "')" %}
@@ -14,30 +14,78 @@
     {% set jumbotron_background_image = "" %}
 {% endif %}
 
-{# Page template #}
+{# Get top parent (page_0) #}
+{% if page.parent == None or page.status == "hidden" %}
+    {% set page_0 = page %}
+{% else %}
+    {% set page_0 = page.parents[0] %}
+{% endif %}
+
+{# Blocks #}
 {% block title %}{{ page.title }}{% endblock %}
 
 {% block content %}
-    <div class="jumbotron tdwg-jumbotron" style="{{ jumbotron_background_image }}">
-        <div class="container">
-            <h1>{{ page.title }}</h1>
+    <div class="container">
+        <div class="row flex-xl-nowrap">
+            <div class="col-12 col-md-4 order-md-2 tdwg-sidebar">
+                <form class="d-flex align-items-center tdwg-search">
+                    <input type="search" class="form-control" placeholder="Search (not functional yet)" readonly>
+                    <button class="btn d-md-none" type="button" data-toggle="collapse" data-target=".tdwg-sidebar-nav">
+                        <i class="fa fa-bars fa-lg"></i>
+                    </button>
+                </form>
+                <nav class="collapse tdwg-sidebar-nav">
+                {% if page_0.children %}
+                    <ul class="nav flex-column">
+                    {% for page_1 in page_0.children|sort(attribute="page_order") %}
+                       <li class="nav-item tdwg-divider-{{ page_1.divider }}">
+                            <a class="nav-link d-flex justify-content-between align-items-center{% if page == page_1 %} active{% endif %}{% if page.parent == page_1 %} active-parent{% endif %}" href="{{ SITEURL }}/{{ page_1.url}}">
+                                {{ page_1.title }}
+                                {% if page_1.children %}
+                                    <i class="fa fa-chevron-down"></i>
+                                {% endif %}
+                            </a>
+                            {% if page_1.children %}
+                                <ul class="nav">
+                                {% for page_2 in page_1.children|sort(attribute="page_order") %}
+                                    <li class="nav-item">
+                                        <a class="nav-link{% if page == page_2 %} active{% endif %}" href="{{ SITEURL }}/{{ page_2.url}}">{{ page_2.title }}</a>
+                                    </li>
+                                {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+                </nav>
+            </div>
+
+            <div class="col-12 col-md-8 order-md-1 tdwg-main">
+                <div class="jumbotron tdwg-jumbotron" style="{{ jumbotron_background_image }}">
+                    <h1>{{ page.title }}</h1>
+                    <p class="tdwg-tags">
+                    {% for tag in page.tags %}
+                        <span class="badge badge-pill badge-light">{{ tag }}</span>
+                    {% endfor %}
+                    </p>
+                </div>
+                {% if jumbotron_caption %}
+                    <p class="tdwg-jumbotron-caption">{{ jumbotron_caption }}</p>
+                {% endif %}
+
+                <div class="tdwg-page-content">
+                    {% if page.intro %}
+                        <p class="lead">{{ page.intro }}</p>
+                    {% endif %}
+
+                    {% if page.github %}
+                        <a class="btn btn-lg btn-primary mb-4" href="https://github.com/tdwg/{{ page.github }}">Find us on GitHub</a>
+                    {% endif %}
+
+                    {{ page.content }}
+                </div>
+            </div>
         </div>
-    </div>
-    {% if jumbotron_caption %}
-        <div class="container tdwg-jumbotron-caption">
-            <p>{{ jumbotron_caption }}</p>
-        </div>
-    {% endif %}
-
-    <div class="container pt-3 tdwg-page-content">
-        {% if page.intro %}
-            <p class="lead">{{ page.intro }}</p>
-        {% endif %}
-
-        {% if page.learn_more %}
-        <a class="btn btn-lg btn-primary mb-4" href="{{ page.learn_more }}">Learn more</a>
-        {% endif %}
-
-        {{ page.content }}
     </div>
 {% endblock %}
