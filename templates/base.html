@@ -25,76 +25,47 @@
     </head>
 
     <body>
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+        <nav class="navbar navbar-expand navbar-dark bg-dark flex-column flex-md-row tdwg-navbar">
             <div class="container">
-                <a class="navbar-brand" href="{{ SITEURL }}/">{{ SITENAME }}</a>
-                <button class="navbar-toggler" data-toggle="collapse" data-target="#main_navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="main_navigation">
-                {% if DISPLAY_PAGES_ON_MENU %}
-                    <ul class="navbar-nav mr-auto">
-                    {% for p in pages|sort(attribute="page_order") %}
-                        {% if p.parent == None %} {# List top-level pages #}
-                            {% if p.children %} {# List children as dropdown #}
-                                <li class="nav-item dropdown{% if p == page %} active{% endif %}">
-                                    <a class="nav-link dropdown-toggle" href="{{ SITEURL }}/{{ p.url }}" id="{{ p.url }}" data-toggle="dropdown">
-                                        {{ p.title }}
-                                    </a>
-                                    <div class="dropdown-menu">
-                                    {% for child in p.children|sort(attribute="page_order") %}
-                                        {% if child.divider == "above" %}
-                                            <div class="dropdown-divider"></div>
-                                        {% endif %}
-                                        <a class="dropdown-item{% if child == page %} active{% endif %}" href="{{ SITEURL }}/{{ child.url}}">{{ child.title }}</a>
-                                        {% if child.divider == "below" %}
-                                            <div class="dropdown-divider"></div>
-                                        {% endif %}
-                                    {% endfor %}
-                                    </div>
-                                </li>
-                            {% else %} {# No children #}
-                                <li class="nav-item{% if p == page %} active{% endif %}">
-                                    <a class="nav-link" href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>
+                <a class="navbar-brand mr-2" href="{{ SITEURL }}/">{{ SITENAME }}</a>
+                <div class="tdwg-navbar-nav-container">
+                    <ul class="navbar-nav flex-row">
+                    {% if DISPLAY_PAGES_ON_MENU %}
+                        {% for page_0 in pages|sort(attribute="page_order") %}
+                            {% if page_0.parent == None %} {# Top level page #}
+                                <li class="nav-item">
+                                    <a class="nav-link{% if (page and page.status != 'hidden') and (page == page_0 or page.parents[0] == page_0) %} active{% endif %}" href="{{ SITEURL }}/{{ page_0.url }}">{{ page_0.title }}</a>
                                 </li>
                             {% endif %}
-                        {% endif %}
-                    {% endfor %}
+                        {% endfor %}
+                    {% endif %}
+                    {% if MENUITEMS %}
+                        {% for title, link in MENUITEMS %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ link }}">{{ title }}</a>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
                     </ul>
-                {% endif %}
-
-                {% if MENUITEMS %}
-                    <ul class="navbar-nav">
-                    {% for title, link in MENUITEMS %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ link }}">{{ title }}</a>
-                        </li>
-                    {% endfor %}
-                        <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-github"></i> Edit on GitHub</a></li>
-                    </ul>
-                {% endif %}
                 </div>
+                <ul class="navbar-nav flex-row d-none d-md-flex ml-md-auto">
+                    {% if page or article %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% if page %}{{ page.github_edit_url }}{% else %}{{ article.github_edit_url }}{% endif %}"><i class="fa fa-github"></i> Edit on GitHub</a>
+                    </li>
+                    {% endif %}
+                </ul>
             </div>
         </nav>
 
         {% block content %}
-        {% endblock %}
+        {% endblock %}                
         
         {% block javascript %}
             <!-- First jQuery, then Popper.js, then Bootstrap JS -->
             <script src="{{ SITEURL }}/theme/js/jquery.min.js"></script>
             <script src="{{ SITEURL }}/theme/js/popper.min.js"></script>
             <script src="{{ SITEURL }}/theme/js/bootstrap.min.js"></script>
-
-            <!-- Allow to open parent page of a dropdown-menu -->
-            <script>
-            $(".dropdown-toggle").click(function(){
-                if ($(this).next().is(":visible")) {
-                    location.href = $(this).attr("href");
-                }
-            });
-            </script>
         {% endblock %}
     </body>
 </html>
