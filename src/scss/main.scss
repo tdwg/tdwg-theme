@@ -53,7 +53,74 @@ body {
 }
 
 
+// Sidebar
+
+.tdwg-sidebar {
+    color: $tdwg-sidebar-color;
+    padding: $grid-gutter-width / 2;
+
+    @include media-breakpoint-down(sm) {
+        border-bottom: 1px solid rgba($tdwg-sidebar-color, 0.25); // Show border on small screens
     }
+
+    a, button {
+        color: $tdwg-sidebar-color;
+    }
+
+    .form-control {
+        border: $input-btn-border-width solid rgba($tdwg-sidebar-color, 0.25);
+        // Rather than $input-border-color;
+    }
+
+    .tdwg-sidebar-nav {
+        margin-top: 1em;
+
+        @include media-breakpoint-up(md) {
+            display: block!important; // Don't collapse navbar on wider screens
+        }
+
+        .nav-item {
+            &.tdwg-divider-above {
+                margin-top: 0.5rem;
+                border-top: 1px solid rgba($tdwg-sidebar-color, 0.5);
+                padding-top: 0.5rem;
+            }
+        
+            &.tdwg-divider-below {
+                padding-bottom: 0.5rem;
+                border-bottom: 1px solid rgba($tdwg-sidebar-color, 0.5);
+                margin-bottom: 0.5rem;
+            }
+
+            .nav-link {
+                padding: 0.25rem 1rem;
+
+                &.active {
+                    background-color: $tdwg-sidebar-color;
+                    color: $white;
+                }
+
+                &.active + .nav,
+                &.active-parent + .nav {
+                    display: block; // If 1st level parent or 2nd level = active => show 2nd level nav
+                }
+            }
+        }
+
+        .nav {
+            .nav {
+                display: none; // Hide 2nd level nav by default
+                font-size: 90%;
+                padding-left: 0.5rem;
+            
+                &:last-child {
+                    margin-bottom: 0.5rem; // Leave some more room for last element of 2nd level nav
+                }
+            }
+        }
+    }
+}
+
 
 // Main page content
 
