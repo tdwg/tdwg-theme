@@ -7,11 +7,11 @@
 @import "../../node_modules/font-awesome/scss/font-awesome.scss"; // Font Awesome scss
 
 
-// Custom CSS
+// Body CSS
 
 body {
     word-wrap: break-word; // Wrap long content (e.g. long URLs), so it does not break out of container
-    hyphens: auto; // Try to hyphenate wrapped words
+    // hyphens: auto; // Don't use: tries to hyphenate wrapped words, but does it too much
 }
 
 .tdwg-jumbotron {
