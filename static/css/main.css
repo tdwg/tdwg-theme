@@ -7796,14 +7796,16 @@ body {
     text-align: right; }
     .tdwg-main .tdwg-cover-image figcaption a {
       color: #212529; }
-  .tdwg-main .tdwg-page-content a[href^="https://github.com"]:before {
-    display: inline-block;
-    font: normal normal normal 14px/1 FontAwesome;
-    font-size: inherit;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    content: "";
-    padding-right: 0.3rem; }
+  .tdwg-main .tdwg-page-content {
+    margin-top: 1rem; }
+    .tdwg-main .tdwg-page-content a[href^="https://github.com"]:before {
+      display: inline-block;
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: inherit;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      content: "";
+      padding-right: 0.3rem; }
 
 /*# sourceMappingURL=main.css.map */
