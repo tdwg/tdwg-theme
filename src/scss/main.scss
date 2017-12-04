@@ -125,41 +125,35 @@ body {
 // Main page content
 
 .tdwg-main {
-    padding-top: $grid-gutter-width / 2;
+    padding-top: $grid-gutter-width;
 
-    .tdwg-jumbotron {
-        // background-image: applied in page.html template
-        background-color: $jumbotron-bg;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        margin-bottom: 0;
-        
-        h1 {
-            background-color: rgba($jumbotron-bg, 0.75);
-            color: $white;
-            display: inline-block; // To reduce background to text only, not full width
-            padding: 0.25rem 1rem;
-            letter-spacing: 0.15rem;
-        }
-
-        .tdwg-tags {
-            text-transform: lowercase;
-        }
+    .tdwg-tags {
+        text-transform: lowercase;
     }
 
-    .tdwg-jumbotron-caption {
-        color: $gray-600;
-        font-size: 0.8rem;
-        text-align: right;
+    .tdwg-cover-image {
+        div {
+            // background-image: applied in page.html template
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 15rem;
+            width: 100%;
+        }
+
+        figcaption {
+            color: $gray-600;
+            font-size: 0.8rem;
+            text-align: right;
     
-        a {
-            color: $body-color;
+            a {
+                color: $body-color;
+            }
         }
     }
 
     .tdwg-page-content {
-    
+        
         a[href^="https://github.com"] {
             // font-family: inherit;
 
@@ -171,4 +165,3 @@ body {
         }
     }
 }
-

@@ -1,17 +1,15 @@
 {% extends "base.html" %}
 
-{# Set jumbotron_background_image and caption based on metadata #}
+{# Set cover_image_url and caption based on metadata #}
 {% if page.cover_image %}
     {% if page.cover_image.startswith("http") %}
-        {% set jumbotron_background_image = "background-image: url('" + page.cover_image + "')" %}
+        {% set cover_image_url = page.cover_image %}
     {% else %}
-        {% set jumbotron_background_image = "background-image: url('" + SITEURL + "/static/cover_images/" + page.cover_image + "')" %}
+        {% set cover_image_url = SITEURL + "/static/cover_images/" + page.cover_image %}
     {% endif %}
     {% if page.cover_image_ref and page.cover_image_by %}
-        {%set jumbotron_caption = '<a href="' + page.cover_image_ref + '">Image</a> by ' + page.cover_image_by %}
+        {%set cover_image_caption = "<a href=\"" + page.cover_image_ref + "\">Image</a> by " + page.cover_image_by %}
     {% endif %}
-{% else %}
-    {% set jumbotron_background_image = "" %}
 {% endif %}
 
 {# Get top parent (page_0) #}
@@ -60,25 +58,30 @@
     </div>
 
     <div class="col-12 col-md-8 order-md-1 tdwg-main">
-        <div class="jumbotron tdwg-jumbotron" style="{{ jumbotron_background_image }}">
-            <h1>{{ page.title }}</h1>
-            <p class="tdwg-tags">
-            {% for tag in page.tags %}
-                <span class="badge badge-pill badge-light">{{ tag }}</span>
-            {% endfor %}
-            </p>
-        </div>
-        {% if jumbotron_caption %}
-            <p class="tdwg-jumbotron-caption">{{ jumbotron_caption }}</p>
+        <h1>{{ page.title }}</h1>
+        
+        <p class="tdwg-tags">
+        {% for tag in page.tags %}
+            <span class="badge badge-pill badge-light">{{ tag }}</span>
+        {% endfor %}
+        </p>
+
+        {% if page.intro %}
+            <p class="lead">{{ page.intro }}</p>
+        {% endif %}
+
+        {% if page.cover_image %}
+            <figure class="tdwg-cover-image">
+                <div style="background-image: url('{{ cover_image_url }}')"></div>
+                {% if cover_image_caption %}
+                    <figcaption>{{ cover_image_caption }}</figcaption>
+                {% endif %}
+            </figure>
         {% endif %}
 
         <div class="tdwg-page-content">
-            {% if page.intro %}
-                <p class="lead">{{ page.intro }}</p>
-            {% endif %}
-
             {% if page.github %}
-                <a class="btn btn-lg btn-primary mb-4" href="https://github.com/tdwg/{{ page.github }}">Find us on GitHub</a>
+                <a class="btn btn-lg btn-primary mb-4" href="{{ page.github }}">Find us on GitHub</a>
             {% endif %}
 
             {{ page.content }}
