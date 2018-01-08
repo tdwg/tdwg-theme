@@ -55,66 +55,89 @@ body {
 
 // Sidebar
 
-.tdwg-sidebar {
-    color: $tdwg-sidebar-color;
+.custom-sidebar {
+    background-color: theme-color("sidebar-bg");
+    color: theme-color("sidebar");
     padding: $grid-gutter-width / 2;
 
-    @include media-breakpoint-down(sm) {
-        border-bottom: 1px solid rgba($tdwg-sidebar-color, 0.25); // Show border on small screens
-    }
-
     a, button {
-        color: $tdwg-sidebar-color;
+        color: theme-color("sidebar");
     }
 
-    .form-control {
-        border: $input-btn-border-width solid rgba($tdwg-sidebar-color, 0.25);
-        // Rather than $input-border-color;
+    .custom-sidebar-header {
+        margin-bottom: 1rem;
+
+        a {
+            color: theme-color("highlight");
+            font-size: 1.25rem;
+            text-decoration: none;
+        }
     }
 
-    .tdwg-sidebar-nav {
+    .custom-sidebar-nav {
+        margin-left: $grid-gutter-width / -2; // Reset padding of col to use full width
+        margin-right: $grid-gutter-width / -2;
         margin-top: 1em;
 
-        @include media-breakpoint-up(md) {
-            display: block!important; // Don't collapse navbar on wider screens
-        }
-
         .nav-item {
-            &.tdwg-divider-above {
+            &.custom-divider-above {
                 margin-top: 0.5rem;
-                border-top: 1px solid rgba($tdwg-sidebar-color, 0.5);
+                border-top: 1px solid lighten(theme-color("sidebar"), 50%);
                 padding-top: 0.5rem;
             }
         
-            &.tdwg-divider-below {
+            &.custom-divider-below {
                 padding-bottom: 0.5rem;
-                border-bottom: 1px solid rgba($tdwg-sidebar-color, 0.5);
+                border-bottom: 1px solid lighten(theme-color("sidebar"), 50%);
                 margin-bottom: 0.5rem;
             }
 
             .nav-link {
                 padding: 0.25rem 1rem;
 
+                // Show right arrow by default
+                .fa-chevron-right { display: inline; }
+                .fa-chevron-down { display: none; }
+
                 &.active {
-                    background-color: $tdwg-sidebar-color;
-                    color: $white;
+                    // Switch colors
+                    background-color: theme-color("sidebar");
+                    color: theme-color("sidebar-bg");
+                    padding-left: 1rem;
                 }
 
+                // Show down arrow when active
+                &.active,
+                &.active-parent {
+                    .fa-chevron-right { display: none; }
+                    .fa-chevron-down { display: inline; }
+                }
+
+                // Show subnav when active
                 &.active + .nav,
                 &.active-parent + .nav {
-                    display: block; // If 1st level parent or 2nd level = active => show 2nd level nav
+                    display: block;
+                    background-color: rgba(theme-color("sidebar"), 0.5);
+                    
+                    a {
+                        color: lighten(theme-color("dark"), 20%);
+                    }
                 }
             }
         }
 
         .nav {
             .nav {
-                display: none; // Hide 2nd level nav by default
+                display: none; // Hide subnav by default
                 font-size: 90%;
-                padding-left: 0.5rem;
-            
+                // padding-left: 0.5rem;
+
+                .nav-link {
+                    padding-left: 1.5rem;
+                }
+
                 &:last-child {
-                    margin-bottom: 0.5rem; // Leave some more room for last element of 2nd level nav
+                    margin-bottom: 0.5rem; // Add space after last element of open subnav
                 }
             }
         }
@@ -124,8 +147,9 @@ body {
 
 // Main page content
 
-.tdwg-main {
+.custom-main {
     padding-top: $grid-gutter-width;
+    padding-left: 2rem;
 
     .tdwg-tags {
         text-transform: lowercase;

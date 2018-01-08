@@ -5,7 +5,6 @@
 $tdwg-orange: #ca6500;
 $tdwg-blue: #617694;
 $tdwg-yellow: #ffcc00;
-$tdwg-sidebar-color: $tdwg-blue;
 
 
 // Overwrites for Font Awesome variables
@@ -70,13 +69,19 @@ $colors: (
 
 $theme-colors: (
   primary: $tdwg-orange,
-  secondary: $gray-600,
+  secondary: $tdwg-blue,
+  
   success: $green,
   info: $cyan,
   warning: $yellow,
   danger: $red,
+
   light: $gray-100,
-  dark: $tdwg-blue
+  dark: $gray-900,
+  
+  sidebar: $white,
+  sidebar-bg: $tdwg-blue,
+  highlight: $tdwg-yellow
 );
 
 // Options
@@ -87,7 +92,7 @@ $enable-rounded: false;
 // Body
 
 $body-bg:       $white !default;
-$body-color:    $gray-900 !default;
+$body-color:    theme-color("dark");
 
 // Links
 // Paragraphs
