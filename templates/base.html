@@ -27,19 +27,19 @@
     <body>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12 col-md-3 order-md-1 custom-sidebar">
-                    <div class="custom-sidebar-header">
+                <div class="col-12 col-md-3 order-md-1 theme-sidebar">
+                    <div class="theme-sidebar-header">
                         <a href="{{ SITEURL }}/">{{ SITENAME }}</a>
                     </div>
 
-                    <form class="custom-search-form">
+                    <form class="theme-search-form">
                         {#<input type="search" class="form-control" placeholder="Search (not functional yet)" readonly>#}
                     </form>
 
                     {% include "navigation.html" %}
                 </div>
 
-                <div class="col-12 col-md-9 order-md-2 custom-main">                
+                <div class="col-12 col-md-9 order-md-2 theme-main">                
                     {% block content %}
                     {% endblock %}
                 </div>

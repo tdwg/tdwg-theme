@@ -25,7 +25,7 @@ body {
 
 // Sidebar
 
-.custom-sidebar {
+.theme-sidebar {
     background-color: theme-color("sidebar-bg");
     color: theme-color("sidebar");
     padding: $grid-gutter-width / 2;
@@ -34,7 +34,7 @@ body {
         color: theme-color("sidebar");
     }
 
-    .custom-sidebar-header {
+    .theme-sidebar-header {
         margin-bottom: 1rem;
 
         a {
@@ -44,19 +44,19 @@ body {
         }
     }
 
-    .custom-sidebar-nav {
+    .theme-sidebar-nav {
         margin-left: $grid-gutter-width / -2; // Reset padding of col to use full width
         margin-right: $grid-gutter-width / -2;
         margin-top: 1em;
 
         .nav-item {
-            &.custom-divider-above {
+            &.theme-divider-above {
                 margin-top: 0.5rem;
                 border-top: 1px solid lighten(theme-color("sidebar"), 50%);
                 padding-top: 0.5rem;
             }
         
-            &.custom-divider-below {
+            &.theme-divider-below {
                 padding-bottom: 0.5rem;
                 border-bottom: 1px solid lighten(theme-color("sidebar"), 50%);
                 margin-bottom: 0.5rem;
@@ -117,15 +117,15 @@ body {
 
 // Main page content
 
-.custom-main {
+.theme-main {
     padding-top: $grid-gutter-width;
     padding-left: 2rem;
 
-    .tdwg-tags {
+    .theme-tags {
         text-transform: lowercase;
     }
 
-    .tdwg-cover-image {
+    .theme-cover-image {
         div {
             // background-image: applied in page.html template
             background-position: center;
@@ -146,7 +146,7 @@ body {
         }
     }
 
-    .tdwg-page-content {
+    .theme-page-content {
         margin-top: 1rem;
     
         a[href^="https://github.com"] {

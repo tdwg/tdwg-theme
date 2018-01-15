@@ -21,7 +21,7 @@
 
         <h1>{{ page.title }}</h1>
         
-        <p class="tdwg-tags">
+        <p class="theme-tags">
         {% for tag in page.tags %}
             <span class="badge badge-pill badge-light">{{ tag }}</span>
         {% endfor %}
@@ -32,7 +32,7 @@
         {% endif %}
 
         {% if page.cover_image %}
-            <figure class="tdwg-cover-image">
+            <figure class="theme-cover-image">
                 <div style="background-image: url('{{ cover_image_url }}')"></div>
                 {% if cover_image_caption %}
                     <figcaption>{{ cover_image_caption }}</figcaption>
@@ -40,9 +40,9 @@
             </figure>
         {% endif %}
 
-        <div class="tdwg-page-content">
             {% if page.github %}
                 <a class="btn btn-lg btn-primary mb-4" href="{{ page.github }}">Find us on GitHub</a>
+        <div class="theme-page-content">
             {% endif %}
 
             {{ page.content }}
