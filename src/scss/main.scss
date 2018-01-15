@@ -20,37 +20,6 @@ body {
 
 // The main breakpoint is small vs medium (.sm and down vs .md and up).
 
-@include media-breakpoint-down(sm) {
-    // Use container-fluid behaviour on small screens, so the content (including collapsed sidebar) 
-    // can use the full width. The container width jump between .xs and .sm will also disappear.
-    .container {
-        width: 100%; 
-        max-width: 100%!important; // Overwrite default .container behaviour
-    }
-}
-
-
-// Navbar (main navigation)
-
-// Inspired by .navbar-nav-scroll on http://getboostrap.com
-// For small (sm) screens, reduce font size of navbar-nav and allow it to be swiped left and right 
-// so all menu items are accessible. The navbar-nav on the left is not shown (has .d-none) except 
-// for screens of medium and up (d-md-flex).
-
-.tdwg-navbar {
-    @include media-breakpoint-down(sm) {
-        .tdwg-navbar-nav-container {
-            font-size: .875rem;
-            max-width: 100%;
-            overflow: hidden;
-            
-            .navbar-nav {
-                overflow-x: auto;
-                white-space: nowrap;
-                -webkit-overflow-scrolling: touch;
-            }
-        }
-    }    
 }
 
 
