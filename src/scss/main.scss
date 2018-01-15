@@ -2,7 +2,8 @@
 
 // Imports
 
-@import "variables"; // Custom variables and overwrites for Bootstrap & Font Awesome variables 
+@import "../../node_modules/bootstrap/scss/_functions.scss"; // Necessary to make use of e.g. theme-colors();
+@import "variables"; // theme theme variables, Bootstrap & Font Awesome variable overwrites
 @import "../../node_modules/bootstrap/scss/bootstrap.scss"; // Bootstrap scss
 @import "../../node_modules/font-awesome/scss/font-awesome.scss"; // Font Awesome scss
 
