@@ -1,0 +1,64 @@
+{# Set current_page #}
+{% if page %}
+    {% set current_page = page %}
+{% else %}
+    {% set current_page = False %}
+    <p>This is not a page</p>
+{% endif %}
+
+<nav class="custom-sidebar-nav">
+    <ul class="nav flex-column">
+    {% if DISPLAY_PAGES_ON_MENU %}
+        {# Level 1 #}
+        {% for page_1 in pages|sort(attribute="page_order") %}
+        {% if page_1.parent == None %}
+            <li class="nav-item">
+                <a class="nav-link d-flex justify-content-between{% if page_1 == current_page %} active{% endif %}{% if page_1 in current_page.parents %} active-parent{% endif %}" href="{{ SITEURL }}/{{ page_1.url }}">
+                    {{ page_1.title }}
+                    {% if page_1.children %}
+                        <span class="align-self-center">
+                            <i class="fa fa-chevron-down"></i>
+                            <i class="fa fa-chevron-right"></i>
+                        </span>
+                    {% endif %}
+                </a>
+                
+                {# Level 2 #}
+                {% if page_1.children %}
+                    <ul class="nav">
+                    {% for page_2 in page_1.children|sort(attribute="page_order") %}
+                        <li class="nav-item">
+                            <a class="nav-link d-flex justify-content-between{% if page_2 == current_page %} active{% endif %}{% if page_2 in current_page.parents %} active-parent{% endif %}" href="{{ SITEURL }}/{{ page_2.url }}">
+                                {{ page_2.title }}
+                                {% if page_2.children %}
+                                    <span class="align-self-center">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <i class="fa fa-chevron-down"></i>
+                                    </span>
+                                {% endif %}
+                            </a>
+
+                            {# Level 3 #}
+                            {% if page_2.children %}
+                                <ul class="nav">
+                                {% for page_3 in page_2.children|sort(attribute="page_order") %}
+                                    <li class="nav-item">
+                                        <a class="nav-link{% if page_3 == current_page %} active{% endif %}{% if page_3 in current_page.parents %} active-parent{% endif %}" href="{{ SITEURL }}/{{ page_3.url }}">
+                                            {{ page_3.title }}
+
+                                            {# Levels beyond 3 are not shown/supported in this template. #}
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
+        {% endif %}
+        {% endfor %}
+    {% endif %}
+    </ul>
+</nav>

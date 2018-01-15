@@ -36,10 +36,7 @@
                         {#<input type="search" class="form-control" placeholder="Search (not functional yet)" readonly>#}
                     </form>
 
-                    <nav class="custom-sidebar-nav">
-                        {% block navigation %}
-                        {% endblock %}
-                    </nav>
+                    {% include "navigation.html" %}
                 </div>
 
                 <div class="col-12 col-md-9 order-md-2 custom-main">                
