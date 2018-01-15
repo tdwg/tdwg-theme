@@ -60,5 +60,11 @@
         {% endif %}
         {% endfor %}
     {% endif %}
+
+    {% for title, link in MENUITEMS %}
+        <li class="nav-item">
+            <a class="nav-link" href="{{ link }}">{{ title }}</a>
+        </li>
+    {% endfor %}
     </ul>
 </nav>
