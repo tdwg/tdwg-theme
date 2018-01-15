@@ -40,9 +40,9 @@
             </figure>
         {% endif %}
 
-            {% if page.github %}
-                <a class="btn btn-lg btn-primary mb-4" href="{{ page.github }}">Find us on GitHub</a>
         <div class="theme-page-content">
+            {% if page.github_url %}
+                <a class="btn btn-lg btn-primary mb-4" href="{{ page.github_url }}">Find us on GitHub</a>
             {% endif %}
 
             {{ page.content }}
