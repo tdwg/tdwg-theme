@@ -8027,6 +8027,13 @@ a.text-highlight:focus, a.text-highlight:hover {
 body {
   word-wrap: break-word; }
 
+html,
+body,
+body > .container-fluid,
+body > .container-fluid > .row,
+.theme-sidebar {
+  height: 100%; }
+
 .theme-sidebar {
   background-color: #617694;
   color: #fff;

@@ -23,6 +23,14 @@ body {
 
 // Sidebar
 
+html,
+body,
+body > .container-fluid,
+body > .container-fluid > .row,
+.theme-sidebar {
+    height: 100%; // To enable full height for .theme-sidebar, all its parents need height: 100%;
+}
+
 .theme-sidebar {
     background-color: theme-color("sidebar-bg");
     color: theme-color("sidebar");
