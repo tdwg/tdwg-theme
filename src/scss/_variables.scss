@@ -69,14 +69,17 @@ $colors: (
 ) !default;
 
 $theme-colors: (
-  primary: $tdwg-orange,
-  secondary: $gray-600,
+  primary: $tdwg-orange, // Used for links, active borders
+  secondary: $tdwg-blue, // Used for backgrounds (not used by Bootstrap default)
   success: $green,
   info: $cyan,
   warning: $yellow,
   danger: $red,
   light: $gray-100,
-  dark: $tdwg-blue
+  dark: $gray-900,
+
+  // Additional theme colors:
+  tertiary: $tdwg-yellow,
 );
 
 // Options
@@ -87,7 +90,7 @@ $enable-rounded: false;
 // Body
 
 $body-bg:       $white !default;
-$body-color:    $gray-900 !default;
+$body-color:    theme-color("dark");
 
 // Links
 // Paragraphs
@@ -102,13 +105,13 @@ $body-color:    $gray-900 !default;
 // Dropdowns
 
 $dropdown-link-active-color:     $white;
-$dropdown-link-active-bg:        $tdwg-blue;
+$dropdown-link-active-bg:        theme-color("secondary");
 
 // Z-index master list
 // Navs
 // Navbar
 
-$navbar-dark-color:                 $tdwg-yellow; // Top navigation links
+$navbar-dark-color:                 theme-color("tertiary");
 $navbar-dark-hover-color:           $white;
 $navbar-dark-active-color:          $white;
 
@@ -130,5 +133,5 @@ $navbar-dark-active-color:          $white;
 // Close
 // Code
 
-$code-color:                  $tdwg-blue;
+$code-color:                  theme-color("secondary");
 $code-bg:                     $gray-100 !default;
