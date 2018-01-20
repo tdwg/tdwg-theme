@@ -72,7 +72,8 @@ body {
         // Rather than $input-border-color;
     }
 
-    .tdwg-sidebar-nav {
+    // Sidebar navigation (only nav)
+    nav {
         margin-top: 1em;
 
         @include media-breakpoint-up(md) {
