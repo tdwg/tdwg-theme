@@ -168,3 +168,11 @@ body {
     }
 }
 
+// Code
+
+pre, code {
+    // Allow long words (e.g. URLs) to break, so they don't break out of container.
+    // Note: word-wrap is not effective here, needs to be word-break.
+    word-break: break-word;
+}
+
