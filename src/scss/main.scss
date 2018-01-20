@@ -11,18 +11,17 @@
 // Body CSS
 
 body {
-    word-wrap: break-word; // Wrap long content (e.g. long URLs), so it does not break out of container
-    // hyphens: auto; // Don't use: tries to hyphenate wrapped words, but does it too much
+    word-wrap: break-word; // Allow long words (e.g. URLs) to wrap, so they don't break out of container
 }
 
 
 // Grid
 
-// The main breakpoint is small vs medium (.sm and down vs .md and up).
+// The main breakpoint is between small and medium (.sm vs .md)
 
 @include media-breakpoint-down(sm) {
     // Use container-fluid behaviour on small screens, so the content (including collapsed sidebar) 
-    // can use the full width. The container width jump between .xs and .sm will also disappear.
+    // can use the full width. As a result the jump between .xs and .sm will also disappear.
     .container {
         width: 100%; 
         max-width: 100%!important; // Overwrite default .container behaviour
@@ -32,10 +31,10 @@ body {
 
 // Navbar (main navigation)
 
-// Inspired by .navbar-nav-scroll on http://getboostrap.com
+// Inspired by .navbar-nav-scroll on http://getbootstrap.com
 // For small (sm) screens, reduce font size of navbar-nav and allow it to be swiped left and right 
-// so all menu items are accessible. The navbar-nav on the left is not shown (has .d-none) except 
-// for screens of medium and up (d-md-flex).
+// so all menu items are accessible. The right navbar-nav will not be shown (has .d-none) except for
+// screens of medium and up (d-md-flex).
 
 .tdwg-navbar {
     @include media-breakpoint-down(sm) {
@@ -54,7 +53,7 @@ body {
 }
 
 
-// Sidebar
+// Sidebar (secondary navigation)
 
 .tdwg-sidebar {
     color: theme-color("sidebar");
@@ -77,7 +76,19 @@ body {
         margin-top: 1em;
 
         @include media-breakpoint-up(md) {
-            display: block!important; // Don't collapse navbar on wider screens
+            display: block!important; // Don't collapse nav on wider screens (= overwrite .collapse)
+        }
+
+        .nav {
+            .nav {
+                display: none; // Hide 2nd level nav by default
+                font-size: 90%;
+                padding-left: 0.5rem;
+            
+                &:last-child {
+                    margin-bottom: 0.5rem; // Leave some more room for last element of 2nd level nav
+                }
+            }
         }
 
         .nav-item {
@@ -103,19 +114,7 @@ body {
 
                 &.active + .nav,
                 &.active-parent + .nav {
-                    display: block; // If 1st level parent or 2nd level = active => show 2nd level nav
-                }
-            }
-        }
-
-        .nav {
-            .nav {
-                display: none; // Hide 2nd level nav by default
-                font-size: 90%;
-                padding-left: 0.5rem;
-            
-                &:last-child {
-                    margin-bottom: 0.5rem; // Leave some more room for last element of 2nd level nav
+                    display: block; // Show 2nd level nav if one its pages or parent is active
                 }
             }
         }
