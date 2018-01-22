@@ -8,14 +8,14 @@
 {% endif %}
 
 {# Set cover_image_url and caption based on metadata #}
-{% if page.cover_image %}
-    {% if page.cover_image.startswith("http") %}
-        {% set cover_image_url = page.cover_image %}
+{% if page.cover_image_file %}
+    {% if page.cover_image_file.startswith("http") %}
+        {% set cover_image_url = page.cover_image_file %}
     {% else %}
-        {% set cover_image_url = SITEURL + "/static/cover_images/" + page.cover_image %}
+        {% set cover_image_url = SITEURL + "/static/cover_images/" + page.cover_image_file %}
     {% endif %}
-    {% if page.cover_image_ref and page.cover_image_by %}
-        {%set cover_image_caption = "<a href=\"" + page.cover_image_ref + "\">Image</a> by " + page.cover_image_by %}
+    {% if page.cover_image_by and page.cover_image_link %}
+        {%set cover_image_caption = "<a href=\"" + page.cover_image_link + "\">Image</a> by " + page.cover_image_by %}
     {% endif %}
 {% endif %}
 
@@ -72,7 +72,7 @@
             <p class="lead">{{ page.intro }}</p>
         {% endif %}
 
-        {% if page.cover_image %}
+        {% if page.cover_image_file %}
             <figure class="tdwg-cover-image">
                 <div style="background-image: url('{{ cover_image_url }}')"></div>
                 {% if cover_image_caption %}
@@ -82,8 +82,8 @@
         {% endif %}
 
         <div class="tdwg-page-content">
-            {% if page.github %}
-                <a class="btn btn-lg btn-primary mb-4" href="{{ page.github }}">Find us on GitHub</a>
+            {% if page.github_url %}
+                <a class="btn btn-lg btn-primary mb-4" href="{{ page.github_url }}">Find us on GitHub</a>
             {% endif %}
 
             {{ page.content }}
