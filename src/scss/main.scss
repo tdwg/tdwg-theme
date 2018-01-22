@@ -76,6 +76,11 @@ body {
 
 // Sidebar (secondary navigation)
 
+// The sidebar only appears on pages and contains the navigation for 2nd & 3rd level pages.
+// On small (sm) screens the sidebar will be horizontal (.col-12) with nav collapsed (.collapse)
+// On medium (md) screens the sidebar will be vertical (.col-md-4) and appear on the right 
+// (.order-md-2) of .tdwg-content, which will take up remaining space (.col-md)
+
 .tdwg-sidebar {
     color: theme-color("sidebar");
     padding: $grid-gutter-width / 2;
