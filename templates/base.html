@@ -31,12 +31,10 @@
                 <nav>
                     <ul class="navbar-nav">
                     {% if DISPLAY_PAGES_ON_MENU %}
-                        {% for page_0 in pages|sort(attribute="page_order") %}
-                            {% if page_0.parent == None %} {# Top level page #}
-                                <li class="nav-item">
-                                    <a class="nav-link{% if (page and page.status != 'hidden') and (page == page_0 or page.parents[0] == page_0) %} active{% endif %}" href="{{ SITEURL }}/{{ page_0.url }}">{{ page_0.title }}</a>
-                                </li>
-                            {% endif %}
+                        {% for top_page in pages|sort(attribute="page_order")|selectattr("parent", "none") %}
+                            <li class="nav-item">
+                                <a class="nav-link{% if page and page.status != 'hidden' and (top_page == page or top_page == page.parents[0]) %} active{% endif %}" href="{{ SITEURL }}/{{ top_page.url }}">{{ top_page.title }}</a>
+                            </li>
                         {% endfor %}
                     {% endif %}
                         <li class="nav-item ml-auto">
