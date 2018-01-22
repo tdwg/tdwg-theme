@@ -23,6 +23,7 @@
 
 {% block content %}
 <div class="row">
+    {% block sidebar %}
     <div class="col-12 col-md-4 order-md-2 tdwg-sidebar">
         <form class="d-flex justify-content-end tdwg-search">
             {# <input type="search" class="form-control" placeholder="Search (not functional yet)" readonly> #}
@@ -56,10 +57,11 @@
         {% endif %}
         </nav>
     </div>
+    {% endblock %}
 
-    <div class="col-12 col-md-8 order-md-1 tdwg-main">
+    <div class="col-12 col-md order-md-1 tdwg-content">
         <h1>{{ page.title }}</h1>
-        
+
         <p class="tdwg-tags">
         {% for tag in page.tags %}
             <span class="badge badge-pill badge-light">{{ tag }}</span>
