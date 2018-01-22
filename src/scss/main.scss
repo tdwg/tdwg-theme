@@ -36,13 +36,19 @@ body {
 // The navbar is inspired by http://getbootstrap.com, but with a .container
 // It has .navbar-expand for correct padding and .navbar-dark & .bg-secondary for style.
 // On small (sm) screens, .navbar-brand + nav appear above each other (flex-column), and nav can be
-// swiped left and right. The right .navbar-nav will not be shown (had .d-none)
-// On medium (md) screens and up, .navbar-brand + nav appear next to each other (.flex-md-row) and 
-// right .navbar-nav is shown (d-md-flex).
+// swiped left and right.
+// On medium (md) screens and up, .navbar-brand + nav appear next to each other (.flex-md-row), with
+// nav taken up all remaining width (flex-grow: 1 in .justify-content-start)
 
 .tdwg-navbar {
+
+    // Main navigation (only nav in .tdwg-navbar)
+    // Has same role as .navbar-nav-scroll on http://getbootstrap.com
+    nav {
+        flex-grow: 1; // Use up remaining width in .container
+    }
+
     @include media-breakpoint-down(sm) {
-        // Top-level pages (only nav in .tdwg-navbar) = .navbar-nav-scroll on http://getbootstrap.com
         nav {
             font-size: .875rem;
             max-width: 100%;
@@ -121,6 +127,8 @@ body {
             }
 
             .nav-link {
+                // .d-flex .justify-content-between .align-items-center are only required for 
+                // aligning the .fa-chavron-down correctly.
                 padding: 0.25rem 1rem;
 
                 &.active {

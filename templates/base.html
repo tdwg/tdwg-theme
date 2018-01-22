@@ -26,10 +26,10 @@
 
     <body>
         <header class="navbar navbar-expand navbar-dark bg-secondary tdwg-navbar">
-            <div class="container flex-column flex-md-row">
-                <a class="navbar-brand mr-md-2" href="{{ SITEURL }}/">{{ SITENAME }}</a>
+            <div class="container flex-column flex-md-row justify-content-start">
+                <a class="navbar-brand mr-md-3" href="{{ SITEURL }}/">{{ SITENAME }}</a>
                 <nav>
-                    <ul class="navbar-nav flex-row">
+                    <ul class="navbar-nav">
                     {% if DISPLAY_PAGES_ON_MENU %}
                         {% for page_0 in pages|sort(attribute="page_order") %}
                             {% if page_0.parent == None %} {# Top level page #}
@@ -39,22 +39,14 @@
                             {% endif %}
                         {% endfor %}
                     {% endif %}
-                    {% if MENUITEMS %}
-                        {% for title, link in MENUITEMS %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ link }}">{{ title }}</a>
-                            </li>
-                        {% endfor %}
-                    {% endif %}
+                        <li class="nav-item ml-auto">
+                            <a class="nav-link" href="{{ SITEURL }}/news/">News</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ SITEURL }}/search.html"><i class="fa fa-search"></i></a>
+                        </li>
                     </ul>
                 </nav>
-                <ul class="navbar-nav flex-row d-none d-md-flex ml-md-auto">
-                    {% if page or article %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% if page %}{{ page.github_edit_url }}{% else %}{{ article.github_edit_url }}{% endif %}"><i class="fa fa-github"></i> Edit on GitHub</a>
-                    </li>
-                    {% endif %}
-                </ul>
             </div>
         </header>
 

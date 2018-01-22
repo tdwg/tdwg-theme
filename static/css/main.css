@@ -8032,6 +8032,9 @@ body {
     width: 100%;
     max-width: 100% !important; } }
 
+.tdwg-navbar nav {
+  flex-grow: 1; }
+
 @media (max-width: 767px) {
   .tdwg-navbar nav {
     font-size: .875rem;
