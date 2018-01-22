@@ -25,10 +25,10 @@
     </head>
 
     <body>
-        <nav class="navbar navbar-expand navbar-dark bg-dark flex-column flex-md-row tdwg-navbar">
-            <div class="container">
-                <a class="navbar-brand mr-2" href="{{ SITEURL }}/">{{ SITENAME }}</a>
-                <div class="tdwg-navbar-nav-container">
+        <header class="navbar navbar-expand navbar-dark bg-secondary tdwg-navbar">
+            <div class="container flex-column flex-md-row">
+                <a class="navbar-brand mr-md-2" href="{{ SITEURL }}/">{{ SITENAME }}</a>
+                <nav>
                     <ul class="navbar-nav flex-row">
                     {% if DISPLAY_PAGES_ON_MENU %}
                         {% for page_0 in pages|sort(attribute="page_order") %}
@@ -47,7 +47,7 @@
                         {% endfor %}
                     {% endif %}
                     </ul>
-                </div>
+                </nav>
                 <ul class="navbar-nav flex-row d-none d-md-flex ml-md-auto">
                     {% if page or article %}
                     <li class="nav-item">
@@ -56,7 +56,7 @@
                     {% endif %}
                 </ul>
             </div>
-        </nav>
+        </header>
 
         <div class="container">
             <div class="row flex-xl-nowrap">

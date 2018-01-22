@@ -31,14 +31,17 @@ body {
 
 // Navbar (main navigation)
 
-// Inspired by .navbar-nav-scroll on http://getbootstrap.com
-// For small (sm) screens, reduce font size of navbar-nav and allow it to be swiped left and right 
-// so all menu items are accessible. The right navbar-nav will not be shown (has .d-none) except for
-// screens of medium and up (d-md-flex).
+// The navbar is inspired by http://getbootstrap.com, but with a .container
+// It has .navbar-expand for correct padding and .navbar-dark & .bg-secondary for style.
+// On small (sm) screens, .navbar-brand + nav appear above each other (flex-column), and nav can be
+// swiped left and right. The right .navbar-nav will not be shown (had .d-none)
+// On medium (md) screens and up, .navbar-brand + nav appear next to each other (.flex-md-row) and 
+// right .navbar-nav is shown (d-md-flex).
 
 .tdwg-navbar {
     @include media-breakpoint-down(sm) {
-        .tdwg-navbar-nav-container {
+        // Top-level pages (only nav in .tdwg-navbar) = .navbar-nav-scroll on http://getbootstrap.com
+        nav {
             font-size: .875rem;
             max-width: 100%;
             overflow: hidden;
@@ -49,7 +52,17 @@ body {
                 -webkit-overflow-scrolling: touch;
             }
         }
-    }    
+    }
+
+    // Reapply left/right padding on container, so it is same width as content
+    // https://github.com/twbs/bootstrap/issues/22471
+    &.navbar-expand {
+        > .container,
+        > .container-fluid {
+            padding-left: $navbar-padding-x;
+            padding-right: $navbar-padding-x;
+        }
+    }
 }
 
 
@@ -72,7 +85,7 @@ body {
         // Rather than $input-border-color;
     }
 
-    // Sidebar navigation (only nav)
+    // Sidebar navigation (only nav in .tdwg-sidebar)
     nav {
         margin-top: 1em;
 
