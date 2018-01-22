@@ -34,7 +34,7 @@
         {% if page_0.children %}
             <ul class="nav flex-column">
             {% for page_1 in page_0.children|sort(attribute="page_order") %}
-               <li class="nav-item tdwg-divider-{{ page_1.divider }}">
+               <li class="nav-item{% if page_1.divider %} tdwg-divider-{{ page_1.divider }}{% endif %}">
                     <a class="nav-link d-flex justify-content-between align-items-center{% if page == page_1 %} active{% endif %}{% if page.parent == page_1 %} active-parent{% endif %}" href="{{ SITEURL }}/{{ page_1.url}}">
                         {{ page_1.title }}
                         {% if page_1.children %}
