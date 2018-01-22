@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ DEFAULT_LANG }}">
     <head>
-    {% block head %}
+        {% block head %}
         <!-- Required meta tags -->
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -21,7 +21,7 @@
         {% if FEED_ALL_RSS %}
             <link rel="alternate" type="application/rss+xml" href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" title="{{ SITENAME }} RSS feed" />
         {% endif %}
-    {% endblock%}    
+        {% endblock%}    
     </head>
 
     <body>
@@ -54,10 +54,10 @@
         </div>
         
         {% block javascript %}
-            <!-- First jQuery, then Popper.js, then Bootstrap JS -->
-            <script src="{{ SITEURL }}/theme/js/jquery.min.js"></script>
-            <script src="{{ SITEURL }}/theme/js/popper.min.js"></script>
-            <script src="{{ SITEURL }}/theme/js/bootstrap.min.js"></script>
+        <!-- First jQuery, then Popper.js, then Bootstrap JS -->
+        <script src="{{ SITEURL }}/theme/js/jquery.min.js"></script>
+        <script src="{{ SITEURL }}/theme/js/popper.min.js"></script>
+        <script src="{{ SITEURL }}/theme/js/bootstrap.min.js"></script>
         {% endblock %}
     </body>
 </html>
