@@ -1,35 +1,32 @@
 {% extends "base.html" %}
 
-{# Blocks #}
 {% block title %}News{% endblock %}
 
 {% block content %}
-    <div class="col-12 tdwg-main">
-        {% for article in articles_page.object_list %}
-            <article class="entry">
-                <header>
-                    <h2 class="entry-title">
-                        <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a>
-                    </h2>
-                </header>
-                <footer class="post-info">
-                    <time class="published" datetime="{{ article.date.isoformat() }}">
-                        {{ article.locale_date }}
-                    </time>
-                    <address class="vcard author">
-                    {% for author in article.authors %}
-                        <a class="url fn" href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>
-                    {% endfor %}
-                    </address>
-                </footer>
-                <div class="entry-content">
-                    {{ article.summary }}
-                </div>
-            </article>
-        {% endfor %}
+{% for article in articles_page.object_list %}
+    <article class="entry">
+        <header>
+            <h2 class="entry-title">
+                <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a>
+            </h2>
+        </header>
+        <footer class="post-info">
+            <time class="published" datetime="{{ article.date.isoformat() }}">
+                {{ article.locale_date }}
+            </time>
+            <address class="vcard author">
+            {% for author in article.authors %}
+                <a class="url fn" href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>
+            {% endfor %}
+            </address>
+        </footer>
+        <div class="entry-content">
+            {{ article.summary }}
+        </div>
+    </article>
+{% endfor %}
 
-        {% if articles_page.has_other_pages() %}
-            {% include 'pagination.html' %}
-        {% endif %}
-    </div>
+{% if articles_page.has_other_pages() %}
+    {% include 'pagination.html' %}
+{% endif %}
 {% endblock %}
