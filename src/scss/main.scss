@@ -1,5 +1,7 @@
 // Main SASS file for TDWG theme
 
+// Note: all none-Bootstrap classes are named tdwg-* so they are easily recognizable.
+
 // Imports
 
 @import "../../node_modules/bootstrap/scss/_functions.scss"; // Load first to make use of theme-colors()
