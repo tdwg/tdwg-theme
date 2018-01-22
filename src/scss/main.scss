@@ -25,6 +25,12 @@ body {
     // Use container-fluid behaviour on small screens, so the content (including collapsed sidebar) 
     // can use the full width. As a result the jump between .xs and .sm will also disappear.
     .container {
+body > .container {
+    padding-top: $grid-gutter-width; // Don't stick to navbar
+
+    @include media-breakpoint-down(sm) {
+        // Use container-fluid behaviour on small screens, so the content (including collapsed 
+        // .tdwg-sidebar) can use the full width. Jump between .xs and .sm will also disappear.
         width: 100%; 
         max-width: 100%!important; // Overwrite default .container behaviour
     }
@@ -46,10 +52,8 @@ body {
     // Has same role as .navbar-nav-scroll on http://getbootstrap.com
     nav {
         flex-grow: 1; // Use up remaining width in .container
-    }
-
-    @include media-breakpoint-down(sm) {
-        nav {
+    
+        @include media-breakpoint-down(sm) {
             font-size: .875rem;
             max-width: 100%;
             overflow: hidden;
@@ -83,10 +87,16 @@ body {
 
 .tdwg-sidebar {
     color: theme-color("sidebar");
-    padding: $grid-gutter-width / 2;
 
-    @include media-breakpoint-down(sm) {
-        border-bottom: 1px solid rgba(theme-color("sidebar"), 0.5); // Show border on small screens
+    @include media-breakpoint-down(sm) { // Collapsed sidebar, appears above .tdwg-content
+        border-bottom: 1px solid rgba(theme-color("sidebar"), 0.5);
+        margin-top: -$grid-gutter-width; // Overwrite .container and stick to navbar when collapsed
+        margin-bottom: $grid-gutter-width; // Reapply .container padding
+        padding: $grid-gutter-width / 2;
+
+        nav {
+            margin-top: $grid-gutter-width / 2; // Add space between menu button and nav
+        }
     }
 
     button {
@@ -95,8 +105,6 @@ body {
 
     // Sidebar navigation (only nav in .tdwg-sidebar)
     nav {
-        margin-top: 1em;
-
         @include media-breakpoint-up(md) {
             display: block!important; // Don't collapse nav on wider screens (= overwrite .collapse)
         }
@@ -149,9 +157,9 @@ body {
 
 // Main page content
 
-.tdwg-main {
-    padding-top: $grid-gutter-width;
 
+.tdwg-content {
+    
     .tdwg-tags {
         text-transform: lowercase;
     }
