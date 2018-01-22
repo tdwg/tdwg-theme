@@ -22,6 +22,7 @@
 {% block title %}{{ page.title }}{% endblock %}
 
 {% block content %}
+<div class="row">
     <div class="col-12 col-md-4 order-md-2 tdwg-sidebar">
         <form class="d-flex justify-content-end tdwg-search">
             {# <input type="search" class="form-control" placeholder="Search (not functional yet)" readonly> #}
@@ -86,4 +87,5 @@
             {{ page.content }}
         </div>
     </div>
+</div>
 {% endblock %}
