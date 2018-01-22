@@ -1,8 +1,8 @@
 // Main SASS file for TDWG theme
 
-// Note: all none-Bootstrap classes are named tdwg-* so they are easily recognizable.
+// Note: all none-Bootstrap classes are named tdwg-* so they are easily recognizable
 
-// Imports
+// IMPORTS
 
 @import "../../node_modules/bootstrap/scss/_functions.scss"; // Load first to make use of theme-colors()
 @import "variables"; // Custom variables and overwrites for Bootstrap & Font Awesome variables 
@@ -10,21 +10,17 @@
 @import "../../node_modules/font-awesome/scss/font-awesome.scss"; // Font Awesome scss
 
 
-// Body CSS
+// BODY
 
 body {
     word-wrap: break-word; // Allow long words (e.g. URLs) to wrap, so they don't break out of container
 }
 
 
-// Grid
+// GRID AND MAIN CONTAINER
 
-// The main breakpoint is between small and medium (.sm vs .md)
+// The main breakpoint is between small (sm and smaller) and medium (md and larger) screens
 
-@include media-breakpoint-down(sm) {
-    // Use container-fluid behaviour on small screens, so the content (including collapsed sidebar) 
-    // can use the full width. As a result the jump between .xs and .sm will also disappear.
-    .container {
 body > .container {
     padding-top: $grid-gutter-width; // Don't stick to navbar
 
@@ -37,19 +33,18 @@ body > .container {
 }
 
 
-// Navbar (main navigation)
+// NAVBAR
 
-// The navbar is inspired by http://getbootstrap.com, but with a .container
-// It has .navbar-expand for correct padding and .navbar-dark & .bg-secondary for style.
-// On small (sm) screens, .navbar-brand + nav appear above each other (flex-column), and nav can be
-// swiped left and right.
-// On medium (md) screens and up, .navbar-brand + nav appear next to each other (.flex-md-row), with
-// nav taken up all remaining width (flex-grow: 1 in .justify-content-start)
+// The navbar is for the main navigation and inspired by http://getbootstrap.com, but with a 
+// .container. It has .navbar-expand for correct padding and .navbar-dark & .bg-secondary for style.
+//
+// On small screens, .navbar-brand + nav appear above each other (flex-column), and nav can be
+// swiped left and right. On medium screens and up, .navbar-brand + nav appear next to each other 
+// (.flex-md-row), with nav taking up all remaining width (flex-grow: 1 in .justify-content-start).
 
 .tdwg-navbar {
 
-    // Main navigation (only nav in .tdwg-navbar)
-    // Has same role as .navbar-nav-scroll on http://getbootstrap.com
+    // Navbar navigation: only nav in .tdwg-navbar
     nav {
         flex-grow: 1; // Use up remaining width in .container
     
@@ -78,12 +73,12 @@ body > .container {
 }
 
 
-// Sidebar (secondary navigation)
+// SIDEBAR
 
 // The sidebar only appears on pages and contains the navigation for 2nd & 3rd level pages.
-// On small (sm) screens the sidebar will be horizontal (.col-12) with nav collapsed (.collapse)
-// On medium (md) screens the sidebar will be vertical (.col-md-4) and appear on the right 
-// (.order-md-2) of .tdwg-content, which will take up remaining space (.col-md)
+// On small screens the sidebar will be horizontal (.col-12) with nav collapsed (.collapse).
+// On medium screens the sidebar will be vertical (.col-md-4) and appear on the right (.order-md-2)
+// of .twdg-content, which will take up remaining space (.col-md).
 
 .tdwg-sidebar {
     color: theme-color("sidebar");
@@ -103,7 +98,7 @@ body > .container {
         color: theme-color("sidebar");
     }
 
-    // Sidebar navigation (only nav in .tdwg-sidebar)
+    // Sidebar navigation: only nav in .tdwg-sidebar
     nav {
         @include media-breakpoint-up(md) {
             display: block!important; // Don't collapse nav on wider screens (= overwrite .collapse)
@@ -136,7 +131,7 @@ body > .container {
 
             .nav-link {
                 // .d-flex .justify-content-between .align-items-center are only required for 
-                // aligning the .fa-chavron-down correctly.
+                // aligning the .fa-chavron-down correctly
                 color: theme-color("sidebar");
                 padding: 0.25rem 1rem;
 
@@ -155,8 +150,7 @@ body > .container {
 }
 
 
-// Main page content
-
+// MAIN CONTENT
 
 .tdwg-content {
     
@@ -203,8 +197,7 @@ body > .container {
 // Code
 
 pre, code {
-    // Allow long words (e.g. URLs) to break, so they don't break out of container.
-    // Note: word-wrap is not effective here, needs to be word-break.
+    // Allow long words (e.g. URLs) to break, so they don't break out of container
+    // Note: word-wrap is not effective here, needs to be word-break
     word-break: break-word;
 }
-
