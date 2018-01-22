@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% block title %}{{ page.title }}{% endblock %}
+
 {# Set top level page #}
 {% if page.parent == None or page.status == "hidden" %}
     {% set top_page = page %}
@@ -18,8 +20,6 @@
         {%set cover_image_caption = "<a href=\"" + page.cover_image_link + "\">Image</a> by " + page.cover_image_by %}
     {% endif %}
 {% endif %}
-
-{% block title %}{{ page.title }}{% endblock %}
 
 {% block content %}
 <div class="row">
