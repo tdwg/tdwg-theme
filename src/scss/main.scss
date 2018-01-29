@@ -211,7 +211,50 @@ body > .container-fluid {
     }
 }
 
-// CODE
+
+// HOMEPAGE
+
+.tdwg-home {
+
+    .jumbotron {
+        // background-image: applied in home.html template
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 25rem;
+        margin-bottom: 0;
+
+        h1 {
+            color: $white;
+            font-size: 4.2rem;
+            text-shadow: 1px 1px 3px rgba(theme-color("dark"), 0.75);
+        }
+
+        p {
+            color: $white;
+            font-size: 1.5rem;
+            text-shadow: 1px 1px 3px rgba(theme-color("dark"), 0.75);
+
+            @include media-breakpoint-up(md) {
+                max-width: 50%;
+            }
+        }
+    }
+
+    footer { // Similar to figcaption
+        color: $gray-600;
+        font-size: 0.8rem;
+        margin-top: 0.2rem;
+        text-align: right;
+
+        a {
+            color: $body-color;
+        }
+    }
+}
+
+
+// EXTRA
 
 pre, code {
     // Allow long words (e.g. URLs) to break, so they don't break out of container

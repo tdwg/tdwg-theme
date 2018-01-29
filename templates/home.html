@@ -1,3 +1,28 @@
 {% extends "page.html" %}
 
 {% block sidebar %}{% endblock %}
+
+{% block content %}
+
+    <div class="tdwg-home">
+        <div class="jumbotron jumbotron-fluid" style="background-image: url('{{ cover_image_url }}')">
+            <div class="container">
+                <h1>{{ page.title }}</h1>
+                <p class="lead">{{ page.intro }}</p>
+            </div>
+        </div>
+        <footer>
+            <div class="container">
+                {{ cover_image_caption }}
+            </div>
+        </footer>
+    </div>
+
+    <main class="container tdwg-home">
+        <div class="row">
+            <div class="col-12 col-md order-md-1 tdwg-content">
+                {{ page.content }}
+            </div>
+        </div>
+    </main>
+{% endblock %}
