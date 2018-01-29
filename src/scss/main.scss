@@ -1,44 +1,54 @@
 // Main SASS file for TDWG theme
 
-// Imports
+// Note: all none-Bootstrap classes are named tdwg-* so they are easily recognizable
 
+// IMPORTS
+
+@import "../../node_modules/bootstrap/scss/_functions.scss"; // Load first to make use of theme-colors()
 @import "variables"; // Custom variables and overwrites for Bootstrap & Font Awesome variables 
 @import "../../node_modules/bootstrap/scss/bootstrap.scss"; // Bootstrap scss
 @import "../../node_modules/font-awesome/scss/font-awesome.scss"; // Font Awesome scss
 
 
-// Body CSS
+// BODY
 
 body {
-    word-wrap: break-word; // Wrap long content (e.g. long URLs), so it does not break out of container
-    // hyphens: auto; // Don't use: tries to hyphenate wrapped words, but does it too much
+    word-wrap: break-word; // Allow long words (e.g. URLs) to wrap, so they don't break out of container
 }
 
 
-// Grid
+// GRID AND MAIN CONTAINER
 
-// The main breakpoint is small vs medium (.sm and down vs .md and up).
+// The main breakpoint is between small (sm and smaller) and medium (md and larger) screens
 
-@include media-breakpoint-down(sm) {
-    // Use container-fluid behaviour on small screens, so the content (including collapsed sidebar) 
-    // can use the full width. The container width jump between .xs and .sm will also disappear.
-    .container {
+body > .container {
+    padding-top: $grid-gutter-width; // Don't stick to navbar
+
+    @include media-breakpoint-down(sm) {
+        // Use container-fluid behaviour on small screens, so the content (including collapsed 
+        // .tdwg-sidebar) can use the full width. Jump between .xs and .sm will also disappear.
         width: 100%; 
         max-width: 100%!important; // Overwrite default .container behaviour
     }
 }
 
 
-// Navbar (main navigation)
+// NAVBAR
 
-// Inspired by .navbar-nav-scroll on http://getboostrap.com
-// For small (sm) screens, reduce font size of navbar-nav and allow it to be swiped left and right 
-// so all menu items are accessible. The navbar-nav on the left is not shown (has .d-none) except 
-// for screens of medium and up (d-md-flex).
+// The navbar is for the main navigation and inspired by http://getbootstrap.com, but with a 
+// .container. It has .navbar-expand for correct padding and .navbar-dark & .bg-secondary for style.
+//
+// On small screens, .navbar-brand + nav appear above each other (flex-column), and nav can be
+// swiped left and right. On medium screens and up, .navbar-brand + nav appear next to each other 
+// (.flex-md-row), with nav taking up all remaining width (flex-grow: 1 in .justify-content-start).
 
 .tdwg-navbar {
-    @include media-breakpoint-down(sm) {
-        .tdwg-navbar-nav-container {
+
+    // Navbar navigation: only nav in .tdwg-navbar
+    nav {
+        flex-grow: 1; // Use up remaining width in .container
+    
+        @include media-breakpoint-down(sm) {
             font-size: .875rem;
             max-width: 100%;
             overflow: hidden;
@@ -49,62 +59,49 @@ body {
                 -webkit-overflow-scrolling: touch;
             }
         }
-    }    
+    }
+
+    // Reapply left/right padding on container, so it is same width as content
+    // https://github.com/twbs/bootstrap/issues/22471
+    &.navbar-expand {
+        > .container,
+        > .container-fluid {
+            padding-left: $navbar-padding-x;
+            padding-right: $navbar-padding-x;
+        }
+    }
 }
 
 
-// Sidebar
+// SIDEBAR
+
+// The sidebar only appears on pages and contains the navigation for 2nd & 3rd level pages.
+// On small screens the sidebar will be horizontal (.col-12) with nav collapsed (.collapse).
+// On medium screens the sidebar will be vertical (.col-md-4) and appear on the right (.order-md-2)
+// of .twdg-content, which will take up remaining space (.col-md).
 
 .tdwg-sidebar {
-    color: $tdwg-sidebar-color;
-    padding: $grid-gutter-width / 2;
+    color: theme-color("sidebar");
 
-    @include media-breakpoint-down(sm) {
-        border-bottom: 1px solid rgba($tdwg-sidebar-color, 0.25); // Show border on small screens
-    }
+    @include media-breakpoint-down(sm) { // Collapsed sidebar, appears above .tdwg-content
+        border-bottom: 1px solid rgba(theme-color("sidebar"), 0.5);
+        margin-top: -$grid-gutter-width; // Overwrite .container and stick to navbar when collapsed
+        margin-bottom: $grid-gutter-width; // Reapply .container padding
+        padding: $grid-gutter-width / 2;
 
-    a, button {
-        color: $tdwg-sidebar-color;
-    }
-
-    .form-control {
-        border: $input-btn-border-width solid rgba($tdwg-sidebar-color, 0.25);
-        // Rather than $input-border-color;
-    }
-
-    .tdwg-sidebar-nav {
-        margin-top: 1em;
-
-        @include media-breakpoint-up(md) {
-            display: block!important; // Don't collapse navbar on wider screens
+        nav {
+            margin-top: $grid-gutter-width / 2; // Add space between menu button and nav
         }
+    }
 
-        .nav-item {
-            &.tdwg-divider-above {
-                margin-top: 0.5rem;
-                border-top: 1px solid rgba($tdwg-sidebar-color, 0.5);
-                padding-top: 0.5rem;
-            }
-        
-            &.tdwg-divider-below {
-                padding-bottom: 0.5rem;
-                border-bottom: 1px solid rgba($tdwg-sidebar-color, 0.5);
-                margin-bottom: 0.5rem;
-            }
+    button {
+        color: theme-color("sidebar");
+    }
 
-            .nav-link {
-                padding: 0.25rem 1rem;
-
-                &.active {
-                    background-color: $tdwg-sidebar-color;
-                    color: $white;
-                }
-
-                &.active + .nav,
-                &.active-parent + .nav {
-                    display: block; // If 1st level parent or 2nd level = active => show 2nd level nav
-                }
-            }
+    // Sidebar navigation: only nav in .tdwg-sidebar
+    nav {
+        @include media-breakpoint-up(md) {
+            display: block!important; // Don't collapse nav on wider screens (= overwrite .collapse)
         }
 
         .nav {
@@ -118,15 +115,45 @@ body {
                 }
             }
         }
+
+        .nav-item {
+            &.tdwg-divider-above {
+                margin-top: 0.5rem;
+                border-top: 1px solid rgba(theme-color("sidebar"), 0.5);
+                padding-top: 0.5rem;
+            }
+        
+            &.tdwg-divider-below {
+                padding-bottom: 0.5rem;
+                border-bottom: 1px solid rgba(theme-color("sidebar"), 0.5);
+                margin-bottom: 0.5rem;
+            }
+
+            .nav-link {
+                // .d-flex .justify-content-between .align-items-center are only required for 
+                // aligning the .fa-chavron-down correctly
+                color: theme-color("sidebar");
+                padding: 0.25rem 1rem;
+
+                &.active {
+                    background-color: theme-color("sidebar");
+                    color: theme-color("sidebar-inverse");
+                }
+
+                &.active + .nav,
+                &.active-parent + .nav {
+                    display: block; // Show 2nd level nav if one its pages or parent is active
+                }
+            }
+        }
     }
 }
 
 
-// Main page content
+// MAIN CONTENT
 
-.tdwg-main {
-    padding-top: $grid-gutter-width;
-
+.tdwg-content {
+    
     .tdwg-tags {
         text-transform: lowercase;
     }
@@ -167,3 +194,10 @@ body {
     }
 }
 
+// Code
+
+pre, code {
+    // Allow long words (e.g. URLs) to break, so they don't break out of container
+    // Note: word-wrap is not effective here, needs to be word-break
+    word-break: break-word;
+}
