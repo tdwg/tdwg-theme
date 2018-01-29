@@ -169,9 +169,9 @@ body > .container-fluid {
 // MAIN CONTENT
 
 .tdwg-content {
-    
-    .tdwg-tags {
-        text-transform: lowercase;
+
+    .badge {
+        text-transform: lowercase; // Tags for pages
     }
 
     .tdwg-cover-image {
