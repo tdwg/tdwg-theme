@@ -14,32 +14,34 @@
 {% block title %}{{ article.title }}{% endblock %}
 
 {% block content %}
-<article class="entry">
-    <header>
-        <h2 class="entry-title">
-            {{ article.title }}
-        </h2>
-    </header>
-    <footer class="post-info">
-        <time class="published" datetime="{{ article.date.isoformat() }}">
-            {{ article.locale_date }}
-        </time>
-        {% if article.modified %}
-            <time class="modified" datetime="{{ article.modified.isoformat() }}">
-                {{ article.locale_modified }}
+<main class="container">
+    <article class="entry">
+        <header>
+            <h2 class="entry-title">
+                {{ article.title }}
+            </h2>
+        </header>
+        <footer class="post-info">
+            <time class="published" datetime="{{ article.date.isoformat() }}">
+                {{ article.locale_date }}
             </time>
-        {% endif %}
+            {% if article.modified %}
+                <time class="modified" datetime="{{ article.modified.isoformat() }}">
+                    {{ article.locale_modified }}
+                </time>
+            {% endif %}
 
-        <address class="vcard author">
-        {% for author in article.authors %}
-            <a class="url fn" href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>
-        {% endfor %}
-        </address>
-    </footer>
-    <div class="entry-content">
-        {{ article.content }}
-    </div>
+            <address class="vcard author">
+            {% for author in article.authors %}
+                <a class="url fn" href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>
+            {% endfor %}
+            </address>
+        </footer>
+        <div class="entry-content">
+            {{ article.content }}
+        </div>
 
-    <p class="text-center"><a class="btn btn-outline-secondary" href="{{ article.github_edit_url }}">Edit this article on GitHub</a></p>
-</article>
+        <p class="text-center"><a class="btn btn-outline-secondary" href="{{ article.github_edit_url }}">Edit this article on GitHub</a></p>
+    </article>
+</main>
 {% endblock %}
