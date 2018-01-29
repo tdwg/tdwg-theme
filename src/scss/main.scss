@@ -21,7 +21,8 @@ body {
 
 // The main breakpoint is between small (sm and smaller) and medium (md and larger) screens
 
-body > .container {
+body > .container,
+body > .container-fluid {
     padding-top: $grid-gutter-width; // Don't stick to navbar
 
     @include media-breakpoint-down(sm) {
