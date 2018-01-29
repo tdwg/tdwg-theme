@@ -81,12 +81,15 @@ body > .container-fluid {
 // On small screens the sidebar will be horizontal (.col-12) with nav collapsed (.collapse).
 // On medium screens the sidebar will be vertical (.col-md-4) and appear on the right (.order-md-2)
 // of .twdg-content, which will take up remaining space (.col-md).
+//
+// To allow colour customization, all sidebar css is a mixin, that can be targetted with the class
+// .tdwg-sidebar-x, with "x" being one of the theme-colors (e.g. "primary").
 
-.tdwg-sidebar {
-    color: theme-color("sidebar");
+@mixin tdwg-sidebar($sidebar-color) {
+    color: $sidebar-color;
 
     @include media-breakpoint-down(sm) { // Collapsed sidebar, appears above .tdwg-content
-        border-bottom: 1px solid rgba(theme-color("sidebar"), 0.5);
+        border-bottom: 1px solid rgba($sidebar-color, 0.5);
         margin-top: -$grid-gutter-width; // Overwrite .container and stick to navbar when collapsed
         margin-bottom: $grid-gutter-width; // Reapply .container padding
         padding: $grid-gutter-width / 2;
@@ -96,11 +99,16 @@ body > .container-fluid {
         }
     }
 
-    button {
-        color: theme-color("sidebar");
+    .btn {
+        color: $sidebar-color;
+
+        &:focus,
+        &.focus {
+            box-shadow: none; // Disable focus
+        }
     }
 
-    // Sidebar navigation: only nav in .tdwg-sidebar
+    // Sidebar navigation: only nav in .tdwg-sidebar-x
     nav {
         @include media-breakpoint-up(md) {
             display: block!important; // Don't collapse nav on wider screens (= overwrite .collapse)
@@ -121,25 +129,25 @@ body > .container-fluid {
         .nav-item {
             &.tdwg-divider-above {
                 margin-top: 0.5rem;
-                border-top: 1px solid rgba(theme-color("sidebar"), 0.5);
+                border-top: 1px solid rgba($sidebar-color, 0.5);
                 padding-top: 0.5rem;
             }
         
             &.tdwg-divider-below {
                 padding-bottom: 0.5rem;
-                border-bottom: 1px solid rgba(theme-color("sidebar"), 0.5);
+                border-bottom: 1px solid rgba($sidebar-color, 0.5);
                 margin-bottom: 0.5rem;
             }
 
             .nav-link {
                 // .d-flex .justify-content-between .align-items-center are only required for 
                 // aligning the .fa-chavron-down correctly
-                color: theme-color("sidebar");
+                color: $sidebar-color;
                 padding: 0.25rem 1rem;
 
                 &.active {
-                    background-color: theme-color("sidebar");
-                    color: theme-color("sidebar-inverse");
+                    background-color: $sidebar-color;
+                    color: $white;
                 }
 
                 &.active + .nav,
@@ -148,6 +156,12 @@ body > .container-fluid {
                 }
             }
         }
+    }
+}
+
+@each $color, $value in $theme-colors {
+    .tdwg-sidebar-#{$color} {
+        @include tdwg-sidebar($value);
     }
 }
 
@@ -196,7 +210,7 @@ body > .container-fluid {
     }
 }
 
-// Code
+// CODE
 
 pre, code {
     // Allow long words (e.g. URLs) to break, so they don't break out of container
