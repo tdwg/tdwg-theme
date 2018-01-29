@@ -25,43 +25,24 @@
     </head>
 
     <body>
-        <nav class="navbar navbar-expand navbar-dark bg-dark flex-column flex-md-row tdwg-navbar">
-            <div class="container">
-                <a class="navbar-brand mr-2" href="{{ SITEURL }}/">{{ SITENAME }}</a>
-                <div class="tdwg-navbar-nav-container">
-                    <ul class="navbar-nav flex-row">
-                    {% if DISPLAY_PAGES_ON_MENU %}
-                        {% for page_0 in pages|sort(attribute="page_order") %}
-                            {% if page_0.parent == None %} {# Top level page #}
-                                <li class="nav-item">
-                                    <a class="nav-link{% if (page and page.status != 'hidden') and (page == page_0 or page.parents[0] == page_0) %} active{% endif %}" href="{{ SITEURL }}/{{ page_0.url }}">{{ page_0.title }}</a>
-                                </li>
-                            {% endif %}
-                        {% endfor %}
-                    {% endif %}
-                    {% if MENUITEMS %}
-                        {% for title, link in MENUITEMS %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ link }}">{{ title }}</a>
-                            </li>
-                        {% endfor %}
-                    {% endif %}
-                    </ul>
-                </div>
-                <ul class="navbar-nav flex-row d-none d-md-flex ml-md-auto">
-                    {% if page or article %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% if page %}{{ page.github_edit_url }}{% else %}{{ article.github_edit_url }}{% endif %}"><i class="fa fa-github"></i> Edit on GitHub</a>
-                    </li>
-                    {% endif %}
-                </ul>
-            </div>
-        </nav>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-md-3 order-md-1 theme-sidebar">
+                    <div class="theme-sidebar-header">
+                        <a href="{{ SITEURL }}/">{{ SITENAME }}</a>
+                    </div>
 
-        <div class="container">
-            <div class="row flex-xl-nowrap">
-            {% block content %}
-            {% endblock %}
+                    <form class="theme-search-form">
+                        {#<input type="search" class="form-control" placeholder="Search (not functional yet)" readonly>#}
+                    </form>
+
+                    {% include "navigation.html" %}
+                </div>
+
+                <div class="col-12 col-md-9 order-md-2 theme-main">                
+                    {% block content %}
+                    {% endblock %}
+                </div>
             </div>
         </div>
         

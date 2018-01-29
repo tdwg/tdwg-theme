@@ -12,55 +12,16 @@
     {% endif %}
 {% endif %}
 
-{# Get top parent (page_0) #}
-{% if page.parent == None or page.status == "hidden" %}
-    {% set page_0 = page %}
-{% else %}
-    {% set page_0 = page.parents[0] %}
-{% endif %}
 
 {# Blocks #}
 {% block title %}{{ page.title }}{% endblock %}
 
 {% block content %}
-    <div class="col-12 col-md-4 order-md-2 tdwg-sidebar">
-        <form class="d-flex justify-content-end tdwg-search">
-            {# <input type="search" class="form-control" placeholder="Search (not functional yet)" readonly> #}
-            <button class="btn d-md-none" type="button" data-toggle="collapse" data-target=".tdwg-sidebar-nav">
-                <i class="fa fa-bars fa-lg"></i>
-            </button>
-        </form>
-        <nav class="collapse tdwg-sidebar-nav">
-        {% if page_0.children %}
-            <ul class="nav flex-column">
-            {% for page_1 in page_0.children|sort(attribute="page_order") %}
-               <li class="nav-item tdwg-divider-{{ page_1.divider }}">
-                    <a class="nav-link d-flex justify-content-between align-items-center{% if page == page_1 %} active{% endif %}{% if page.parent == page_1 %} active-parent{% endif %}" href="{{ SITEURL }}/{{ page_1.url}}">
-                        {{ page_1.title }}
-                        {% if page_1.children %}
-                            <i class="fa fa-chevron-down"></i>
-                        {% endif %}
-                    </a>
-                    {% if page_1.children %}
-                        <ul class="nav">
-                        {% for page_2 in page_1.children|sort(attribute="page_order") %}
-                            <li class="nav-item">
-                                <a class="nav-link{% if page == page_2 %} active{% endif %}" href="{{ SITEURL }}/{{ page_2.url}}">{{ page_2.title }}</a>
-                            </li>
-                        {% endfor %}
-                        </ul>
-                    {% endif %}
-                </li>
-            {% endfor %}
-            </ul>
-        {% endif %}
-        </nav>
-    </div>
+        <a href="#" class="float-right">Edit on GitHub</a>
 
-    <div class="col-12 col-md-8 order-md-1 tdwg-main">
         <h1>{{ page.title }}</h1>
         
-        <p class="tdwg-tags">
+        <p class="theme-tags">
         {% for tag in page.tags %}
             <span class="badge badge-pill badge-light">{{ tag }}</span>
         {% endfor %}
@@ -71,7 +32,7 @@
         {% endif %}
 
         {% if page.cover_image %}
-            <figure class="tdwg-cover-image">
+            <figure class="theme-cover-image">
                 <div style="background-image: url('{{ cover_image_url }}')"></div>
                 {% if cover_image_caption %}
                     <figcaption>{{ cover_image_caption }}</figcaption>
@@ -79,12 +40,11 @@
             </figure>
         {% endif %}
 
-        <div class="tdwg-page-content">
-            {% if page.github %}
-                <a class="btn btn-lg btn-primary mb-4" href="{{ page.github }}">Find us on GitHub</a>
+        <div class="theme-page-content">
+            {% if page.github_url %}
+                <a class="btn btn-lg btn-primary mb-4" href="{{ page.github_url }}">Find us on GitHub</a>
             {% endif %}
 
             {{ page.content }}
         </div>
-    </div>
 {% endblock %}
