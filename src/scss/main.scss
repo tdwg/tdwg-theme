@@ -166,7 +166,7 @@ body > .container-fluid {
 }
 
 
-// MAIN CONTENT
+// CONTENT
 
 .tdwg-content {
 
@@ -174,7 +174,7 @@ body > .container-fluid {
         text-transform: lowercase; // Tags for pages
     }
 
-    .tdwg-cover-image {
+    figure {
         div {
             // background-image: applied in page.html template
             background-position: center;
@@ -187,8 +187,9 @@ body > .container-fluid {
         figcaption {
             color: $gray-600;
             font-size: 0.8rem;
+            margin-top: 0.2rem;
             text-align: right;
-    
+
             a {
                 color: $body-color;
             }
