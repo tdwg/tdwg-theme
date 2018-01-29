@@ -44,6 +44,7 @@ body > .container-fluid {
 // (.flex-md-row), with nav taking up all remaining width (flex-grow: 1 in .justify-content-start).
 
 .tdwg-navbar {
+    background-color: theme-color("secondary");
 
     // Navbar navigation: only nav in .tdwg-navbar
     nav {
