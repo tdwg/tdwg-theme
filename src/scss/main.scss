@@ -170,7 +170,6 @@ body > .container-fluid {
 // CONTENT
 
 .tdwg-content {
-
     .badge {
         text-transform: lowercase; // Tags for pages
     }
@@ -211,7 +210,6 @@ body > .container-fluid {
         }
     }
 }
-
 
 
 // HOMEPAGE
@@ -259,6 +257,9 @@ body > .container-fluid {
 }
 
 .tdwg-home {
+    h2 {
+        margin: $grid-gutter-width 0;
+    }
 
     .btn {
         white-space: normal; // Wrap button within container
