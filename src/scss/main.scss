@@ -213,44 +213,51 @@ body > .container-fluid {
 }
 
 
+
 // HOMEPAGE
 
-.tdwg-home {
+.jumbotron {
+    // background-image: applied in home.html template
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-bottom: 11%;
+    margin-bottom: 0;
 
-    .jumbotron {
-        // background-image: applied in home.html template
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        height: 25rem;
-        margin-bottom: 0;
+    h1 {
+        color: $white;
+        font-size: 4.2rem;
+        text-shadow: 0.5px 0.5px 5px rgba(theme-color("secondary"), 0.75);
+    }
 
-        h1 {
-            color: $white;
-            font-size: 4.2rem;
-            text-shadow: 1px 1px 3px rgba(theme-color("dark"), 0.75);
+    // Summary
+    .w-50 {
+        @include media-breakpoint-down(sm) {
+            width: 100%!important;
         }
 
         p {
+            background-color: rgba(theme-color("secondary"), 0.75);
             color: $white;
-            font-size: 1.5rem;
-            text-shadow: 1px 1px 3px rgba(theme-color("dark"), 0.75);
-
-            @include media-breakpoint-up(md) {
-                max-width: 50%;
-            }
+            display: inline; // So background applies to text only
+            font-size: ($lead-font-size * 1.2);
+            font-weight: $lead-font-weight;
+            padding: 0.1rem;
         }
     }
+}
 
-    footer { // Similar to figcaption
-        color: $gray-600;
-        font-size: 0.8rem;
-        margin-top: 0.2rem;
-        text-align: right;
+.tdwg-jumbotron-caption { // Similar to figcaption
+    color: $text-muted;
+    font-size: $small-font-size;
+    margin-top: 0.2rem;
+    text-align: right;
 
-        a {
-            color: $body-color;
-        }
+    a {
+        color: $body-color;
+    }
+}
+
     }
 }
 
