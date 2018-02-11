@@ -264,6 +264,19 @@ body > .container-fluid {
 
 // EXTRA
 
+.media {
+    padding-bottom: $grid-gutter-width / 2;
+    border-bottom: 1px solid $hr-border-color;
+    margin-bottom: $grid-gutter-width / 2;
+
+    img {
+        background-color: $hr-border-color;
+        height: 150px;
+        margin-right: 2rem;
+        width: 150px;
+    }
+}
+
 pre, code {
     // Allow long words (e.g. URLs) to break, so they don't break out of container
     // Note: word-wrap is not effective here, needs to be word-break

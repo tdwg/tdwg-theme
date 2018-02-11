@@ -35,6 +35,39 @@
             </div>
             {% endif %}
         </div>
+
+        <h2>News</h2>
+
+        <div class="row">
+            <div class="col-md-8">
+            {% for article in articles[:2] %}
+                <article class="media">
+                    <a href="{{ SITEURL }}/{{ article.url }}">
+                    {% if article.cover_image %}
+                        <img class="d-none d-sm-flex" src="https://api.gbif.org/v1/image/unsafe/300x300/filters:fill(auto,true)/{{ article.cover_image|urlencode() }}" alt="Image by {{ article.cover_image_by }}"></a>
+                    {% else %}
+                        <img class="d-none d-sm-flex">
+                    {% endif %}
+                    </a>
+                    <div class="media-body">
+                        <small class="text-muted">{{ article.date|strftime('%d %B %Y') }}</small>
+                        <h5><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h5>
+                        <p>{{ article.summary|striptags }}</p>
+                    </div>
+                </article>
+            {% endfor %}
+                <p class="text-right"><a href="{{ SITEURL }}/news/">Browse all news <i class="fa fa-chevron-circle-right"></i></a></p>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <h5 class="card-header">Keep up to date with TDWG</h5>
+                    <div class="card-body">
+                        <p class="card-text">Sign up to our newsletter and receive all important TDWG announcements.</p>
+                        <a href="{{ NEWSLETTER_SUBSCRIPTION_URL }}" class="btn btn-primary">Subscribe to our newsletter <i class="fa fa-envelope-o"></i></a>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 {% endblock %}
