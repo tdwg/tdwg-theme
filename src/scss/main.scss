@@ -181,13 +181,13 @@ body > .container-fluid {
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
-            height: 15rem;
+            padding-bottom: 33%;
             width: 100%;
         }
 
         figcaption {
-            color: $gray-600;
-            font-size: 0.8rem;
+            color: $text-muted;
+            font-size: $small-font-size;
             margin-top: 0.2rem;
             text-align: right;
 
