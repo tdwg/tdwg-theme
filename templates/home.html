@@ -18,9 +18,23 @@
 
     <main class="container tdwg-home">
         <div class="row">
-            <div class="col-12 col-md order-md-1 tdwg-content">
+            <div class="col-md">
                 {{ page.content }}
             </div>
+
+            {% if page.alert_title %}
+            <div class="col-md-6">
+                <div class="card bg-warning">
+                    <img class="card-img-top" src="{{ THUMBOR_SERVICE }}/unsafe/600x200/{{ page.alert_image|urlencode() }}">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ page.alert_title }}</h4>
+                        <p class="card-text">{{ page.alert_text }}</p>
+                        <a href="{{ page.alert_link }}" class="btn btn-secondary">{{ page.alert_button }}</a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
         </div>
     </main>
 {% endblock %}
