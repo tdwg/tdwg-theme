@@ -9,12 +9,10 @@
     {% set top_page = page.parents[0] %}
 {% endif %}
 
-{# Set cover_image_url and caption based on metadata #}
-{% if page.cover_image and page.cover_image.startswith("http") %}
-    {% set cover_image_url = THUMBOR_SERVICE + "/unsafe/1500x0/" + page.cover_image|urlencode() %}
-    {% if page.cover_image_by and page.cover_image_link %}
-        {%set cover_image_caption = "Image by <a href=\"" + page.cover_image_link + "\">" + page.cover_image_by + "</a>" %}
-    {% endif %}
+{# Set cover_image_background_url and cover_image_caption based on metadata #}
+{% set cover_image_background_url = THUMBOR_SERVICE + "/unsafe/1500x0/" + page.cover_image_url|urlencode() %}
+{% if page.cover_image_by and page.cover_image_link %}
+    {% set cover_image_caption = "Image by <a href=\"" + page.cover_image_link + "\">" + page.cover_image_by + "</a>" %}
 {% endif %}
 
 {% block content %}
@@ -69,14 +67,12 @@
             </div>
             {% endif %}
 
-            {% if page.cover_image %}
-                <figure>
-                    <div style="background-image: url('{{ cover_image_url }}')"></div>
-                    {% if cover_image_caption %}
-                        <figcaption>{{ cover_image_caption }}</figcaption>
-                    {% endif %}
-                </figure>
-            {% endif %}
+            <figure>
+                <div style="background-image: url('{{ cover_image_background_url }}')"></div>
+                {% if cover_image_caption %}
+                    <figcaption>{{ cover_image_caption }}</figcaption>
+                {% endif %}
+            </figure>
 
             <div class="tdwg-page-content">
                 {% if page.github %}

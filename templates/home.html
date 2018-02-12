@@ -3,7 +3,7 @@
 {% block sidebar %}{% endblock %}
 
 {% block content %}
-    <div class="jumbotron jumbotron-fluid" style="background-image: url('{{ cover_image_url }}')">
+    <div class="jumbotron jumbotron-fluid" style="background-image: url('{{ cover_image_background_url }}')">
         <div class="container">
             <div class="w-50">
                 <h1>{{ page.title }}</h1>
@@ -43,12 +43,8 @@
             <div class="col-md-8">
             {% for article in articles[:2] %}
                 <article class="media">
-                    <a href="{{ SITEURL }}/{{ article.url }}">
-                    {% if article.cover_image %}
-                        <img class="d-none d-sm-flex" src="https://api.gbif.org/v1/image/unsafe/300x300/filters:fill(auto,true)/{{ article.cover_image|urlencode() }}" alt="Image by {{ article.cover_image_by }}"></a>
-                    {% else %}
-                        <img class="d-none d-sm-flex">
-                    {% endif %}
+                    <a href="{{ SITEURL }}/{{ article.url }}">   
+                        <img class="d-none d-sm-flex" src="https://api.gbif.org/v1/image/unsafe/300x300/{{ article.cover_image_url|urlencode() }}" alt="Image by {{ article.cover_image_by }}">
                     </a>
                     <div class="media-body">
                         <small class="text-muted">{{ article.date|strftime('%d %B %Y') }}</small>
