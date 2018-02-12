@@ -260,8 +260,12 @@ body > .container-fluid {
         margin: $grid-gutter-width 0;
     }
 
-    .btn {
-        white-space: normal; // Wrap button within container
+    .card {
+        margin-bottom: $grid-gutter-width / 2;
+
+        .btn {
+            white-space: normal; // Wrap button within container
+        }
     }
 }
 
