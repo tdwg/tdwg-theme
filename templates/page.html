@@ -63,8 +63,10 @@
             {% endfor %}
             </p>
 
-            {% if page.intro %}
-                <p class="lead">{{ page.intro }}</p>
+            {% if page.summary %}
+            <div class="lead">
+                {{ page.summary }}
+            </div>
             {% endif %}
 
             {% if page.cover_image %}
