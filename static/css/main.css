@@ -8740,21 +8740,19 @@ body > .container-fluid {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  padding-bottom: 11%;
   margin-bottom: 0; }
-  .jumbotron h1 {
-    color: #fff;
-    font-size: 4.2rem;
-    text-shadow: 0.5px 0.5px 5px rgba(97, 118, 148, 0.75); }
-  @media (max-width: 767.98px) {
+  @media (max-width: 991.98px) {
     .jumbotron .w-50 {
       width: 100% !important; } }
-  .jumbotron .w-50 p {
+  .jumbotron .w-50 h1 {
+    color: #fff;
+    font-size: 3rem;
+    text-shadow: 0.5px 0.5px 5px rgba(97, 118, 148, 0.75); }
+  .jumbotron .w-50 .lead p {
     background-color: rgba(97, 118, 148, 0.75);
     color: #fff;
     display: inline;
     font-size: 1.5rem;
-    font-weight: 300;
     padding: 0.1rem; }
 
 .tdwg-jumbotron-caption {
@@ -8768,15 +8766,16 @@ body > .container-fluid {
 .tdwg-home h2 {
   margin: 30px 0; }
 
-.tdwg-home .btn {
-  white-space: normal; }
+.tdwg-home .card {
+  margin-bottom: 15px; }
+  .tdwg-home .card .btn {
+    white-space: normal; }
 
 .media {
   padding-bottom: 15px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   margin-bottom: 15px; }
   .media img {
-    background-color: rgba(0, 0, 0, 0.1);
     height: 150px;
     margin-right: 2rem;
     width: 150px; }
