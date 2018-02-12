@@ -219,28 +219,27 @@ body > .container-fluid {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    padding-bottom: 11%;
     margin-bottom: 0;
 
-    h1 {
-        color: $white;
-        font-size: 4.2rem;
-        text-shadow: 0.5px 0.5px 5px rgba(theme-color("secondary"), 0.75);
-    }
-
-    // Summary
     .w-50 {
-        @include media-breakpoint-down(sm) {
+        @include media-breakpoint-down(md) {
             width: 100%!important;
         }
 
-        p {
-            background-color: rgba(theme-color("secondary"), 0.75);
+        h1 {
             color: $white;
-            display: inline; // So background applies to text only
-            font-size: ($lead-font-size * 1.2);
-            font-weight: $lead-font-weight;
-            padding: 0.1rem;
+            font-size: 3rem;
+            text-shadow: 0.5px 0.5px 5px rgba(theme-color("secondary"), 0.75);
+        }
+
+        .lead {
+            p {
+                background-color: rgba(theme-color("secondary"), 0.75);
+                color: $white;
+                display: inline; // So background applies to text only
+                font-size: ($lead-font-size * 1.2);
+                padding: 0.1rem;
+            }
         }
     }
 }
