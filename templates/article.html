@@ -19,6 +19,7 @@
         <header>
             <h2 class="entry-title">
                 {{ article.title }}
+                {% if article.status == "draft" %}<small>draft</small>{% endif %}
             </h2>
         </header>
         <footer class="post-info">
