@@ -37,6 +37,26 @@
             {% endif %}
         </div>
 
+        <h2>Our most popular standards</h2>
+
+        <div class="card-deck">
+        {# Select 3 standard pages defined in tags using page.url = standards/tag/ #}
+        {% for tag in page.tags[0:3] %}
+            {% for p in pages %}
+            {% if "standards/" + tag|string() + "/" == p.url %}
+            <div class="card bg-light">
+                <img class="card-img-top" src="{{ THUMBOR_SERVICE + '/unsafe/900x300/' + p.cover_image_url|urlencode() }}">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{{ SITEURL + p.url }}">{{ p.title }}</a></h5>
+                    <p>{{ p.summary|striptags }}</p>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        {% endfor %}
+        </div>
+        <p class="text-right"><a href="{{ SITEURL }}/standards/">Browse all standards <i class="fa fa-chevron-circle-right"></i></a></p>
+
         <h2>News</h2>
 
         <div class="row">
