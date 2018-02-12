@@ -9,85 +9,81 @@
     {% set top_page = page.parents[0] %}
 {% endif %}
 
-{# Set cover_image_url and caption based on metadata #}
-{% if page.cover_image_file %}
-    {% if page.cover_image_file.startswith("http") %}
-        {% set cover_image_url = page.cover_image_file %}
-    {% else %}
-        {% set cover_image_url = SITEURL + "/static/cover_images/" + page.cover_image_file %}
-    {% endif %}
-    {% if page.cover_image_by and page.cover_image_link %}
-        {%set cover_image_caption = "<a href=\"" + page.cover_image_link + "\">Image</a> by " + page.cover_image_by %}
-    {% endif %}
+{# Set cover_image_background_url and cover_image_caption based on metadata #}
+{% set cover_image_background_url = THUMBOR_SERVICE + "/unsafe/1500x0/" + page.cover_image_url|urlencode() %}
+{% if page.cover_image_by and page.cover_image_link %}
+    {% set cover_image_caption = "Image by <a href=\"" + page.cover_image_link + "\">" + page.cover_image_by + "</a>" %}
 {% endif %}
 
 {% block content %}
-<div class="row">
-    {% block sidebar %}
-    <div class="col-12 col-md-4 order-md-2 tdwg-sidebar-secondary">
-        <button class="btn d-md-none w-100" type="button" data-toggle="collapse" data-target="#tdwg-sidebar-nav">
-            <i class="fa fa-bars fa-lg"></i>
-        </button>
+<main class="container">
+    <div class="row">
+        {% block sidebar %}
+        <div class="col-12 col-md-4 order-md-2 tdwg-sidebar-secondary">
+            <button class="btn d-md-none w-100" type="button" data-toggle="collapse" data-target="#tdwg-sidebar-nav">
+                <i class="fa fa-bars fa-lg"></i>
+            </button>
 
-        <nav class="collapse" id="tdwg-sidebar-nav">
-        {% if top_page.children %}
-            <ul class="nav flex-column">
-            {% for sidebar_1_page in top_page.children|sort(attribute="page_order") %}
-               <li class="nav-item{% if sidebar_1_page.divider %} tdwg-divider-{{ sidebar_1_page.divider }}{% endif %}">
-                    <a class="nav-link d-flex justify-content-between align-items-center{% if sidebar_1_page == page %} active{% endif %}{% if sidebar_1_page == page.parent %} active-parent{% endif %}" href="{{ SITEURL }}/{{ sidebar_1_page.url}}">
-                        {{ sidebar_1_page.title }}
+            <nav class="collapse" id="tdwg-sidebar-nav">
+            {% if top_page.children %}
+                <ul class="nav flex-column">
+                {% for sidebar_1_page in top_page.children|sort(attribute="page_order") %}
+                   <li class="nav-item{% if sidebar_1_page.divider %} tdwg-divider-{{ sidebar_1_page.divider }}{% endif %}">
+                        <a class="nav-link d-flex justify-content-between align-items-center{% if sidebar_1_page == page %} active{% endif %}{% if sidebar_1_page == page.parent %} active-parent{% endif %}" href="{{ SITEURL }}/{{ sidebar_1_page.url}}">
+                            {{ sidebar_1_page.title }}
+                            {% if sidebar_1_page.children %}
+                                <i class="fa fa-chevron-down"></i>
+                            {% endif %}
+                        </a>
                         {% if sidebar_1_page.children %}
-                            <i class="fa fa-chevron-down"></i>
+                            <ul class="nav">
+                            {% for sidebar_2_page in sidebar_1_page.children|sort(attribute="page_order") %}
+                                <li class="nav-item">
+                                    <a class="nav-link{% if sidebar_2_page == page %} active{% endif %}" href="{{ SITEURL }}/{{ sidebar_2_page.url}}">{{ sidebar_2_page.title }}</a>
+                                </li>
+                            {% endfor %}
+                            </ul>
                         {% endif %}
-                    </a>
-                    {% if sidebar_1_page.children %}
-                        <ul class="nav">
-                        {% for sidebar_2_page in sidebar_1_page.children|sort(attribute="page_order") %}
-                            <li class="nav-item">
-                                <a class="nav-link{% if sidebar_2_page == page %} active{% endif %}" href="{{ SITEURL }}/{{ sidebar_2_page.url}}">{{ sidebar_2_page.title }}</a>
-                            </li>
-                        {% endfor %}
-                        </ul>
-                    {% endif %}
-                </li>
+                    </li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            </nav>
+        </div>
+        {% endblock %}
+
+        <div class="col-12 col-md order-md-1 tdwg-content">
+            <h1>{{ page.title }}</h1>
+
+            <p>
+            {% for tag in page.tags %}
+                <span class="badge badge-pill badge-light">{{ tag }}</span>
             {% endfor %}
-            </ul>
-        {% endif %}
-        </nav>
-    </div>
-    {% endblock %}
+            </p>
 
-    <div class="col-12 col-md order-md-1 tdwg-content">
-        <h1>{{ page.title }}</h1>
+            {% if page.summary %}
+            <div class="lead">
+                {{ page.summary }}
+            </div>
+            {% endif %}
 
-        <p class="tdwg-tags">
-        {% for tag in page.tags %}
-            <span class="badge badge-pill badge-light">{{ tag }}</span>
-        {% endfor %}
-        </p>
-
-        {% if page.intro %}
-            <p class="lead">{{ page.intro }}</p>
-        {% endif %}
-
-        {% if page.cover_image_file %}
-            <figure class="tdwg-cover-image">
-                <div style="background-image: url('{{ cover_image_url }}')"></div>
+            <figure>
+                <div style="background-image: url('{{ cover_image_background_url }}')"></div>
                 {% if cover_image_caption %}
                     <figcaption>{{ cover_image_caption }}</figcaption>
                 {% endif %}
             </figure>
-        {% endif %}
 
-        <div class="tdwg-page-content">
-            {% if page.github_url %}
-                <a class="btn btn-lg btn-primary mb-4" href="{{ page.github_url }}">Find us on GitHub</a>
-            {% endif %}
+            <div class="tdwg-page-content">
+                {% if page.github %}
+                    <a class="btn btn-lg btn-primary mb-4" href="{{ page.github }}">Find us on GitHub</a>
+                {% endif %}
 
-            {{ page.content }}
+                {{ page.content }}
+            </div>
+
+            <p class="text-center"><a class="btn btn-outline-secondary" href="{{ page.github_edit_url }}">Edit this page on GitHub</a></p>
         </div>
-
-        <p class="text-center"><a class="btn btn-outline-secondary" href="{{ page.github_edit_url }}">Edit this page on GitHub</a></p>
     </div>
-</div>
+</main>
 {% endblock %}

@@ -13,6 +13,7 @@
 // BODY
 
 body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     word-wrap: break-word; // Allow long words (e.g. URLs) to wrap, so they don't break out of container
 }
 
@@ -166,29 +167,29 @@ body > .container-fluid {
 }
 
 
-// MAIN CONTENT
+// CONTENT
 
 .tdwg-content {
-    
-    .tdwg-tags {
-        text-transform: lowercase;
+    .badge {
+        text-transform: lowercase; // Tags for pages
     }
 
-    .tdwg-cover-image {
+    figure {
         div {
             // background-image: applied in page.html template
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
-            height: 15rem;
+            padding-bottom: 33%;
             width: 100%;
         }
 
         figcaption {
-            color: $gray-600;
-            font-size: 0.8rem;
+            color: $text-muted;
+            font-size: $small-font-size;
+            margin-top: 0.2rem;
             text-align: right;
-    
+
             a {
                 color: $body-color;
             }
@@ -210,7 +211,78 @@ body > .container-fluid {
     }
 }
 
-// CODE
+
+// HOMEPAGE
+
+.jumbotron {
+    // background-image: applied in home.html template
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 0;
+
+    .w-50 {
+        @include media-breakpoint-down(md) {
+            width: 100%!important;
+        }
+
+        h1 {
+            color: $white;
+            font-size: 3rem;
+            text-shadow: 0.5px 0.5px 5px rgba(theme-color("secondary"), 0.75);
+        }
+
+        .lead {
+            p {
+                background-color: rgba(theme-color("secondary"), 0.75);
+                color: $white;
+                display: inline; // So background applies to text only
+                font-size: ($lead-font-size * 1.2);
+                padding: 0.1rem;
+            }
+        }
+    }
+}
+
+.tdwg-jumbotron-caption { // Similar to figcaption
+    color: $text-muted;
+    font-size: $small-font-size;
+    margin-top: 0.2rem;
+    text-align: right;
+
+    a {
+        color: $body-color;
+    }
+}
+
+.tdwg-home {
+    h2 {
+        margin: $grid-gutter-width 0;
+    }
+
+    .card {
+        margin-bottom: $grid-gutter-width / 2;
+
+        .btn {
+            white-space: normal; // Wrap button within container
+        }
+    }
+}
+
+
+// EXTRA
+
+.media {
+    padding-bottom: $grid-gutter-width / 2;
+    border-bottom: 1px solid $hr-border-color;
+    margin-bottom: $grid-gutter-width / 2;
+
+    img {
+        height: 150px;
+        margin-right: 2rem;
+        width: 150px;
+    }
+}
 
 pre, code {
     // Allow long words (e.g. URLs) to break, so they don't break out of container

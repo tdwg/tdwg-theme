@@ -3,6 +3,7 @@
 {% block title %}Search{% endblock %}
 
 {% block content %}
+<main class="container">
 {% if "tipue_search" in PLUGINS %}
     <form action="search.html">
         <input class="form-control form-control-lg" type="text" placeholder="Search" name="q" id="tipue_search_input">
@@ -11,6 +12,7 @@
 {% else %}
     <p>Search requires the Pelican plugin <a href="https://github.com/getpelican/pelican-plugins/tree/master/tipue_search">tipue_search</a>, which is not enabled.</p>
 {% endif %}
+</main>
 {% endblock %}
 
 {% block javascript %}
