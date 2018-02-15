@@ -17,74 +17,84 @@
         </div>
     </div>
 
-    <main class="container tdwg-home">
-        <div class="row">
-            <div class="col-md">
-                {{ page.content }}
-            </div>
+    <main class="container">
+        <section>
+            <div class="row">
+                <div class="col-md">
+                    {{ page.content }}
+                </div>
 
-            {% if page.alert_title %}
-            <div class="col-md-4">
-                <div class="card bg-warning">
-                    <img class="card-img-top" src="{{ THUMBOR_SERVICE }}/unsafe/900x300/{{ page.alert_image|urlencode() }}">
+                {% if page.alert_title %}
+                <div class="col-md-4">
+                    <div class="card bg-warning">
+                        <img class="card-img-top" src="{{ THUMBOR_SERVICE }}/unsafe/900x300/{{ page.alert_image|urlencode() }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ page.alert_title }}</h5>
+                            <p class="card-text">{{ page.alert_text }}</p>
+                            <a href="{{ page.alert_link }}" class="btn btn-secondary">{{ page.alert_button }}</a>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </section>
+
+        <section>
+            <h2>Our most popular standards</h2>
+
+            <div class="card-deck">
+            {# Select 3 standard pages defined in tags using page.url = standards/tag/ #}
+            {% for tag in page.tags[0:3] %}
+                {% for p in pages %}
+                {% if "standards/" + tag|string() + "/" == p.url %}
+                <div class="card bg-light">
+                    <a href="{{ SITEURL }}/{{ p.url }}"><img class="card-img-top" src="{{ THUMBOR_SERVICE + '/unsafe/900x300/' + p.cover_image_url|urlencode() }}"></a>
                     <div class="card-body">
-                        <h5 class="card-title">{{ page.alert_title }}</h5>
-                        <p class="card-text">{{ page.alert_text }}</p>
-                        <a href="{{ page.alert_link }}" class="btn btn-secondary">{{ page.alert_button }}</a>
+                        <h5 class="card-title"><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></h5>
+                        <p>{{ p.summary|striptags }}</p>
                     </div>
                 </div>
-            </div>
-            {% endif %}
-        </div>
-
-        <h2>Our most popular standards</h2>
-
-        <div class="card-deck">
-        {# Select 3 standard pages defined in tags using page.url = standards/tag/ #}
-        {% for tag in page.tags[0:3] %}
-            {% for p in pages %}
-            {% if "standards/" + tag|string() + "/" == p.url %}
-            <div class="card bg-light">
-                <img class="card-img-top" src="{{ THUMBOR_SERVICE + '/unsafe/900x300/' + p.cover_image_url|urlencode() }}">
-                <div class="card-body">
-                    <h5 class="card-title"><a href="{{ SITEURL + p.url }}">{{ p.title }}</a></h5>
-                    <p>{{ p.summary|striptags }}</p>
-                </div>
-            </div>
-            {% endif %}
+                {% endif %}
+                {% endfor %}
             {% endfor %}
-        {% endfor %}
-        </div>
-        <p class="text-right"><a href="{{ SITEURL }}/standards/">Browse all standards <i class="fa fa-chevron-circle-right"></i></a></p>
-
-        <h2>News</h2>
-
-        <div class="row">
-            <div class="col-md-8">
-            {% for article in articles[:2] %}
-                <article class="media">
-                    <a href="{{ SITEURL }}/{{ article.url }}">   
-                        <img class="d-none d-sm-flex" src="https://api.gbif.org/v1/image/unsafe/300x300/{{ article.cover_image_url|urlencode() }}" alt="Image by {{ article.cover_image_by }}">
-                    </a>
-                    <div class="media-body">
-                        <small class="text-muted">{{ article.date|strftime('%d %B %Y') }}</small>
-                        <h5><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h5>
-                        <p>{{ article.summary|striptags }}</p>
-                    </div>
-                </article>
-            {% endfor %}
-                <p class="text-right"><a href="{{ SITEURL }}/news/">Browse all news <i class="fa fa-chevron-circle-right"></i></a></p>
             </div>
 
-            <div class="col-md-4">
-                <div class="card text-center">
-                    <h5 class="card-header">Keep up to date with TDWG</h5>
-                    <div class="card-body">
-                        <p class="card-text">Sign up to our newsletter and receive all important TDWG announcements.</p>
-                        <a href="{{ NEWSLETTER_SUBSCRIPTION_URL }}" class="btn btn-primary">Subscribe to our newsletter <i class="fa fa-envelope-o"></i></a>
+            <p class="text-right m-3"><a href="{{ SITEURL }}/standards/">Browse all standards <i class="fa fa-chevron-circle-right"></i></a></p>
+        </section>
+
+            </div>
+
+        <section>
+            <h2>News</h2>
+
+            <div class="row">
+                <div class="col-md-8">
+                {% for article in articles[:2] %}
+                    <article class="media">
+                        <a href="{{ SITEURL }}/{{ article.url }}">   
+                            <img class="d-none d-sm-flex" src="https://api.gbif.org/v1/image/unsafe/300x300/{{ article.cover_image_url|urlencode() }}" alt="Image by {{ article.cover_image_by }}">
+                        </a>
+                        <div class="media-body">
+                            <small class="text-muted">{{ article.date|strftime('%d %B %Y') }}</small>
+                            <h5><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h5>
+                            <p>{{ article.summary|striptags }}</p>
+                        </div>
+                    </article>
+                {% endfor %}
+                    <p class="text-right"><a href="{{ SITEURL }}/news/">Browse all news <i class="fa fa-chevron-circle-right"></i></a></p>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card text-center">
+                        <h5 class="card-header">Keep up to date with TDWG</h5>
+                        <div class="card-body">
+                            <p class="card-text">Sign up to our newsletter and receive all important TDWG announcements.</p>
+                            <a href="{{ NEWSLETTER_SUBSCRIPTION_URL }}" class="btn btn-primary">Subscribe to our newsletter <i class="fa fa-envelope-o"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
+
     </main>
 {% endblock %}
