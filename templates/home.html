@@ -86,10 +86,10 @@
 
                 <div class="col-md-4">
                     <div class="card text-center">
-                        <h5 class="card-header">Keep up to date with TDWG</h5>
+                        <h5 class="card-header">{{ page.newsletter_title }}</h5>
                         <div class="card-body">
-                            <p class="card-text">Sign up to our newsletter and receive all important TDWG announcements.</p>
-                            <a href="{{ NEWSLETTER_SUBSCRIPTION_URL }}" class="btn btn-primary">Subscribe to our newsletter <i class="fa fa-envelope-o"></i></a>
+                            <p class="card-text">{{ page.newsletter_text }}</p>
+                            <a href="{{ page.newsletter_link }}" class="btn btn-primary">{{ page.newsletter_button }} <i class="fa fa-envelope-o"></i></a>
                         </div>
                     </div>
                 </div>
