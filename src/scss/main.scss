@@ -28,6 +28,10 @@ pre, code {
     word-break: break-word;
 }
 
+.btn {
+    white-space: normal; // Wrap button within container
+}
+
 .media {
     // Bootstrap class for image left & content right layout
     // https://getbootstrap.com/docs/4.0/layout/media-object/
@@ -40,13 +44,13 @@ pre, code {
         margin-right: 2rem;
         width: 150px;
     }
-
-    .btn {
-        white-space: normal; // Wrap button within container
-    }
-
 }
 
+.card {
+    // Bootstrap class for styled content containers
+    // https://getbootstrap.com/docs/4.0/components/card/
+    margin-bottom: $grid-gutter-width / 2;
+}
 
 
 // GRID AND MAIN CONTAINER
@@ -285,19 +289,4 @@ body > .container-fluid {
         color: $body-color;
     }
 }
-
-.tdwg-home {
-    h2 {
-        margin: $grid-gutter-width 0;
-    }
-
-    .card {
-        margin-bottom: $grid-gutter-width / 2;
-
-        .btn {
-            white-space: normal; // Wrap button within container
-        }
-    }
-}
-
 
