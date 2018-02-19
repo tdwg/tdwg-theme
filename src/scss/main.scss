@@ -18,8 +18,8 @@ body {
 }
 
 section {
-    // Used to create some white-space between content
-    margin-bottom: $grid-gutter-width * 1.5;   
+    // Sections are used to create some white-space between content
+    margin: $grid-gutter-width 0;
 }
 
 pre, code {
@@ -53,27 +53,11 @@ pre, code {
 }
 
 
-// GRID AND MAIN CONTAINER
-
-// The main breakpoint is between small (sm and smaller) and medium (md and larger) screens
-
-body > .container,
-body > .container-fluid {
-    padding-top: $grid-gutter-width; // Don't stick to navbar
-
-    @include media-breakpoint-down(sm) {
-        // Use container-fluid behaviour on small screens, so the content (including collapsed 
-        // .tdwg-sidebar) can use the full width. Jump between .xs and .sm will also disappear.
-        width: 100%; 
-        max-width: 100%!important; // Overwrite default .container behaviour
-    }
-}
-
-
 // NAVBAR
 
-// The navbar is for the main navigation and inspired by http://getbootstrap.com, but with a 
-// .container. It has .navbar-expand for correct padding and .navbar-dark & .bg-secondary for style.
+// The navbar (<header class="navbar">) is for the main navigation and inspired by 
+// http://getbootstrap.com, but with a .container. It has .navbar-expand for correct padding and 
+// .navbar-dark & .bg-secondary for style.
 //
 // On small screens, .navbar-brand + nav appear above each other (flex-column), and nav can be
 // swiped left and right. On medium screens and up, .navbar-brand + nav appear next to each other 
@@ -111,7 +95,30 @@ body > .container-fluid {
 }
 
 
-// SIDEBAR
+// MAIN CONTAINER
+
+// The main container (<main class="container">) contains the SIDEBAR and CONTENT.
+// The main breakpoint is between small (sm and smaller) and medium (md and larger) screens.
+
+body > .container,
+body > .container-fluid {
+    padding-top: $grid-gutter-width; // Don't stick to navbar
+
+    @include media-breakpoint-down(sm) {
+        // Use container-fluid behaviour on small screens, so the content (including collapsed 
+        // .tdwg-sidebar) can use the full width. Jump between .xs and .sm will also disappear.
+        width: 100%; 
+        max-width: 100%!important; // Overwrite default .container behaviour
+    }
+}
+
+
+// FOOTER
+
+// The footer (<footer>) contains links that should appear on the bottom of every page.
+
+
+// SIDEBAR 
 
 // The sidebar only appears on pages and contains the navigation for 2nd & 3rd level pages.
 // On small screens the sidebar will be horizontal (.col-12) with nav collapsed (.collapse).
