@@ -18,7 +18,7 @@
         
         <div class="col-12 col-md order-md-1">
             <section>
-                <h1>{{ article.title }}</h1>
+                <h1>{{ article.title }}{% if article.status == "draft" %} <span class="badge badge-danger">draft</span>{% endif %}</h1>
 
                 <p><time>{{ article.locale_date }}</time></p>
 
