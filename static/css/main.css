@@ -8312,21 +8312,6 @@ body {
 pre, code {
   word-break: break-word; }
 
-.btn {
-  white-space: normal; }
-
-.media {
-  padding-bottom: 15px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  margin-bottom: 15px; }
-  .media img {
-    height: 150px;
-    margin-right: 2rem;
-    width: 150px; }
-
-.card {
-  margin-bottom: 15px; }
-
 .tdwg-navbar {
   background-color: #617694; }
   .tdwg-navbar nav {
@@ -8360,6 +8345,15 @@ body > .container-fluid {
     body > .container section:first-of-type,
     body > .container-fluid section:first-of-type {
       margin-top: 0; }
+  body > .container time,
+  body > .container-fluid time {
+    color: #868e96;
+    font-size: 1.25rem; }
+  body > .container .tdwg-tag,
+  body > .container-fluid .tdwg-tag {
+    font-size: 90%;
+    font-weight: 600;
+    text-transform: lowercase; }
   body > .container figure div,
   body > .container-fluid figure div {
     background-position: center;
@@ -8376,6 +8370,25 @@ body > .container-fluid {
     body > .container figure figcaption a,
     body > .container-fluid figure figcaption a {
       color: #212529; }
+  body > .container .btn,
+  body > .container-fluid .btn {
+    white-space: normal; }
+  body > .container .media,
+  body > .container-fluid .media {
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px; }
+    body > .container .media img,
+    body > .container-fluid .media img {
+      height: 150px;
+      margin-right: 2rem;
+      width: 150px; }
+    body > .container .media time,
+    body > .container-fluid .media time {
+      font-size: 80%; }
+  body > .container .card,
+  body > .container-fluid .card {
+    margin-bottom: 15px; }
 
 body > footer {
   background-color: #617694;
@@ -8393,7 +8406,7 @@ body > footer {
     margin-top: 10px;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     padding-top: 10px;
-    font-size: 0.75rem;
+    font-size: 80%;
     text-align: center; }
 
 .tdwg-sidebar-primary {
