@@ -115,6 +115,27 @@ body > .container-fluid {
         }
     }
 
+    figure {
+        div {
+            // background-image: applied in page.html template
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding-bottom: 33%;
+            width: 100%;
+        }
+
+        figcaption {
+            color: $text-muted;
+            font-size: $small-font-size;
+            margin-top: 0.2rem;
+            text-align: right;
+
+            a {
+                color: $body-color;
+            }
+        }
+    }
 }
 
 
@@ -238,51 +259,6 @@ body > footer {
 @each $color, $value in $theme-colors {
     .tdwg-sidebar-#{$color} {
         @include tdwg-sidebar($value);
-    }
-}
-
-
-// CONTENT
-
-.tdwg-content {
-    .badge {
-        text-transform: lowercase; // Tags for pages
-    }
-
-    figure {
-        div {
-            // background-image: applied in page.html template
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            padding-bottom: 33%;
-            width: 100%;
-        }
-
-        figcaption {
-            color: $text-muted;
-            font-size: $small-font-size;
-            margin-top: 0.2rem;
-            text-align: right;
-
-            a {
-                color: $body-color;
-            }
-        }
-    }
-
-    .tdwg-page-content {
-        margin-top: 1rem;
-    
-        a[href^="https://github.com"] {
-            // font-family: inherit;
-
-            &:before {
-                @include fa-icon();
-                content: $fa-var-github;
-                padding-right: 0.3rem;
-            }
-        }
     }
 }
 

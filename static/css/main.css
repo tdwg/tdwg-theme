@@ -8309,9 +8309,6 @@ a.text-tertiary:hover, a.text-tertiary:focus {
 body {
   word-wrap: break-word; }
 
-section {
-  margin: 30px 0; }
-
 pre, code {
   word-break: break-word; }
 
@@ -8357,6 +8354,28 @@ body > .container-fluid {
     body > .container-fluid {
       width: 100%;
       max-width: 100% !important; } }
+  body > .container section,
+  body > .container-fluid section {
+    margin: 30px 0; }
+    body > .container section:first-of-type,
+    body > .container-fluid section:first-of-type {
+      margin-top: 0; }
+  body > .container figure div,
+  body > .container-fluid figure div {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-bottom: 33%;
+    width: 100%; }
+  body > .container figure figcaption,
+  body > .container-fluid figure figcaption {
+    color: #868e96;
+    font-size: 80%;
+    margin-top: 0.2rem;
+    text-align: right; }
+    body > .container figure figcaption a,
+    body > .container-fluid figure figcaption a {
+      color: #212529; }
 
 body > footer {
   background-color: #617694;
@@ -8745,36 +8764,6 @@ body > footer {
     .tdwg-sidebar-tertiary nav .nav-item .nav-link.active + .nav,
     .tdwg-sidebar-tertiary nav .nav-item .nav-link.active-parent + .nav {
       display: block; }
-
-.tdwg-content .badge {
-  text-transform: lowercase; }
-
-.tdwg-content figure div {
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding-bottom: 33%;
-  width: 100%; }
-
-.tdwg-content figure figcaption {
-  color: #868e96;
-  font-size: 80%;
-  margin-top: 0.2rem;
-  text-align: right; }
-  .tdwg-content figure figcaption a {
-    color: #212529; }
-
-.tdwg-content .tdwg-page-content {
-  margin-top: 1rem; }
-  .tdwg-content .tdwg-page-content a[href^="https://github.com"]:before {
-    display: inline-block;
-    font: normal normal normal 14px/1 FontAwesome;
-    font-size: inherit;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    content: "";
-    padding-right: 0.3rem; }
 
 .jumbotron {
   background-position: center;
