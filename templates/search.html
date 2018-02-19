@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Search{% endblock %}
+{% block title %}Search - {{ SITENAME }}{% endblock %}
 
 {% block content %}
 <main class="container">
@@ -17,13 +17,12 @@
 
 {% block javascript %}
 {{ super() }}
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <script src="{{ SITEURL }}/theme/js/tipuesearch_set.js"></script>
 <script src="{{ SITEURL }}/theme/js/tipuesearch.min.js"></script>
 <script>
     $(document).ready(function() {
     $("#tipue_search_input").tipuesearch({
-        "show": 8,
+        "show": 10,
         "mode": "json",
         "contentLocation": "{{ SITEURL }}/tipuesearch_content.json"
         });

@@ -10,35 +10,25 @@
 @import "../../node_modules/font-awesome/scss/font-awesome.scss"; // Font Awesome scss
 
 
-// BODY
+// GENERAL
 
 body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    word-wrap: break-word; // Allow long words (e.g. URLs) to wrap, so they don't break out of container
+    // Allow long words (e.g. URLs) to wrap, so they don't break out of container
+    word-wrap: break-word;
 }
 
-
-// GRID AND MAIN CONTAINER
-
-// The main breakpoint is between small (sm and smaller) and medium (md and larger) screens
-
-body > .container,
-body > .container-fluid {
-    padding-top: $grid-gutter-width; // Don't stick to navbar
-
-    @include media-breakpoint-down(sm) {
-        // Use container-fluid behaviour on small screens, so the content (including collapsed 
-        // .tdwg-sidebar) can use the full width. Jump between .xs and .sm will also disappear.
-        width: 100%; 
-        max-width: 100%!important; // Overwrite default .container behaviour
-    }
+pre, code {
+    // Allow long words (e.g. URLs) to break, so they don't break out of container
+    // Note: word-wrap is not effective here, needs to be word-break
+    word-break: break-word;
 }
 
 
 // NAVBAR
 
-// The navbar is for the main navigation and inspired by http://getbootstrap.com, but with a 
-// .container. It has .navbar-expand for correct padding and .navbar-dark & .bg-secondary for style.
+// The navbar (<header class="navbar">) is for the main navigation and inspired by 
+// http://getbootstrap.com, but with a .container. It has .navbar-expand for correct padding and 
+// .navbar-dark & .bg-secondary for style.
 //
 // On small screens, .navbar-brand + nav appear above each other (flex-column), and nav can be
 // swiped left and right. On medium screens and up, .navbar-brand + nav appear next to each other 
@@ -47,8 +37,8 @@ body > .container-fluid {
 .tdwg-navbar {
     background-color: theme-color("secondary");
 
-    // Navbar navigation: only nav in .tdwg-navbar
     nav {
+        // Navbar navigation: only nav in .tdwg-navbar
         flex-grow: 1; // Use up remaining width in .container
     
         @include media-breakpoint-down(sm) {
@@ -64,9 +54,9 @@ body > .container-fluid {
         }
     }
 
-    // Reapply left/right padding on container, so it is same width as content
-    // https://github.com/twbs/bootstrap/issues/22471
     &.navbar-expand {
+        // Reapply left/right padding on container, so it is same width as content
+        // https://github.com/twbs/bootstrap/issues/22471
         > .container,
         > .container-fluid {
             padding-left: $navbar-padding-x;
@@ -76,7 +66,129 @@ body > .container-fluid {
 }
 
 
-// SIDEBAR
+// MAIN CONTAINER
+
+// The main container (<main class="container">) contains the SIDEBAR and CONTENT.
+// The main breakpoint is between small (sm and smaller) and medium (md and larger) screens.
+
+body > .container,
+body > .container-fluid {
+    padding-top: $grid-gutter-width; // Don't stick to navbar
+    min-height: calc(100vh - 54px); // Viewport height minus medium screen navbar height
+
+    @include media-breakpoint-down(sm) {
+        // Use container-fluid behaviour on small screens, so the content (including collapsed 
+        // .tdwg-sidebar) can use the full width. Jump between .xs and .sm will also disappear.
+        width: 100%; 
+        max-width: 100%!important; // Overwrite default .container behaviour
+    }
+
+    section {
+        // Sections are used to group content and add some whitespace between them
+        margin: $grid-gutter-width 0;
+
+        &:first-of-type {
+            margin-top: 0; // Don't add margin for first section
+        }
+    }
+
+    time {
+        color: $text-muted;
+        font-size: $font-size-lg;
+    }
+
+    .tdwg-tag { 
+        font-size: 90%;
+        font-weight: 600;
+        text-transform: lowercase;
+    }
+
+    figure {
+        div {
+            // background-image: applied in page.html template
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding-bottom: 33%;
+            width: 100%;
+        }
+
+        figcaption {
+            color: $text-muted;
+            font-size: $small-font-size;
+            margin-top: 0.2rem;
+            text-align: right;
+
+            a {
+                color: $body-color;
+            }
+        }
+    }
+
+    .btn {
+        white-space: normal; // Wrap button within container
+    }
+
+    .media {
+        // Bootstrap class for image left & content right layout
+        // https://getbootstrap.com/docs/4.0/layout/media-object/
+        padding-bottom: $grid-gutter-width / 2;
+        border-bottom: 1px solid $hr-border-color;
+        margin-bottom: $grid-gutter-width / 2;
+
+        img {
+            height: 150px;
+            margin-right: 2rem;
+            width: 150px;
+        }
+
+        time {
+            font-size: $small-font-size;
+        }
+    }
+
+    .card {
+        // Bootstrap class for styled content containers
+        // https://getbootstrap.com/docs/4.0/components/card/
+        margin-bottom: $grid-gutter-width / 2;
+    }
+}
+
+
+// FOOTER
+
+// The footer (<footer>) contains links that should appear on the bottom of every page.
+
+body > footer {
+    background-color: theme-color("secondary");
+    color: $white;
+    font-size: 0.95rem;
+    padding: $grid-gutter-width / 2 0;
+
+    a, a:hover {
+        color: $white;
+
+        &.nav-link {
+            padding: 0.5rem;
+        }
+    }
+
+    .fa-inverse {
+        color: theme-color("secondary");
+    }
+
+    .tdwg-license {
+        color: $gray-400;
+        margin-top: $grid-gutter-width / 3;
+        border-top: 1px solid $hr-border-color;
+        padding-top: $grid-gutter-width / 3;
+        font-size: $small-font-size;
+        text-align: center;
+    }
+}
+
+
+// SIDEBAR 
 
 // The sidebar only appears on pages and contains the navigation for 2nd & 3rd level pages.
 // On small screens the sidebar will be horizontal (.col-12) with nav collapsed (.collapse).
@@ -109,8 +221,8 @@ body > .container-fluid {
         }
     }
 
-    // Sidebar navigation: only nav in .tdwg-sidebar-x
     nav {
+        // Sidebar navigation: only nav in .tdwg-sidebar-x
         @include media-breakpoint-up(md) {
             display: block!important; // Don't collapse nav on wider screens (= overwrite .collapse)
         }
@@ -167,51 +279,6 @@ body > .container-fluid {
 }
 
 
-// CONTENT
-
-.tdwg-content {
-    .badge {
-        text-transform: lowercase; // Tags for pages
-    }
-
-    figure {
-        div {
-            // background-image: applied in page.html template
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            padding-bottom: 33%;
-            width: 100%;
-        }
-
-        figcaption {
-            color: $text-muted;
-            font-size: $small-font-size;
-            margin-top: 0.2rem;
-            text-align: right;
-
-            a {
-                color: $body-color;
-            }
-        }
-    }
-
-    .tdwg-page-content {
-        margin-top: 1rem;
-    
-        a[href^="https://github.com"] {
-            // font-family: inherit;
-
-            &:before {
-                @include fa-icon();
-                content: $fa-var-github;
-                padding-right: 0.3rem;
-            }
-        }
-    }
-}
-
-
 // HOMEPAGE
 
 .jumbotron {
@@ -244,7 +311,8 @@ body > .container-fluid {
     }
 }
 
-.tdwg-jumbotron-caption { // Similar to figcaption
+.tdwg-jumbotron-caption {
+    // div below jumbotron, similar to figcaption, but with container
     color: $text-muted;
     font-size: $small-font-size;
     margin-top: 0.2rem;
@@ -255,37 +323,3 @@ body > .container-fluid {
     }
 }
 
-.tdwg-home {
-    h2 {
-        margin: $grid-gutter-width 0;
-    }
-
-    .card {
-        margin-bottom: $grid-gutter-width / 2;
-
-        .btn {
-            white-space: normal; // Wrap button within container
-        }
-    }
-}
-
-
-// EXTRA
-
-.media {
-    padding-bottom: $grid-gutter-width / 2;
-    border-bottom: 1px solid $hr-border-color;
-    margin-bottom: $grid-gutter-width / 2;
-
-    img {
-        height: 150px;
-        margin-right: 2rem;
-        width: 150px;
-    }
-}
-
-pre, code {
-    // Allow long words (e.g. URLs) to break, so they don't break out of container
-    // Note: word-wrap is not effective here, needs to be word-break
-    word-break: break-word;
-}

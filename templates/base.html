@@ -8,7 +8,7 @@
 
         <!-- Metadata -->
         <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
-        <meta name="description" content="{{ SITEDESCRIPTION }}">
+        <meta name="description" content="{{ SITESUBTITLE }}">
         <meta name="author" content="{{ AUTHOR }}">
         
         <!-- CSS -->
@@ -38,10 +38,10 @@
                         {% endfor %}
                     {% endif %}
                         <li class="nav-item ml-auto">
-                            <a class="nav-link" href="{{ SITEURL }}/news/">News</a>
+                            <a class="nav-link" href="{{ SITEURL }}/{{ PAGE_LINKS['news'] }}">News</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ SITEURL }}/search.html"><i class="fa fa-search"></i></a>
+                            <a class="nav-link" href="{{ SITEURL }}/{{ PAGE_LINKS['search'] }}"><i class="fa fa-search"></i></a>
                         </li>
                     </ul>
                 </nav>
@@ -51,7 +51,24 @@
         {% block content %}
         {% endblock %}
 
-        <footer></footer>
+        <footer>
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <a href="{{ SITEURL }}"><img src="{{ SITEURL }}/theme/images/footer_logo.png"></a>
+                    <nav class="nav justify-content-end">
+                    {% for title, link in MENUITEMS %}
+                        <a class="nav-link" href="{{ SITEURL }}/{{ link }}">{{ title }}</a>
+                    {% endfor %}
+                        <a class="fa-stack fa-lg" href="https://twitter.com/{{ TWITTER_USERNAME }}"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-twitter fa-stack-1x fa-inverse"></i></a>
+                        <a class="fa-stack fa-lg" href="{{ GITHUB_URL }}"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-github fa-stack-1x fa-inverse"></i></a>
+                    </nav>
+                </div>
+
+                <div class="tdwg-license">
+                    {{ LICENSE_STATEMENT }}
+                </div>
+            </div>
+        </footer>
         
         {% block javascript %}
         <!-- First jQuery, then Popper.js, then Bootstrap JS -->

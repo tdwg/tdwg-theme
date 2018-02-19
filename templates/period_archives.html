@@ -1,14 +1,22 @@
 {% extends "base.html" %}
 
+{% block title %}News in {{ period | reverse | join(' ') }} - {{ SITENAME }} {% endblock %}
+
 {% block content %}
 <main class="container">
-    <h1>Archives for {{ period | reverse | join(' ') }}</h1>
+    <div class="row">
+        {% block sidebar %}
+        <div class="col-12 col-md-4 order-md-2 tdwg-sidebar-secondary">
+        </div>
+        {% endblock %}
 
-    <dl>
-    {% for article in dates %}
-        <dt>{{ article.locale_date }}</dt>
-        <dd><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></dd>
-    {% endfor %}
-    </dl>
+        <div class="col-12 col-md order-md-1">
+        <h1>News in {{ period | reverse | join(' ') }}</h1>
+
+        {% for article in dates %}
+            {% include "article_in_index.html" %}
+        {% endfor %}
+        </div>
+    </div>
 </main>
 {% endblock %}

@@ -1,48 +1,55 @@
 {% extends "base.html" %}
 
-{% block head %}
-    {{ super() }}
-    {% if article.description %}
-        <meta name="description" content="{{article.description}}" />
-    {% endif %}
+{% block title %}{{ article.title }} - {{ SITENAME }}{% endblock %}
 
-    {% for tag in article.tags %}
-        <meta name="tags" content="{{tag}}" />
-    {% endfor %}
-{% endblock %}
-
-{% block title %}{{ article.title }}{% endblock %}
+{# Set cover_image_background_url and cover_image_caption based on metadata #}
+{% set cover_image_background_url = THUMBOR_SERVICE + "/unsafe/1500x0/" + article.cover_image_url|urlencode() %}
+{% if article.cover_image_by and article.cover_image_link %}
+    {% set cover_image_caption = "Image by <a href=\"" + article.cover_image_link + "\">" + article.cover_image_by + "</a>" %}
+{% endif %}
 
 {% block content %}
 <main class="container">
-    <article class="entry">
-        <header>
-            <h2 class="entry-title">
-                {{ article.title }}
-                {% if article.status == "draft" %}<small>draft</small>{% endif %}
-            </h2>
-        </header>
-        <footer class="post-info">
-            <time class="published" datetime="{{ article.date.isoformat() }}">
-                {{ article.locale_date }}
-            </time>
-            {% if article.modified %}
-                <time class="modified" datetime="{{ article.modified.isoformat() }}">
-                    {{ article.locale_modified }}
-                </time>
-            {% endif %}
-
-            <address class="vcard author">
-            {% for author in article.authors %}
-                <a class="url fn" href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>
-            {% endfor %}
-            </address>
-        </footer>
-        <div class="entry-content">
-            {{ article.content }}
+    <div class="row">
+        {% block sidebar %}
+        <div class="col-12 col-md-4 order-md-2 tdwg-sidebar-secondary">
         </div>
+        {% endblock %}
+        
+        <div class="col-12 col-md order-md-1">
+            <section>
+                <h1>{{ article.title }}{% if article.status == "draft" %} <span class="badge badge-danger">draft</span>{% endif %}</h1>
 
-        <p class="text-center"><a class="btn btn-outline-secondary" href="{{ article.github_edit_url }}">Edit this article on GitHub</a></p>
-    </article>
+                <p><time>{{ article.locale_date }}</time></p>
+
+                <p>
+                {% for tag in article.tags %}
+                    <span class="badge badge-pill badge-light tdwg-tag">{{ tag }}</span>
+                {% endfor %}
+                </p>
+
+                <div class="lead">
+                    {{ article.summary }}
+                </div>
+
+                <figure>
+                    <div style="background-image: url('{{ cover_image_background_url }}')"></div>
+                    {% if cover_image_caption %}
+                        <figcaption>{{ cover_image_caption }}</figcaption>
+                    {% endif %}
+                </figure>
+            </section>
+
+            <section>
+                {{ article.content }}
+            </section>
+
+            <section>
+                <div class="text-center">
+                    <a class="btn btn-outline-secondary" href="{{ article.github_edit_url }}">Edit this article on GitHub</a>
+                </div>
+            </section>
+        </div>
+    </div>
 </main>
 {% endblock %}

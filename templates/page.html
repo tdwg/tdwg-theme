@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}{{ page.title }}{% endblock %}
+{% block title %}{{ page.title }} - {{ SITENAME }}{% endblock %}
 
 {# Set top level page #}
 {% if page.parent == None or page.status == "hidden" %}
@@ -52,37 +52,41 @@
         </div>
         {% endblock %}
 
-        <div class="col-12 col-md order-md-1 tdwg-content">
-            <h1>{{ page.title }}</h1>
+        <div class="col-12 col-md order-md-1">
+            <section>
+                <h1>{{ page.title }}</h1>
 
-            <p>
-            {% for tag in page.tags %}
-                <span class="badge badge-pill badge-light">{{ tag }}</span>
-            {% endfor %}
-            </p>
+                <p>
+                {% for tag in page.tags %}
+                    <span class="badge badge-pill badge-light tdwg-tag">{{ tag }}</span>
+                {% endfor %}
+                </p>
 
-            {% if page.summary %}
-            <div class="lead">
-                {{ page.summary }}
-            </div>
-            {% endif %}
+                <div class="lead">
+                    {{ page.summary }}
+                </div>
 
-            <figure>
-                <div style="background-image: url('{{ cover_image_background_url }}')"></div>
-                {% if cover_image_caption %}
-                    <figcaption>{{ cover_image_caption }}</figcaption>
-                {% endif %}
-            </figure>
+                <figure>
+                    <div style="background-image: url('{{ cover_image_background_url }}')"></div>
+                    {% if cover_image_caption %}
+                        <figcaption>{{ cover_image_caption }}</figcaption>
+                    {% endif %}
+                </figure>
 
-            <div class="tdwg-page-content">
                 {% if page.github %}
-                    <a class="btn btn-lg btn-primary mb-4" href="{{ page.github }}">Find us on GitHub</a>
+                    <a class="btn btn-lg btn-primary" href="{{ page.github }}"><i class="fa fa-github fa-fw"></i> Find us on GitHub</a>
                 {% endif %}
+            </section>
 
+            <section>
                 {{ page.content }}
-            </div>
+            </section>
 
-            <p class="text-center"><a class="btn btn-outline-secondary" href="{{ page.github_edit_url }}">Edit this page on GitHub</a></p>
+            <section>
+                <div class="text-center">
+                    <a class="btn btn-outline-secondary" href="{{ page.github_edit_url }}">Edit this page on GitHub</a>
+                </div>
+            </section>
         </div>
     </div>
 </main>
