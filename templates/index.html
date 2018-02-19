@@ -1,34 +1,26 @@
 {% extends "base.html" %}
 
-{% block title %}News{% endblock %}
+{% block title %}News - {{ SITENAME }} {% endblock %}
 
 {% block content %}
 <main class="container">
-{% for article in articles_page.object_list %}
-    <article class="entry">
-        <header>
-            <h2 class="entry-title">
-                <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a>
-            </h2>
-        </header>
-        <footer class="post-info">
-            <time class="published" datetime="{{ article.date.isoformat() }}">
-                {{ article.locale_date }}
-            </time>
-            <address class="vcard author">
-            {% for author in article.authors %}
-                <a class="url fn" href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>
-            {% endfor %}
-            </address>
-        </footer>
-        <div class="entry-content">
-            {{ article.summary }}
+    <div class="row">
+        {% block sidebar %}
+        <div class="col-12 col-md-4 order-md-2 tdwg-sidebar-secondary">
         </div>
-    </article>
-{% endfor %}
+        {% endblock %}
 
-{% if articles_page.has_other_pages() %}
-    {% include 'pagination.html' %}
-{% endif %}
+        <div class="col-12 col-md order-md-1">
+        <h1>News</h1>
+
+        {% for article in articles_page.object_list %}
+            {% include "article_in_index.html" %}
+        {% endfor %}
+
+        {% if articles_page.has_other_pages() %}
+            {% include "pagination.html" %}
+        {% endif %}
+        </div>
+    </div>
 </main>
 {% endblock %}
