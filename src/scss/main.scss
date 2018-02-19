@@ -103,6 +103,7 @@ pre, code {
 body > .container,
 body > .container-fluid {
     padding-top: $grid-gutter-width; // Don't stick to navbar
+    min-height: calc(100vh - 54px); // Viewport height minus medium screen navbar height
 
     @include media-breakpoint-down(sm) {
         // Use container-fluid behaviour on small screens, so the content (including collapsed 
@@ -117,23 +118,10 @@ body > .container-fluid {
 
 // The footer (<footer>) contains links that should appear on the bottom of every page.
 
-html {
-    position: relative;
-    min-height: 100%;
-}
-
-body {
-    margin-bottom: calc(150px + #{$grid-gutter-width}); 
-}
-
 body > footer {
     background-color: theme-color("secondary");
-    bottom: 0;
     color: $white;
     font-size: 0.95rem;
-    height: 150px;
-    position: absolute;
-    width: 100%;
     padding: $grid-gutter-width / 2 0;
 
     a, a:hover {
