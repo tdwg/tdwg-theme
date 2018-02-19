@@ -92,6 +92,12 @@ body > .container-fluid {
         }
     }
 
+    .tdwg-tag { 
+        font-size: 90%;
+        font-weight: 600;
+        text-transform: lowercase;
+    }
+
     figure {
         div {
             // background-image: applied in page.html template
