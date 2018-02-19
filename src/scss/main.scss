@@ -13,7 +13,8 @@
 // GENERAL
 
 body {
-    word-wrap: break-word; // Allow long words (e.g. URLs) to wrap, so they don't break out of container
+    // Allow long words (e.g. URLs) to wrap, so they don't break out of container
+    word-wrap: break-word;
 }
 
 pre, code {
@@ -36,8 +37,8 @@ pre, code {
 .tdwg-navbar {
     background-color: theme-color("secondary");
 
-    // Navbar navigation: only nav in .tdwg-navbar
     nav {
+        // Navbar navigation: only nav in .tdwg-navbar
         flex-grow: 1; // Use up remaining width in .container
     
         @include media-breakpoint-down(sm) {
@@ -53,9 +54,9 @@ pre, code {
         }
     }
 
-    // Reapply left/right padding on container, so it is same width as content
-    // https://github.com/twbs/bootstrap/issues/22471
     &.navbar-expand {
+        // Reapply left/right padding on container, so it is same width as content
+        // https://github.com/twbs/bootstrap/issues/22471
         > .container,
         > .container-fluid {
             padding-left: $navbar-padding-x;
@@ -205,8 +206,8 @@ body > footer {
         }
     }
 
-    // Sidebar navigation: only nav in .tdwg-sidebar-x
     nav {
+        // Sidebar navigation: only nav in .tdwg-sidebar-x
         @include media-breakpoint-up(md) {
             display: block!important; // Don't collapse nav on wider screens (= overwrite .collapse)
         }
@@ -295,7 +296,8 @@ body > footer {
     }
 }
 
-.tdwg-jumbotron-caption { // Similar to figcaption
+.tdwg-jumbotron-caption {
+    // div below jumbotron, similar to figcaption, but with container
     color: $text-muted;
     font-size: $small-font-size;
     margin-top: 0.2rem;
