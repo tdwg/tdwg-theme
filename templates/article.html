@@ -28,11 +28,9 @@
                 {% endfor %}
                 </p>
 
-                {% if article.summary %}
-                    <div class="lead">
-                        {{ article.summary }}
-                    </div>
-                {% endif %}
+                <div class="lead">
+                    {{ article.summary }}
+                </div>
 
                 <figure>
                     <div style="background-image: url('{{ cover_image_background_url }}')"></div>
