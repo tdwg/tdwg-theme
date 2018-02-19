@@ -82,7 +82,7 @@
                         <img class="d-none d-sm-flex" src="https://api.gbif.org/v1/image/unsafe/300x300/{{ article.cover_image_url|urlencode() }}" alt="Image by {{ article.cover_image_by }}">
                     </a>
                     <div class="media-body">
-                        <small class="text-muted">{{ article.date|strftime('%d %B %Y') }}</small>
+                        <time>{{ article.locale_date }}</time>
                         <h5><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h5>
                         <p>{{ article.summary|striptags }}</p>
                     </div>

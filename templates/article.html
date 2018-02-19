@@ -20,7 +20,9 @@
             <section>
                 <h1>{{ article.title }}</h1>
 
-                <p class="text-lowercase">
+                <p><time>{{ article.locale_date }}</time></p>
+
+                <p>
                 {% for tag in article.tags %}
                     <span class="badge badge-pill badge-light tdwg-tag">{{ tag }}</span>
                 {% endfor %}

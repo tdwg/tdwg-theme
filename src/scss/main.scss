@@ -92,6 +92,11 @@ body > .container-fluid {
         }
     }
 
+    time {
+        color: $text-muted;
+        font-size: $font-size-lg;
+    }
+
     .tdwg-tag { 
         font-size: 90%;
         font-weight: 600;
@@ -135,6 +140,10 @@ body > .container-fluid {
             height: 150px;
             margin-right: 2rem;
             width: 150px;
+        }
+
+        time {
+            font-size: $small-font-size;
         }
     }
 
