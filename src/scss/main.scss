@@ -117,6 +117,47 @@ body > .container-fluid {
 
 // The footer (<footer>) contains links that should appear on the bottom of every page.
 
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: calc(150px + #{$grid-gutter-width}); 
+}
+
+body > footer {
+    background-color: theme-color("secondary");
+    bottom: 0;
+    color: $white;
+    font-size: 0.95rem;
+    height: 150px;
+    position: absolute;
+    width: 100%;
+    padding: $grid-gutter-width / 2 0;
+
+    a, a:hover {
+        color: $white;
+
+        &.nav-link {
+            padding: 0.5rem;
+        }
+    }
+
+    .fa-inverse {
+        color: theme-color("secondary");
+    }
+
+    .tdwg-license {
+        color: $gray-400;
+        margin-top: $grid-gutter-width / 3;
+        border-top: 1px solid $hr-border-color;
+        padding-top: $grid-gutter-width / 3;
+        font-size: 0.75rem;
+        text-align: center;
+    }
+}
+
 
 // SIDEBAR 
 
