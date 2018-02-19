@@ -22,30 +22,6 @@ pre, code {
     word-break: break-word;
 }
 
-.btn {
-    white-space: normal; // Wrap button within container
-}
-
-.media {
-    // Bootstrap class for image left & content right layout
-    // https://getbootstrap.com/docs/4.0/layout/media-object/
-    padding-bottom: $grid-gutter-width / 2;
-    border-bottom: 1px solid $hr-border-color;
-    margin-bottom: $grid-gutter-width / 2;
-
-    img {
-        height: 150px;
-        margin-right: 2rem;
-        width: 150px;
-    }
-}
-
-.card {
-    // Bootstrap class for styled content containers
-    // https://getbootstrap.com/docs/4.0/components/card/
-    margin-bottom: $grid-gutter-width / 2;
-}
-
 
 // NAVBAR
 
@@ -135,6 +111,30 @@ body > .container-fluid {
                 color: $body-color;
             }
         }
+    }
+
+    .btn {
+        white-space: normal; // Wrap button within container
+    }
+
+    .media {
+        // Bootstrap class for image left & content right layout
+        // https://getbootstrap.com/docs/4.0/layout/media-object/
+        padding-bottom: $grid-gutter-width / 2;
+        border-bottom: 1px solid $hr-border-color;
+        margin-bottom: $grid-gutter-width / 2;
+
+        img {
+            height: 150px;
+            margin-right: 2rem;
+            width: 150px;
+        }
+    }
+
+    .card {
+        // Bootstrap class for styled content containers
+        // https://getbootstrap.com/docs/4.0/components/card/
+        margin-bottom: $grid-gutter-width / 2;
     }
 }
 
