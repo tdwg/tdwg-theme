@@ -63,7 +63,7 @@
                 </p>
 
                 <div class="lead">
-                    {{ page.summary }}
+                    {% if page.has_summary %}{{ page.summary }}{% endif %}
                 </div>
 
                 <figure>
