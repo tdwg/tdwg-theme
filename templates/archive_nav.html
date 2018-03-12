@@ -20,10 +20,10 @@
         <li class="nav-item">
             <a class="nav-link{% if active_year is none %} active{% endif %}" href="{{ SITEURL }}/{{ PAGE_LINKS['news'] }}">All news</a>
         </li>
-        {% for year in years %}
+    {% for year in years %}
         <li class="nav-item">
             <a class="nav-link{% if year == active_year %} active{% endif %}" href="{{ SITEURL }}/{{ PAGE_LINKS['news'] }}{{ year }}">{{ year }}</a>
         </li>
-        {% endfor %}
+    {% endfor %}
     </ul>
 </nav>

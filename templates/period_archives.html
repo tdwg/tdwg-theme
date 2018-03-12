@@ -16,11 +16,11 @@
         {% endblock %}
 
         <div class="col-12 col-md order-md-1">
-        <h1>News in {{ period | reverse | join(' ') }}</h1>
+            <h1>News in {{ period | reverse | join(' ') }}</h1>
 
-        {% for article in dates %}
-            {% include "article_in_index.html" %}
-        {% endfor %}
+            {% for article in dates %}
+                {% include "article_in_index.html" %}
+            {% endfor %}
         </div>
     </div>
 </main>
