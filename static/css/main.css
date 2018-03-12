@@ -8805,4 +8805,10 @@ body > footer {
   .tdwg-jumbotron-caption a {
     color: #212529; }
 
+.tipue_search_content_bold {
+  font-weight: 700; }
+
+#tipue_search_foot_boxes a:not([href]):not([tabindex]) {
+  color: #ca6500; }
+
 /*# sourceMappingURL=main.css.map */

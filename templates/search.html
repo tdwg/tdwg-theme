@@ -5,10 +5,14 @@
 {% block content %}
 <main class="container">
 {% if "tipue_search" in PLUGINS %}
-    <form action="search.html">
-        <input class="form-control form-control-lg" type="text" placeholder="Search" name="q" id="tipue_search_input">
-    </form>
-    <div id="tipue_search_content"></div>
+    <section>
+        <form action="search.html">
+            <input class="form-control form-control-lg" type="text" placeholder="Search" name="q" id="tipue_search_input">
+        </form>
+    </section>
+    <section>
+        <div id="tipue_search_content"></div>
+    </section>
 {% else %}
     <p>Search requires the Pelican plugin <a href="https://github.com/getpelican/pelican-plugins/tree/master/tipue_search">tipue_search</a>, which is not enabled.</p>
 {% endif %}
@@ -21,11 +25,31 @@
 <script src="{{ SITEURL }}/theme/js/tipuesearch.min.js"></script>
 <script>
     $(document).ready(function() {
-    $("#tipue_search_input").tipuesearch({
-        "show": 10,
-        "mode": "json",
-        "contentLocation": "{{ SITEURL }}/tipuesearch_content.json"
+        $("#tipue_search_input").tipuesearch({
+            "mode": "json",
+            "contentLocation": "{{ SITEURL }}/tipuesearch_content.json",
+            "show": 10,
+            "showURL": false,
+            "showTime": false
         });
     });
+
+    function add_bootstrap_style() {
+        // Add bootstrap classes to tipuesearch content
+        // tipuesearch.min.js was updated to call this function at the end of getTipueSearch()
+
+        // Main title
+        $("#tipue_search_results_count, #tipue_search_warning").replaceWith(function () { return "<h1>" + $(this).text() + "</h1>"; });
+
+        // Content
+        $(".tipue_search_content_title").replaceWith(function () { return "<h5>" + $(this).html() + "</h5>"; });
+        $(".tipue_search_content_text").wrap("<article class='media'></article>");
+
+        // Pagination
+        $("ul#tipue_search_foot_boxes").addClass("pagination justify-content-center");
+        $("ul#tipue_search_foot_boxes > li").addClass("page-item");
+        $("ul#tipue_search_foot_boxes > li.current").addClass("page-item disabled").wrapInner("<span class='page-link'></span>");
+        $("a.tipue_search_foot_box").addClass("page-link");
+    }
 </script>
 {% endblock %}
