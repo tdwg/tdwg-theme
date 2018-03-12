@@ -8805,4 +8805,30 @@ body > footer {
   .tdwg-jumbotron-caption a {
     color: #212529; }
 
+#tipue_search_results_count,
+#tipue_search_warning,
+.tipue_search_content_title {
+  color: inherit;
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 1rem; }
+
+#tipue_search_results_count,
+#tipue_search_warning {
+  font-size: 2.5rem; }
+
+.tipue_search_content_title {
+  font-size: 1.25rem; }
+
+.tipue_search_content_text {
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px; }
+  .tipue_search_content_text .tipue_search_content_bold {
+    font-weight: 700; }
+
+#tipue_search_foot_boxes a:not([href]):not([tabindex]) {
+  color: #ca6500; }
+
 /*# sourceMappingURL=main.css.map */
