@@ -10,6 +10,30 @@ This theme was developed for the [TDWG website](https://github.com/tdwg/website)
 THEME = "../tdwg-theme" # If tdwg-theme is in the same directory as your website repo
 ```
 
+## Dependencies
+
+This theme makes use of the following Pelican plugins:
+
+* [pelican-page-order](https://github.com/akhayyat/pelican-page-order): to add `page_order` attribute to pages if one is not defined. **Required**: throws `'pelican.contents.Page object' has no attribute 'page_order'` if not installed.
+* [pelican-page-hierarchy](https://github.com/akhayyat/pelican-page-hierarchy): to create URL hierarchy for pages matching directory structure. **Required**: throws `'pelican.contents.Page object' has no attribute 'parents'` if not installed.
+* [tipue_search](https://github.com/getpelican/pelican-plugins/tree/master/tipue_search): for search page
+* [summary](https://github.com/getpelican/pelican-plugins/tree/master/summary): to only display non-generated summaries as lead paragraph
+* [pelican-cover-image](https://github.com/peterdesmet/pelican-cover-image): for cover images on pages
+* [pelican-github-edit](https://github.com/peterdesmet/pelican-github-edit): for a link to original Markdown file for pages/articles
+
+Download these plugins to your plugins directory (like [here](https://github.com/tdwg/website/tree/master/plugins)) and define them in your website settings file (see [Pelican documentation](http://docs.getpelican.com/en/stable/plugins.html)):
+
+```python
+PLUGINS = [
+    "pelican-page-order",
+    "pelican-page-hierarchy",
+    "tipue_search",
+    "summary",
+    "pelican-cover-image",
+    "pelican-github-edit"
+]
+```
+
 ## Repo structure
 
 The repository structure is that of a [Pelican theme](http://docs.getpelican.com/en/latest/themes.html#structure). Files/directories indicated with `GENERATED` should not be edited manually.
