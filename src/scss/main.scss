@@ -152,6 +152,11 @@ body > .container-fluid {
         // https://getbootstrap.com/docs/4.0/components/card/
         margin-bottom: $grid-gutter-width / 2;
     }
+
+    .tdwg-content {
+        // Class applied to section with page and article content
+        // Some bootstrap classes are added with jQuery in base.html to better style content.
+    }
 }
 
 
