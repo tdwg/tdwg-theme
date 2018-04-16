@@ -2,7 +2,18 @@
 
 {% block title %}{{ page.title }} - {{ SITENAME }}{% endblock %}
 
+{# Set cover_image_background_url and cover_image_caption based on metadata #}
+{% set cover_image_background_url = THUMBOR_SERVICE + "/unsafe/1500x0/" + page.cover_image_url|urlencode() %}
+{% if page.cover_image_by and page.cover_image_link %}
+    {% set cover_image_caption = "Image by <a href=\"" + page.cover_image_link + "\">" + page.cover_image_by + "</a>" %}
+{% endif %}
+
 {% block content %}
+<figure>
+    <div class="jumbotron jumbotron-fluid" style="background-image: url('{{ cover_image_background_url }}');"></div>
+    <figcaption>{{ cover_image_caption }}</figcaption>
+</figure>
+
 <main class="container">
     <div class="row">
         {% include "includes/sidebar.html" %}

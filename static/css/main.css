@@ -8364,7 +8364,7 @@ body > figure {
 
 body > .container,
 body > .container-fluid {
-  padding-top: 15px;
+  padding-top: 30px;
   min-height: calc(100vh - 54px); }
   @media (max-width: 767.98px) {
     body > .container,

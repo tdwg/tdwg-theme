@@ -131,7 +131,7 @@ body > figure {
 
 body > .container,
 body > .container-fluid {
-    padding-top: $grid-gutter-width/2; // Don't stick to cover image
+    padding-top: $grid-gutter-width; // Don't stick to top
     min-height: calc(100vh - 54px); // Viewport height minus medium screen navbar height
 
     @include media-breakpoint-down(sm) {
