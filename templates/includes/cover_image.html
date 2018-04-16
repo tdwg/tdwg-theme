@@ -1,0 +1,23 @@
+{% if page %}
+    {% set cover_image_url = page.cover_image_url %}
+    {% set cover_image_by = page.cover_image_by %}
+    {% set cover_image_link = page.cover_image_link %}
+{% elif article %}
+    {% set cover_image_url = article.cover_image_url %}
+    {% set cover_image_by = article.cover_image_by %}
+    {% set cover_image_link = article.cover_image_link %}
+{% else %}
+    {% set cover_image_url = "" %}
+    {% set cover_image_by = "" %}
+    {% set cover_image_link = "" %}
+{% endif %}
+
+{% set cover_image_background_url = THUMBOR_SERVICE + "/unsafe/1500x0/" + cover_image_url|urlencode() %}
+{% if cover_image_by and cover_image_link %}
+    {% set cover_image_caption = "Image by <a href=\"" + cover_image_link + "\">" + cover_image_by + "</a>" %}
+{% endif %}
+
+<figure>
+    <div class="jumbotron jumbotron-fluid" style="background-image: url('{{ cover_image_background_url }}');"></div>
+    <figcaption>{{ cover_image_caption }}</figcaption>
+</figure>
