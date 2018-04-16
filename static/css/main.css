@@ -3061,10 +3061,10 @@ tbody.collapse.show {
 .breadcrumb {
   display: flex;
   flex-wrap: wrap;
-  padding: 0.75rem 1rem;
+  padding: 0 0;
   margin-bottom: 1rem;
   list-style: none;
-  background-color: #e9ecef; }
+  background-color: transparent; }
 
 .breadcrumb-item + .breadcrumb-item::before {
   display: inline-block;
@@ -8330,15 +8330,50 @@ pre, code {
     padding-left: 1rem;
     padding-right: 1rem; }
 
+body > figure {
+  position: relative; }
+  body > figure div.jumbotron {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 0;
+    padding-bottom: 12%; }
+    @media (max-width: 991.98px) {
+      body > figure div.jumbotron .container .w-50 {
+        width: 100% !important; } }
+    body > figure div.jumbotron .container h1 {
+      color: #fff;
+      font-size: 3rem;
+      text-shadow: 0.5px 0.5px 5px rgba(97, 118, 148, 0.75); }
+    body > figure div.jumbotron .container .lead p {
+      background-color: rgba(97, 118, 148, 0.75);
+      color: #fff;
+      display: inline;
+      font-size: 1.5rem;
+      padding: 0.1rem; }
+  body > figure figcaption {
+    background-color: rgba(255, 255, 255, 0.75);
+    bottom: 0;
+    color: #212529;
+    font-size: 80%;
+    padding: 0 0.5rem;
+    position: absolute;
+    right: 0; }
+    body > figure figcaption a {
+      color: #212529; }
+
 body > .container,
 body > .container-fluid {
-  padding-top: 30px;
+  padding-top: 15px;
   min-height: calc(100vh - 54px); }
   @media (max-width: 767.98px) {
     body > .container,
     body > .container-fluid {
       width: 100%;
       max-width: 100% !important; } }
+  body > .container .breadcrumb,
+  body > .container-fluid .breadcrumb {
+    font-size: 80%; }
   body > .container section,
   body > .container-fluid section {
     margin: 30px 0; }
@@ -8354,22 +8389,6 @@ body > .container-fluid {
     font-size: 90%;
     font-weight: 600;
     text-transform: lowercase; }
-  body > .container figure div,
-  body > .container-fluid figure div {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding-bottom: 33%;
-    width: 100%; }
-  body > .container figure figcaption,
-  body > .container-fluid figure figcaption {
-    color: #868e96;
-    font-size: 80%;
-    margin-top: 0.2rem;
-    text-align: right; }
-    body > .container figure figcaption a,
-    body > .container-fluid figure figcaption a {
-      color: #212529; }
   body > .container .btn,
   body > .container-fluid .btn {
     white-space: normal; }
@@ -8388,7 +8407,7 @@ body > .container-fluid {
       font-size: 80%; }
   body > .container .card,
   body > .container-fluid .card {
-    margin-bottom: 15px; }
+    margin-bottom: 30px; }
 
 body > footer {
   background-color: #617694;
@@ -8777,33 +8796,6 @@ body > footer {
     .tdwg-sidebar-tertiary nav .nav-item .nav-link.active + .nav,
     .tdwg-sidebar-tertiary nav .nav-item .nav-link.active-parent + .nav {
       display: block; }
-
-.jumbotron {
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  margin-bottom: 0; }
-  @media (max-width: 991.98px) {
-    .jumbotron .w-50 {
-      width: 100% !important; } }
-  .jumbotron .w-50 h1 {
-    color: #fff;
-    font-size: 3rem;
-    text-shadow: 0.5px 0.5px 5px rgba(97, 118, 148, 0.75); }
-  .jumbotron .w-50 .lead p {
-    background-color: rgba(97, 118, 148, 0.75);
-    color: #fff;
-    display: inline;
-    font-size: 1.5rem;
-    padding: 0.1rem; }
-
-.tdwg-jumbotron-caption {
-  color: #868e96;
-  font-size: 80%;
-  margin-top: 0.2rem;
-  text-align: right; }
-  .tdwg-jumbotron-caption a {
-    color: #212529; }
 
 .tipue_search_content_bold {
   font-weight: 700; }

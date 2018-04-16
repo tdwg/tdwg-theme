@@ -141,6 +141,10 @@ body > .container-fluid {
         max-width: 100%!important; // Overwrite default .container behaviour
     }
 
+    .breadcrumb {
+        font-size: $small-font-size;
+    }
+
     section {
         // Sections are used to group content and add some whitespace between them
         margin: $grid-gutter-width 0;
@@ -186,7 +190,7 @@ body > .container-fluid {
     .card {
         // Bootstrap class for styled content containers
         // https://getbootstrap.com/docs/4.0/components/card/
-        margin-bottom: $grid-gutter-width / 2;
+        margin-bottom: $grid-gutter-width;
     }
 
     .tdwg-content {
