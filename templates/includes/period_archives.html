@@ -3,6 +3,11 @@
 {% block title %}News in {{ period[0] }} - {{ SITENAME }} {% endblock %}
 
 {% block content %}
+<figure>
+    <div class="jumbotron jumbotron-fluid" style="background-image: url('');"></div>
+    <figcaption></figcaption>
+</figure>
+
 <main class="container">
     <div class="row">
         {% block sidebar %}
@@ -11,7 +16,7 @@
                 <i class="fa fa-bars fa-lg"></i>
             </button>
 
-            {% include "includes/archive_nav.html" %}
+            {% include "archive_nav.html" %}
         </div>
         {% endblock %}
 
@@ -19,7 +24,7 @@
             <h1>News in {{ period | reverse | join(' ') }}</h1>
 
             {% for article in dates %}
-                {% include "includes/article_in_index.html" %}
+                {% include "article_in_index.html" %}
             {% endfor %}
         </div>
     </div>

@@ -66,6 +66,64 @@ pre, code {
 }
 
 
+// COVER IMAGE
+
+// The cover image is a figure above the main container, spanning the full width.
+// The image itself is a div.jumbotron with a background-image.
+// On the homepage the jumbotron has a container.
+
+body > figure {
+    position: relative;
+
+    div.jumbotron {
+        // background-image: applied in the template
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin-bottom: 0;
+        padding-bottom: 12%; // Set to default 4rem in home.html
+
+        .container {
+            .w-50 {
+                @include media-breakpoint-down(md) {
+                    width: 100%!important;
+                }
+            }
+
+            h1 {
+                color: $white;
+                font-size: 3rem;
+                text-shadow: 0.5px 0.5px 5px rgba(theme-color("secondary"), 0.75);
+            }
+
+            .lead {
+                p {
+                    background-color: rgba(theme-color("secondary"), 0.75);
+                    color: $white;
+                    display: inline; // So background applies to text only
+                    font-size: ($lead-font-size * 1.2);
+                    padding: 0.1rem;
+                }
+            }
+        }
+    }
+
+    figcaption {
+        background-color: rgba($white, 0.75);
+        bottom: 0;
+        color: $body-color;
+        font-size: $small-font-size;
+        padding: 0 0.5rem;
+        position: absolute;
+        right: 0;
+
+        a {
+            color: $body-color;
+        }
+    }
+}
+
+
 // MAIN CONTAINER
 
 // The main container (<main class="container">) contains the SIDEBAR and CONTENT.
@@ -73,7 +131,7 @@ pre, code {
 
 body > .container,
 body > .container-fluid {
-    padding-top: $grid-gutter-width; // Don't stick to navbar
+    padding-top: $grid-gutter-width; // Don't stick to top
     min-height: calc(100vh - 54px); // Viewport height minus medium screen navbar height
 
     @include media-breakpoint-down(sm) {
@@ -81,6 +139,10 @@ body > .container-fluid {
         // .tdwg-sidebar) can use the full width. Jump between .xs and .sm will also disappear.
         width: 100%; 
         max-width: 100%!important; // Overwrite default .container behaviour
+    }
+
+    .breadcrumb {
+        font-size: $small-font-size;
     }
 
     section {
@@ -101,28 +163,6 @@ body > .container-fluid {
         font-size: 90%;
         font-weight: 600;
         text-transform: lowercase;
-    }
-
-    figure {
-        div {
-            // background-image: applied in page.html template
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            padding-bottom: 33%;
-            width: 100%;
-        }
-
-        figcaption {
-            color: $text-muted;
-            font-size: $small-font-size;
-            margin-top: 0.2rem;
-            text-align: right;
-
-            a {
-                color: $body-color;
-            }
-        }
     }
 
     .btn {
@@ -150,7 +190,7 @@ body > .container-fluid {
     .card {
         // Bootstrap class for styled content containers
         // https://getbootstrap.com/docs/4.0/components/card/
-        margin-bottom: $grid-gutter-width / 2;
+        margin-bottom: $grid-gutter-width;
     }
 
     .tdwg-content {
@@ -280,51 +320,6 @@ body > footer {
 @each $color, $value in $theme-colors {
     .tdwg-sidebar-#{$color} {
         @include tdwg-sidebar($value);
-    }
-}
-
-
-// HOMEPAGE
-
-.jumbotron {
-    // background-image: applied in home.html template
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin-bottom: 0;
-
-    .w-50 {
-        @include media-breakpoint-down(md) {
-            width: 100%!important;
-        }
-
-        h1 {
-            color: $white;
-            font-size: 3rem;
-            text-shadow: 0.5px 0.5px 5px rgba(theme-color("secondary"), 0.75);
-        }
-
-        .lead {
-            p {
-                background-color: rgba(theme-color("secondary"), 0.75);
-                color: $white;
-                display: inline; // So background applies to text only
-                font-size: ($lead-font-size * 1.2);
-                padding: 0.1rem;
-            }
-        }
-    }
-}
-
-.tdwg-jumbotron-caption {
-    // div below jumbotron, similar to figcaption, but with container
-    color: $text-muted;
-    font-size: $small-font-size;
-    margin-top: 0.2rem;
-    text-align: right;
-
-    a {
-        color: $body-color;
     }
 }
 

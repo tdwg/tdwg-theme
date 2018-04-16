@@ -9,6 +9,11 @@
 {% endif %}
 
 {% block content %}
+<figure>
+    <div class="jumbotron jumbotron-fluid" style="background-image: url('{{ cover_image_background_url }}');"></div>
+    <figcaption>{{ cover_image_caption }}</figcaption>
+</figure>
+
 <main class="container">
     <div class="row">
         {% block sidebar %}
@@ -17,7 +22,7 @@
                 <i class="fa fa-bars fa-lg"></i>
             </button>
 
-            {% include "archive_nav.html" %}
+            {% include "includes/archive_nav.html" %}
         </div>
         {% endblock %}
         
@@ -36,13 +41,6 @@
                 <div class="lead">
                     {% if article.has_summary %}{{ article.summary }}{% endif %}
                 </div>
-
-                <figure>
-                    <div style="background-image: url('{{ cover_image_background_url }}')"></div>
-                    {% if cover_image_caption %}
-                        <figcaption>{{ cover_image_caption }}</figcaption>
-                    {% endif %}
-                </figure>
             </section>
 
             <section class="tdwg-content">

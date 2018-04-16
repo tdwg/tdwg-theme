@@ -11,7 +11,7 @@
                 <i class="fa fa-bars fa-lg"></i>
             </button>
 
-            {% include "archive_nav.html" %}
+            {% include "includes/archive_nav.html" %}
         </div>
         {% endblock %}
 
@@ -19,11 +19,11 @@
             <h1>News</h1>
 
             {% for article in articles_page.object_list %}
-                {% include "article_in_index.html" %}
+                {% include "includes/article_in_index.html" %}
             {% endfor %}
 
             {% if articles_page.has_other_pages() %}
-                {% include "pagination.html" %}
+                {% include "includes/pagination.html" %}
             {% endif %}
         </div>
     </div>

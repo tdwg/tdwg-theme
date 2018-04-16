@@ -2,13 +2,6 @@
 
 {% block title %}{{ page.title }} - {{ SITENAME }}{% endblock %}
 
-{# Set top level page #}
-{% if page.parent == None or page.status == "hidden" %}
-    {% set top_page = page %}
-{% else %}
-    {% set top_page = page.parents[0] %}
-{% endif %}
-
 {# Set cover_image_background_url and cover_image_caption based on metadata #}
 {% set cover_image_background_url = THUMBOR_SERVICE + "/unsafe/1500x0/" + page.cover_image_url|urlencode() %}
 {% if page.cover_image_by and page.cover_image_link %}
@@ -16,41 +9,14 @@
 {% endif %}
 
 {% block content %}
+<figure>
+    <div class="jumbotron jumbotron-fluid" style="background-image: url('{{ cover_image_background_url }}');"></div>
+    <figcaption>{{ cover_image_caption }}</figcaption>
+</figure>
+
 <main class="container">
     <div class="row">
-        {% block sidebar %}
-        <div class="col-12 col-md-4 order-md-2 tdwg-sidebar-secondary">
-            <button class="btn d-md-none w-100" type="button" data-toggle="collapse" data-target="#tdwg-sidebar-nav">
-                <i class="fa fa-bars fa-lg"></i>
-            </button>
-
-            <nav class="collapse" id="tdwg-sidebar-nav">
-            {% if top_page.children %}
-                <ul class="nav flex-column">
-                {% for sidebar_1_page in top_page.children|sort(attribute="page_order") %}
-                   <li class="nav-item{% if sidebar_1_page.divider %} tdwg-divider-{{ sidebar_1_page.divider }}{% endif %}">
-                        <a class="nav-link d-flex justify-content-between align-items-center{% if sidebar_1_page == page %} active{% endif %}{% if sidebar_1_page == page.parent %} active-parent{% endif %}" href="{{ SITEURL }}/{{ sidebar_1_page.url}}">
-                            {{ sidebar_1_page.title }}
-                            {% if sidebar_1_page.children %}
-                                <i class="fa fa-chevron-down"></i>
-                            {% endif %}
-                        </a>
-                        {% if sidebar_1_page.children %}
-                            <ul class="nav">
-                            {% for sidebar_2_page in sidebar_1_page.children|sort(attribute="page_order") %}
-                                <li class="nav-item">
-                                    <a class="nav-link{% if sidebar_2_page == page %} active{% endif %}" href="{{ SITEURL }}/{{ sidebar_2_page.url}}">{{ sidebar_2_page.title }}</a>
-                                </li>
-                            {% endfor %}
-                            </ul>
-                        {% endif %}
-                    </li>
-                {% endfor %}
-                </ul>
-            {% endif %}
-            </nav>
-        </div>
-        {% endblock %}
+        {% include "includes/sidebar.html" %}
 
         <div class="col-12 col-md order-md-1">
             <section>
@@ -65,13 +31,6 @@
                 <div class="lead">
                     {% if page.has_summary %}{{ page.summary }}{% endif %}
                 </div>
-
-                <figure>
-                    <div style="background-image: url('{{ cover_image_background_url }}')"></div>
-                    {% if cover_image_caption %}
-                        <figcaption>{{ cover_image_caption }}</figcaption>
-                    {% endif %}
-                </figure>
 
                 {% if page.github %}
                     <a class="btn btn-lg btn-primary" href="{{ page.github }}"><i class="fa fa-github fa-fw"></i> Find us on GitHub</a>
