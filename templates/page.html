@@ -9,6 +9,11 @@
 {% endif %}
 
 {% block content %}
+<figure>
+    <div class="jumbotron jumbotron-fluid" style="background-image: url('{{ cover_image_background_url }}');"></div>
+    <figcaption>{{ cover_image_caption }}</figcaption>
+</figure>
+
 <main class="container">
     <div class="row">
         {% include "sidebar.html" %}
@@ -26,13 +31,6 @@
                 <div class="lead">
                     {% if page.has_summary %}{{ page.summary }}{% endif %}
                 </div>
-
-                <figure>
-                    <div style="background-image: url('{{ cover_image_background_url }}')"></div>
-                    {% if cover_image_caption %}
-                        <figcaption>{{ cover_image_caption }}</figcaption>
-                    {% endif %}
-                </figure>
 
                 {% if page.github %}
                     <a class="btn btn-lg btn-primary" href="{{ page.github }}"><i class="fa fa-github fa-fw"></i> Find us on GitHub</a>
