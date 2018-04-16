@@ -16,7 +16,7 @@
                 <i class="fa fa-bars fa-lg"></i>
             </button>
 
-            {% include "includes/archive_nav.html" %}
+            {% include "archive_nav.html" %}
         </div>
         {% endblock %}
 
@@ -24,7 +24,7 @@
             <h1>News in {{ period | reverse | join(' ') }}</h1>
 
             {% for article in dates %}
-                {% include "includes/article_in_index.html" %}
+                {% include "article_in_index.html" %}
             {% endfor %}
         </div>
     </div>
