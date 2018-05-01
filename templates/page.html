@@ -10,6 +10,7 @@
 
 {# Find position of subpages marker in page.content, so this can be displayed as: content, subpages, content #}
 {% set subpages_position = page.content.find(SUBPAGES_MARKER) if SUBPAGES_MARKER is defined else -1 %}
+{% set subpages_reverse_order = True if page.subpages_order is defined and page.subpages_order == "reverse" else False %}
 
 {% block content %}
 <figure>
@@ -53,7 +54,7 @@
     </section>
 
     <section>
-    {% for row in page.children|sort(attribute="page_order")|batch(3) %}
+    {% for row in page.children|sort(attribute="page_order", reverse=subpages_reverse_order)|batch(3) %}
         <div class="row">
         {% for subpage in row %}
             <div class="col-sm-4 d-flex align-items-stretch">
