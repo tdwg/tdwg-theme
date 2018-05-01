@@ -8337,7 +8337,7 @@ body > figure {
     background-repeat: no-repeat;
     background-size: cover;
     margin-bottom: 0;
-    padding-bottom: 12%; }
+    padding-bottom: 10%; }
     @media (max-width: 991.98px) {
       body > figure div.jumbotron .container .w-50 {
         width: 100% !important; } }
@@ -8371,9 +8371,6 @@ body > .container-fluid {
     body > .container-fluid {
       width: 100%;
       max-width: 100% !important; } }
-  body > .container .breadcrumb,
-  body > .container-fluid .breadcrumb {
-    font-size: 80%; }
   body > .container section,
   body > .container-fluid section {
     margin: 30px 0; }
