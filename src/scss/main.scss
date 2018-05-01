@@ -38,7 +38,7 @@ pre, code {
     background-color: theme-color("secondary");
 
     nav {
-        // Navbar navigation: only nav in .tdwg-navbar
+        // Navbar navigation: the only nav in .tdwg-navbar
         flex-grow: 1; // Use up remaining width in .container
     
         @include media-breakpoint-down(sm) {
@@ -69,7 +69,7 @@ pre, code {
 // COVER IMAGE
 
 // The cover image is a figure above the main container, spanning the full width.
-// The image itself is a div.jumbotron with a background-image.
+// The image itself is a div.jumbotron with a background-image, height is set with padding-bottom.
 // On the homepage the jumbotron has a container.
 
 body > figure {
@@ -81,15 +81,9 @@ body > figure {
         background-repeat: no-repeat;
         background-size: cover;
         margin-bottom: 0;
-        padding-bottom: 12%; // Set to default 4rem in home.html
+        padding-bottom: 18%; // A minimum height. Is set to default 4rem in home.html
 
         .container {
-            .w-50 {
-                @include media-breakpoint-down(md) {
-                    width: 100%!important;
-                }
-            }
-
             h1 {
                 color: $white;
                 font-size: 3rem;
@@ -124,33 +118,50 @@ body > figure {
 }
 
 
-// MAIN CONTAINER
+// ALL CONTAINERS
 
-// The main container (<main class="container">) contains the SIDEBAR and CONTENT.
-// The main breakpoint is between small (sm and smaller) and medium (md and larger) screens.
+// The main breakpoint in content width is between small (sm & down) and medium (md & up): this is 
+// where .col-md get displayed as columns.
+// Containers on small screens use full width (no jump between .xs and .sm). Containers on medium 
+// and up screens don't expand beyond the width of a .lg container (960px), so text lines remain 
+// readable.
+//
+// Note: these rules are applied to all .container, use .container-fluid to make use of full width 
+// on all screen sizes.
 
-body > .container,
-body > .container-fluid {
-    padding-top: $grid-gutter-width; // Don't stick to top
-    min-height: calc(100vh - 54px); // Viewport height minus medium screen navbar height
-
+.container {
     @include media-breakpoint-down(sm) {
         // Use container-fluid behaviour on small screens, so the content (including collapsed 
-        // .tdwg-sidebar) can use the full width. Jump between .xs and .sm will also disappear.
-        width: 100%; 
-        max-width: 100%!important; // Overwrite default .container behaviour
+        // .tdwg-sidebar if present) can use the full width. Jump between .xs and .sm will also 
+        // disappear.
+        max-width: 100%!important;
     }
 
-    .breadcrumb {
-        font-size: $small-font-size;
+    @include media-breakpoint-up(md) {
+        // Don't extend the width of the container beyond .lg, so text lines don't become too long. 
+        // Jump between .md and .lg will also disappear.
+        max-width: 960px!important;
     }
+}
+
+
+// MAIN CONTAINER
+
+// The main container (<main class="container">) contains the page content directly or is further 
+// devided in a SIDEBAR (col-12 col-md-3 order-md-2 tdwg-sidebar-primary) and page content 
+// ("col-12 col-md-9 order-md-1").
+
+main.container,
+main.container-fluid {
+    padding-top: $grid-gutter-width; // Don't stick to top
+    min-height: calc(100vh - 54px); // Viewport height minus medium screen navbar height
 
     section {
         // Sections are used to group content and add some whitespace between them
         margin: $grid-gutter-width 0;
 
         &:first-of-type {
-            margin-top: 0; // Don't add margin for first section
+            margin-top: 0; // Don't add margin to first section
         }
     }
 
@@ -169,8 +180,14 @@ body > .container-fluid {
         white-space: normal; // Wrap button within container
     }
 
+    .card {
+        // Bootstrap class for styled content containers, used for subpages
+        // https://getbootstrap.com/docs/4.0/components/card/
+        margin-bottom: $grid-gutter-width;
+    }
+
     .media {
-        // Bootstrap class for image left & content right layout
+        // Bootstrap class for image left & content right layout, used for news items
         // https://getbootstrap.com/docs/4.0/layout/media-object/
         padding-bottom: $grid-gutter-width / 2;
         border-bottom: 1px solid $hr-border-color;
@@ -187,12 +204,6 @@ body > .container-fluid {
         }
     }
 
-    .card {
-        // Bootstrap class for styled content containers
-        // https://getbootstrap.com/docs/4.0/components/card/
-        margin-bottom: $grid-gutter-width;
-    }
-
     .tdwg-content {
         // Class applied to section with page and article content
         // Some bootstrap classes are added with jQuery in base.html to better style content.
@@ -200,48 +211,19 @@ body > .container-fluid {
 }
 
 
-// FOOTER
-
-// The footer (<footer>) contains links that should appear on the bottom of every page.
-
-body > footer {
-    background-color: theme-color("secondary");
-    color: $white;
-    font-size: 0.95rem;
-    padding: $grid-gutter-width / 2 0;
-
-    a, a:hover {
-        color: $white;
-
-        &.nav-link {
-            padding: 0.5rem;
-        }
-    }
-
-    .fa-inverse {
-        color: theme-color("secondary");
-    }
-
-    .tdwg-license {
-        color: $gray-400;
-        margin-top: $grid-gutter-width / 3;
-        border-top: 1px solid $hr-border-color;
-        padding-top: $grid-gutter-width / 3;
-        font-size: $small-font-size;
-        text-align: center;
-    }
-}
-
-
 // SIDEBAR 
 
-// The sidebar only appears on pages and contains the navigation for 2nd & 3rd level pages.
-// On small screens the sidebar will be horizontal (.col-12) with nav collapsed (.collapse).
+// The sidebar is only used for an archive by year navigation on index.html and period_archive.html 
+// on the main website, but also allows a two level navigation (.nav within .nav) if needed.
+// 
+// On small screens the sidebar will be full width (.col-12) with nav collapsed (.collapse).
 // On medium screens the sidebar will be vertical (.col-md-4) and appear on the right (.order-md-2)
 // of .twdg-content, which will take up remaining space (.col-md).
-//
-// To allow colour customization, all sidebar css is a mixin, that can be targetted with the class
+// 
+// To allow colour customization, all sidebar CSS is a mixin, that can be targetted with the class
 // .tdwg-sidebar-x, with "x" being one of the theme-colors (e.g. "primary").
+// 
+// On the main website, subpages are not listed in a SIDEBAR, but displayed as .cards.
 
 @mixin tdwg-sidebar($sidebar-color) {
     color: $sidebar-color;
@@ -324,10 +306,43 @@ body > footer {
 }
 
 
+// FOOTER
+
+// The footer (<footer>) contains links that should appear on the bottom of every page.
+
+body > footer {
+    background-color: theme-color("secondary");
+    color: $white;
+    font-size: 0.95rem;
+    padding: $grid-gutter-width / 2 0;
+
+    a, a:hover {
+        color: $white;
+
+        &.nav-link {
+            padding: 0.5rem;
+        }
+    }
+
+    .fa-inverse {
+        color: theme-color("secondary");
+    }
+
+    .tdwg-license {
+        color: $gray-400;
+        margin-top: $grid-gutter-width / 3;
+        border-top: 1px solid $hr-border-color;
+        padding-top: $grid-gutter-width / 3;
+        font-size: $small-font-size;
+        text-align: center;
+    }
+}
+
+
 // TIPUESEARCH
 
 // Search html content is generated by tipuesearch.min.js.
-// Rather than mimicking bootstrap by overwriting tipuesearch css classes, bootstrap classes are 
+// Rather than mimicking bootstrap by overwriting tipuesearch CSS classes, bootstrap classes are 
 // added with jQuery in the search template. tipuesearch.css is not loaded.
 
 .tipue_search_content_bold {

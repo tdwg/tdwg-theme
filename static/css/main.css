@@ -8337,10 +8337,7 @@ body > figure {
     background-repeat: no-repeat;
     background-size: cover;
     margin-bottom: 0;
-    padding-bottom: 12%; }
-    @media (max-width: 991.98px) {
-      body > figure div.jumbotron .container .w-50 {
-        width: 100% !important; } }
+    padding-bottom: 18%; }
     body > figure div.jumbotron .container h1 {
       color: #fff;
       font-size: 3rem;
@@ -8362,71 +8359,52 @@ body > figure {
     body > figure figcaption a {
       color: #212529; }
 
-body > .container,
-body > .container-fluid {
+@media (max-width: 767.98px) {
+  .container {
+    max-width: 100% !important; } }
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 960px !important; } }
+
+main.container,
+main.container-fluid {
   padding-top: 30px;
   min-height: calc(100vh - 54px); }
-  @media (max-width: 767.98px) {
-    body > .container,
-    body > .container-fluid {
-      width: 100%;
-      max-width: 100% !important; } }
-  body > .container .breadcrumb,
-  body > .container-fluid .breadcrumb {
-    font-size: 80%; }
-  body > .container section,
-  body > .container-fluid section {
+  main.container section,
+  main.container-fluid section {
     margin: 30px 0; }
-    body > .container section:first-of-type,
-    body > .container-fluid section:first-of-type {
+    main.container section:first-of-type,
+    main.container-fluid section:first-of-type {
       margin-top: 0; }
-  body > .container time,
-  body > .container-fluid time {
+  main.container time,
+  main.container-fluid time {
     color: #868e96;
     font-size: 1.25rem; }
-  body > .container .tdwg-tag,
-  body > .container-fluid .tdwg-tag {
+  main.container .tdwg-tag,
+  main.container-fluid .tdwg-tag {
     font-size: 90%;
     font-weight: 600;
     text-transform: lowercase; }
-  body > .container .btn,
-  body > .container-fluid .btn {
+  main.container .btn,
+  main.container-fluid .btn {
     white-space: normal; }
-  body > .container .media,
-  body > .container-fluid .media {
+  main.container .card,
+  main.container-fluid .card {
+    margin-bottom: 30px; }
+  main.container .media,
+  main.container-fluid .media {
     padding-bottom: 15px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     margin-bottom: 15px; }
-    body > .container .media img,
-    body > .container-fluid .media img {
+    main.container .media img,
+    main.container-fluid .media img {
       height: 150px;
       margin-right: 2rem;
       width: 150px; }
-    body > .container .media time,
-    body > .container-fluid .media time {
+    main.container .media time,
+    main.container-fluid .media time {
       font-size: 80%; }
-  body > .container .card,
-  body > .container-fluid .card {
-    margin-bottom: 30px; }
-
-body > footer {
-  background-color: #617694;
-  color: #fff;
-  font-size: 0.95rem;
-  padding: 15px 0; }
-  body > footer a, body > footer a:hover {
-    color: #fff; }
-    body > footer a.nav-link, body > footer a:hover.nav-link {
-      padding: 0.5rem; }
-  body > footer .fa-inverse {
-    color: #617694; }
-  body > footer .tdwg-license {
-    color: #ced4da;
-    margin-top: 10px;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    padding-top: 10px;
-    font-size: 80%;
-    text-align: center; }
 
 .tdwg-sidebar-primary {
   color: #ca6500; }
@@ -8796,6 +8774,25 @@ body > footer {
     .tdwg-sidebar-tertiary nav .nav-item .nav-link.active + .nav,
     .tdwg-sidebar-tertiary nav .nav-item .nav-link.active-parent + .nav {
       display: block; }
+
+body > footer {
+  background-color: #617694;
+  color: #fff;
+  font-size: 0.95rem;
+  padding: 15px 0; }
+  body > footer a, body > footer a:hover {
+    color: #fff; }
+    body > footer a.nav-link, body > footer a:hover.nav-link {
+      padding: 0.5rem; }
+  body > footer .fa-inverse {
+    color: #617694; }
+  body > footer .tdwg-license {
+    color: #ced4da;
+    margin-top: 10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding-top: 10px;
+    font-size: 80%;
+    text-align: center; }
 
 .tipue_search_content_bold {
   font-weight: 700; }

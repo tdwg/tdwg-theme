@@ -8,6 +8,10 @@
     {% set cover_image_caption = "Image by <a href=\"" + page.cover_image_link + "\">" + page.cover_image_by + "</a>" %}
 {% endif %}
 
+{# Find position of subpages marker in page.content, so this can be displayed as: content, subpages, content #}
+{% set subpages_position = page.content.find(SUBPAGES_MARKER) if SUBPAGES_MARKER is defined else -1 %}
+{% set subpages_reverse_order = True if page.subpages_order is defined and page.subpages_order == "reverse" else False %}
+
 {% block content %}
 <figure>
     <div class="jumbotron jumbotron-fluid" style="background-image: url('{{ cover_image_background_url }}');"></div>
@@ -15,38 +19,63 @@
 </figure>
 
 <main class="container">
-    <div class="row">
-        {% include "includes/sidebar.html" %}
+    <nav class="d-flex justify-content-between small">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ SITEURL }}"><i class="fa fa-home"></i></a></li>
+            {% for parent in page.parents %}
+            <li class="breadcrumb-item"><a href="{{ SITEURL }}/{{ parent.url }}">{{ parent.title }}</a></li>
+            {% endfor %}
+            <li class="breadcrumb-item active">{{ page.title }}</li>
+        </ol>
 
-        <div class="col-12 col-md order-md-1">
-            <section>
-                <h1>{{ page.title }}</h1>
+        <a href="{{ page.github_edit_url }}"><i class="fa fa-pencil"></i> Edit this page</a>
+    </nav>
 
-                <p>
-                {% for tag in page.tags %}
-                    <span class="badge badge-pill badge-light tdwg-tag">{{ tag }}</span>
-                {% endfor %}
-                </p>
+    <section>
+        <h1 class="mt-0">{{ page.title }}</h1>
 
-                <div class="lead">
-                    {% if page.has_summary %}{{ page.summary }}{% endif %}
-                </div>
-
-                {% if page.github %}
-                    <a class="btn btn-lg btn-primary" href="{{ page.github }}"><i class="fa fa-github fa-fw"></i> Find us on GitHub</a>
-                {% endif %}
-            </section>
-
-            <section class="tdwg-content">
-                {{ page.content }}
-            </section>
-
-            <section>
-                <div class="text-center">
-                    <a class="btn btn-outline-secondary" href="{{ page.github_edit_url }}">Edit this page on GitHub</a>
-                </div>
-            </section>
+        <div class="lead">
+            {% if page.has_summary %}{{ page.summary }}{% endif %}
         </div>
-    </div>
+
+        <p>
+        {% for tag in page.tags %}
+            <span class="badge badge-pill badge-light tdwg-tag">{{ tag }}</span>
+        {% endfor %}
+        </p>
+
+        {% if page.github %}
+            <a class="btn btn-lg btn-primary" href="{{ page.github }}"><i class="fa fa-github fa-fw"></i> Find us on GitHub</a>
+        {% endif %}
+    </section>
+
+    <section class="tdwg-content">
+        {{ page.content[0:subpages_position] }}
+    </section>
+
+    <section>
+    {% for row in page.children|sort(attribute="page_order", reverse=subpages_reverse_order)|batch(3) %}
+        <div class="row">
+        {% for subpage in row %}
+            <div class="col-sm-4 d-flex align-items-stretch">
+                <div class="card bg-light">
+                    <a href="{{ SITEURL }}/{{ subpage.url }}">
+                    <img class="card-img-top" src="{{ THUMBOR_SERVICE + '/unsafe/900x300/' + subpage.cover_image_url|urlencode() }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ subpage.title }}</h5>
+                    </div>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    {% endfor %}
+    </section>
+
+    {% if subpages_position != -1 %}    
+    <section class="tdwg-content">
+        {{ page.content[subpages_position + subpages_marker|length:] }}
+    </section>
+    {% endif %}
 </main>
 {% endblock %}
