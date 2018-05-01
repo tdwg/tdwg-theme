@@ -118,14 +118,31 @@ body > figure {
 }
 
 
+// ALL CONTAINERS
 
+// The main breakpoint in content width is between small (sm & down) and medium (md & up): this is 
+// where .col-md get displayed as columns.
+// Containers on small screens use full width (no jump between .xs and .sm). Containers on medium 
+// and up screens don't expand beyond the width of a .lg container (960px), so text lines remain 
+// readable.
+//
+// Note: these rules are applied to all .container, use .container-fluid to make use of full width 
+// on all screen sizes.
 
+.container {
     @include media-breakpoint-down(sm) {
         // Use container-fluid behaviour on small screens, so the content (including collapsed 
-        // .tdwg-sidebar) can use the full width. Jump between .xs and .sm will also disappear.
-        width: 100%; 
-        max-width: 100%!important; // Overwrite default .container behaviour
+        // .tdwg-sidebar if present) can use the full width. Jump between .xs and .sm will also 
+        // disappear.
+        max-width: 100%!important;
     }
+
+    @include media-breakpoint-up(md) {
+        // Don't extend the width of the container beyond .lg, so text lines don't become too long. 
+        // Jump between .md and .lg will also disappear.
+        max-width: 960px!important;
+    }
+}
 
 
 // MAIN CONTAINER
