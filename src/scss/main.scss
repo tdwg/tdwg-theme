@@ -119,10 +119,6 @@ body > figure {
 
 
 
-body > .container,
-body > .container-fluid {
-    padding-top: $grid-gutter-width; // Don't stick to top
-    min-height: calc(100vh - 54px); // Viewport height minus medium screen navbar height
 
     @include media-breakpoint-down(sm) {
         // Use container-fluid behaviour on small screens, so the content (including collapsed 
@@ -138,6 +134,10 @@ body > .container-fluid {
 // devided in a SIDEBAR (col-12 col-md-3 order-md-2 tdwg-sidebar-primary) and page content 
 // ("col-12 col-md-9 order-md-1").
 
+main.container,
+main.container-fluid {
+    padding-top: $grid-gutter-width; // Don't stick to top
+    min-height: calc(100vh - 54px); // Viewport height minus medium screen navbar height
 
     section {
         // Sections are used to group content and add some whitespace between them
