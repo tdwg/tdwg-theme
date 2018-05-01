@@ -84,12 +84,6 @@ body > figure {
         padding-bottom: 10%; // A minimum height. Is set to default 4rem in home.html
 
         .container {
-            .w-50 {
-                @include media-breakpoint-down(md) {
-                    width: 100%!important;
-                }
-            }
-
             h1 {
                 color: $white;
                 font-size: 3rem;
