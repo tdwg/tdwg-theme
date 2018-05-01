@@ -159,6 +159,12 @@ body > .container-fluid {
         white-space: normal; // Wrap button within container
     }
 
+    .card {
+        // Bootstrap class for styled content containers, used for subpages
+        // https://getbootstrap.com/docs/4.0/components/card/
+        margin-bottom: $grid-gutter-width;
+    }
+
     .media {
         // Bootstrap class for image left & content right layout
         // https://getbootstrap.com/docs/4.0/layout/media-object/
@@ -177,48 +183,9 @@ body > .container-fluid {
         }
     }
 
-    .card {
-        // Bootstrap class for styled content containers
-        // https://getbootstrap.com/docs/4.0/components/card/
-        margin-bottom: $grid-gutter-width;
-    }
-
     .tdwg-content {
         // Class applied to section with page and article content
         // Some bootstrap classes are added with jQuery in base.html to better style content.
-    }
-}
-
-
-// FOOTER
-
-// The footer (<footer>) contains links that should appear on the bottom of every page.
-
-body > footer {
-    background-color: theme-color("secondary");
-    color: $white;
-    font-size: 0.95rem;
-    padding: $grid-gutter-width / 2 0;
-
-    a, a:hover {
-        color: $white;
-
-        &.nav-link {
-            padding: 0.5rem;
-        }
-    }
-
-    .fa-inverse {
-        color: theme-color("secondary");
-    }
-
-    .tdwg-license {
-        color: $gray-400;
-        margin-top: $grid-gutter-width / 3;
-        border-top: 1px solid $hr-border-color;
-        padding-top: $grid-gutter-width / 3;
-        font-size: $small-font-size;
-        text-align: center;
     }
 }
 
@@ -310,6 +277,39 @@ body > footer {
 @each $color, $value in $theme-colors {
     .tdwg-sidebar-#{$color} {
         @include tdwg-sidebar($value);
+    }
+}
+
+
+// FOOTER
+
+// The footer (<footer>) contains links that should appear on the bottom of every page.
+
+body > footer {
+    background-color: theme-color("secondary");
+    color: $white;
+    font-size: 0.95rem;
+    padding: $grid-gutter-width / 2 0;
+
+    a, a:hover {
+        color: $white;
+
+        &.nav-link {
+            padding: 0.5rem;
+        }
+    }
+
+    .fa-inverse {
+        color: theme-color("secondary");
+    }
+
+    .tdwg-license {
+        color: $gray-400;
+        margin-top: $grid-gutter-width / 3;
+        border-top: 1px solid $hr-border-color;
+        padding-top: $grid-gutter-width / 3;
+        font-size: $small-font-size;
+        text-align: center;
     }
 }
 
