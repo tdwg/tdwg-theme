@@ -15,44 +15,34 @@
 </figure>
 
 <main class="container">
-    <div class="row">
-        {% block sidebar %}
-        <div class="col-12 col-md-4 order-md-2 tdwg-sidebar-secondary">
-            <button class="btn d-md-none w-100" type="button" data-toggle="collapse" data-target="#tdwg-sidebar-nav">
-                <i class="fa fa-bars fa-lg"></i>
-            </button>
+    <nav class="d-flex justify-content-between small">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ SITEURL }}"><i class="fa fa-home"></i></a></li>
+            <li class="breadcrumb-item"><a href="{{ SITEURL }}/{{ PAGE_LINKS['news'] }}">News</a>
+            <li class="breadcrumb-item active">{{ article.title }}</li>
+        </ol>
 
-            {% include "includes/archive_nav.html" %}
+        <a href="{{ article.github_edit_url }}"><i class="fa fa-pencil"></i> Edit this page</a>
+    </nav>
+    
+    <section>
+        <h1>{{ article.title }}{% if article.status == "draft" %} <span class="badge badge-danger">draft</span>{% endif %}</h1>
+
+        <p><time>{{ article.locale_date }}</time></p>
+
+        <div class="lead">
+            {% if article.has_summary %}{{ article.summary }}{% endif %}
         </div>
-        {% endblock %}
-        
-        <div class="col-12 col-md order-md-1">
-            <section>
-                <h1>{{ article.title }}{% if article.status == "draft" %} <span class="badge badge-danger">draft</span>{% endif %}</h1>
 
-                <p><time>{{ article.locale_date }}</time></p>
+        <p>
+        {% for tag in article.tags %}
+            <span class="badge badge-pill badge-light tdwg-tag">{{ tag }}</span>
+        {% endfor %}
+        </p>
+    </section>
 
-                <p>
-                {% for tag in article.tags %}
-                    <span class="badge badge-pill badge-light tdwg-tag">{{ tag }}</span>
-                {% endfor %}
-                </p>
-
-                <div class="lead">
-                    {% if article.has_summary %}{{ article.summary }}{% endif %}
-                </div>
-            </section>
-
-            <section class="tdwg-content">
-                {{ article.content }}
-            </section>
-
-            <section>
-                <div class="text-center">
-                    <a class="btn btn-outline-secondary" href="{{ article.github_edit_url }}">Edit this article on GitHub</a>
-                </div>
-            </section>
-        </div>
-    </div>
+    <section class="tdwg-content">
+        {{ article.content }}
+    </section>
 </main>
 {% endblock %}
