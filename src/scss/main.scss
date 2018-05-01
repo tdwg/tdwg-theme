@@ -141,10 +141,6 @@ body > .container-fluid {
         max-width: 100%!important; // Overwrite default .container behaviour
     }
 
-    .breadcrumb {
-        font-size: $small-font-size;
-    }
-
     section {
         // Sections are used to group content and add some whitespace between them
         margin: $grid-gutter-width 0;
