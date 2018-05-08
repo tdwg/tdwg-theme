@@ -25,24 +25,46 @@
         <a href="{{ article.github_edit_url }}"><i class="fa fa-pencil"></i> Edit this page</a>
     </nav>
     
-    <section>
-        <h1>{{ article.title }}{% if article.status == "draft" %} <span class="badge badge-danger">draft</span>{% endif %}</h1>
+    <div class="row">
+        <div class="col-12 col-md-3 order-md-2 tdwg-sidebar-primary">
+            <button class="btn d-md-none w-100" type="button" data-toggle="collapse" data-target="#tdwg-sidebar-nav">
+                <i class="fa fa-bars fa-lg"></i>
+            </button>
 
-        <p><time>{{ article.locale_date }}</time></p>
-
-        <div class="lead">
-            {% if article.has_summary %}{{ article.summary }}{% endif %}
+            <nav class="collapse" id="tdwg-sidebar-nav">
+            {{ article.toc }}
+            </nav>
         </div>
 
-        <p>
-        {% for tag in article.tags %}
-            <span class="badge badge-pill badge-light tdwg-tag">{{ tag }}</span>
-        {% endfor %}
-        </p>
-    </section>
+        <div class="col-12 col-md-9 order-md-1">
+            <h1>{{ article.title }}{% if article.status == "draft" %} <span class="badge badge-danger">draft</span>{% endif %}</h1>
 
-    <section class="tdwg-content">
-        {{ article.content }}
-    </section>
+            <p>
+                <time class="mr-4">{{ article.locale_date }}</time>
+                {% for tag in article.tags %}
+                    <span class="badge badge-pill badge-light tdwg-tag">{{ tag }}</span> <span class="badge badge-pill badge-light tdwg-tag">{{ tag }}</span> <span class="badge badge-pill badge-light tdwg-tag">{{ tag }}</span>
+                {% endfor %}
+            </p>
+
+            <div class="lead">
+                {% if article.has_summary %}{{ article.summary }}{% endif %}
+            </div>
+
+            <div>
+                {{ article.content }}
+            </div>
+        </div>
+    </div>
 </main>
+{% endblock %}
+
+{% block javascript %}
+    {{ super() }}
+    <script>
+        $(document).ready(function() {
+            $("#tdwg-sidebar-nav ul").addClass("nav flex-column");
+            $("#tdwg-sidebar-nav li").addClass("nav-item");
+            $("#tdwg-sidebar-nav a").addClass("nav-link");
+        });
+    </script>
 {% endblock %}
