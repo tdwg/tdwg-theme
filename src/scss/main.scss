@@ -156,6 +156,7 @@ body > figure {
 main.container,
 main.container-fluid {
     padding-top: $grid-gutter-width; // Don't stick to top
+    padding-bottom: $grid-gutter-width; // Don't stick to footer
     min-height: calc(100vh - 54px); // Viewport height minus medium screen navbar height
 
     time {
