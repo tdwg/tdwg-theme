@@ -209,10 +209,8 @@ main.container-fluid {
         }
     }
 
-    .tdwg-content {
-        // Class applied to section with page and article content
-        // Some bootstrap classes are added with jQuery in base.html to better style content.
-    }
+    // Further styling can be done with pelican-bootstrapify plugin, which adds bootstrap classes 
+    // to content.
 }
 
 
