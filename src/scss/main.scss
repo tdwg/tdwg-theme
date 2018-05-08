@@ -224,14 +224,13 @@ main.container-fluid {
 @mixin tdwg-sidebar($sidebar-color) {
     color: $sidebar-color;
 
-    @include media-breakpoint-down(sm) { // Collapsed sidebar, appears above .tdwg-content
+    @include media-breakpoint-down(sm) { // Collapsed sidebar
         border-bottom: 1px solid rgba($sidebar-color, 0.5);
-        margin-top: -$grid-gutter-width; // Overwrite .container and stick to navbar when collapsed
-        margin-bottom: $grid-gutter-width; // Reapply .container padding
-        padding: $grid-gutter-width / 2;
+        margin-bottom: 1rem;
+        padding: 0.5rem;
 
         nav {
-            margin-top: $grid-gutter-width / 2; // Add space between menu button and nav
+            margin-top: 0.5rem; // Add space between menu button and nav
         }
     }
 
