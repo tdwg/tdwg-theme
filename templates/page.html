@@ -31,51 +31,74 @@
         <a href="{{ page.github_edit_url }}"><i class="fa fa-pencil"></i> Edit this page</a>
     </nav>
 
-    <section>
-        <h1 class="mt-0">{{ page.title }}</h1>
+    <div class="row">
+        <div class="col-12 col-md-3 order-md-2 tdwg-sidebar-primary">
+            <button class="btn d-md-none w-100" type="button" data-toggle="collapse" data-target="#tdwg-sidebar-nav">
+                <i class="fa fa-bars fa-lg"></i>
+            </button>
 
-        <div class="lead">
-            {% if page.has_summary %}{{ page.summary }}{% endif %}
+            <nav class="collapse" id="tdwg-sidebar-nav">
+            {{ page.toc }}
+            </nav>
         </div>
 
-        <p>
-        {% for tag in page.tags %}
-            <span class="badge badge-pill badge-light tdwg-tag">{{ tag }}</span>
-        {% endfor %}
-        </p>
+        <div class="col-12 col-md-9 order-md-1">
+            <h1>{{ page.title }}</h1>
 
-        {% if page.github %}
-            <a class="btn btn-lg btn-primary" href="{{ page.github }}"><i class="fa fa-github fa-fw"></i> Find us on GitHub</a>
-        {% endif %}
-    </section>
+            <p>
+            {% for tag in page.tags %}
+                <span class="badge badge-pill badge-light tdwg-tag">{{ tag }}</span>
+            {% endfor %}
+            </p>
 
-    <section class="tdwg-content">
-        {{ page.content[0:subpages_position] }}
-    </section>
-
-    <section>
-    {% for row in page.children|sort(attribute="page_order", reverse=subpages_reverse_order)|batch(3) %}
-        <div class="row">
-        {% for subpage in row %}
-            <div class="col-sm-4 d-flex align-items-stretch">
-                <div class="card bg-light">
-                    <a href="{{ SITEURL }}/{{ subpage.url }}">
-                    <img class="card-img-top" src="{{ THUMBOR_SERVICE + '/unsafe/900x300/' + subpage.cover_image_url|urlencode() }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ subpage.title }}</h5>
-                    </div>
-                    </a>
-                </div>
+            <div class="lead">
+                {% if page.has_summary %}{{ page.summary }}{% endif %}
             </div>
-        {% endfor %}
-        </div>
-    {% endfor %}
-    </section>
 
-    {% if subpages_position != -1 %}    
-    <section class="tdwg-content">
-        {{ page.content[subpages_position + subpages_marker|length:] }}
-    </section>
-    {% endif %}
+            <p>
+            {% if page.github %}
+                <a class="btn btn-lg btn-primary" href="{{ page.github }}"><i class="fa fa-github fa-fw"></i> Find us on GitHub</a>
+            {% endif %}
+            </p>
+
+            <div>
+                {{ page.content[0:subpages_position] }}
+            </div>
+            
+            {% for row in page.children|sort(attribute="page_order", reverse=subpages_reverse_order)|batch(3) %}
+                <div class="row">
+                {% for subpage in row %}
+                    <div class="col-sm-4 d-flex align-items-stretch">
+                        <div class="card bg-light">
+                            <a href="{{ SITEURL }}/{{ subpage.url }}">
+                            <img class="card-img-top" src="{{ THUMBOR_SERVICE + '/unsafe/900x300/' + subpage.cover_image_url|urlencode() }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ subpage.title }}</h5>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+                </div>
+            {% endfor %}
+
+            {% if subpages_position != -1 %}
+            <div>
+                {{ page.content[subpages_position + subpages_marker|length:] }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
 </main>
+{% endblock %}
+
+{% block javascript %}
+    {{ super() }}
+    <script>
+        $(document).ready(function() {
+            $("#tdwg-sidebar-nav ul").addClass("nav flex-column");
+            $("#tdwg-sidebar-nav li").addClass("nav-item");
+            $("#tdwg-sidebar-nav a").addClass("nav-link");
+        });
+    </script>
 {% endblock %}

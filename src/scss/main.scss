@@ -15,6 +15,7 @@
 body {
     // Allow long words (e.g. URLs) to wrap, so they don't break out of container
     word-wrap: break-word;
+    position: relative; // Required for scrollspy
 }
 
 pre, code {
@@ -176,6 +177,10 @@ main.container-fluid {
         text-transform: lowercase;
     }
 
+    .lead {
+        margin-bottom: $grid-gutter-width;
+    }
+
     .btn {
         white-space: normal; // Wrap button within container
     }
@@ -237,6 +242,13 @@ main.container-fluid {
         nav {
             margin-top: $grid-gutter-width / 2; // Add space between menu button and nav
         }
+    }
+
+    @include media-breakpoint-up(md) { // Sticky sidebar: scrolls with page, then sticks
+        position: sticky;
+        top: 2rem;
+        height: calc(100vh - 2rem);
+        overflow-y: auto;
     }
 
     .btn {
