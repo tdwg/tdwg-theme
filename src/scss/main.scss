@@ -202,24 +202,27 @@ main.container-fluid {
         }
     }
 
-    // Further styling can be done with pelican-bootstrapify plugin, which adds bootstrap classes 
-    // to content.
+    // Further styling can be done with the pelican-bootstrapify plugin, which adds bootstrap 
+    // classes to content.
 }
 
 
 // SIDEBAR 
 
-// The sidebar is only used for an archive by year navigation on index.html and period_archive.html 
-// on the main website, but also allows a two level navigation (.nav within .nav) if needed.
+// The sidebar is used to display the table of contents (with scrollspy) for pages and articles, and 
+// to navigate news by year on index.html and period_archive.html. There is also a template 
+// sidebar.html to display child pages two levels deep, but it is not used by the main website: 
+// subpages are displayed as .cards instead.
+// 
+// The sidebar should allow any number of levels (tested for three), but subitems are only shown if 
+// the parent item has class .active, keeping the navigation contained.
 // 
 // On small screens the sidebar will be full width (.col-12) with nav collapsed (.collapse).
 // On medium screens the sidebar will be vertical (.col-md-4) and appear on the right (.order-md-2)
-// of .twdg-content, which will take up remaining space (.col-md).
+// of the content, which will take up remaining space (.col-md).
 // 
-// To allow colour customization, all sidebar CSS is a mixin, that can be targetted with the class
+// To allow colour customization, all sidebar CSS is a mixin, which can be targetted with the class
 // .tdwg-sidebar-x, with "x" being one of the theme-colors (e.g. "primary").
-// 
-// On the main website, subpages are not listed in a SIDEBAR, but displayed as .cards.
 
 @mixin tdwg-sidebar($sidebar-color) {
     color: $sidebar-color;
