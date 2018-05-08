@@ -157,15 +157,6 @@ main.container-fluid {
     padding-top: $grid-gutter-width; // Don't stick to top
     min-height: calc(100vh - 54px); // Viewport height minus medium screen navbar height
 
-    section {
-        // Sections are used to group content and add some whitespace between them
-        margin: $grid-gutter-width 0;
-
-        &:first-of-type {
-            margin-top: 0; // Don't add margin to first section
-        }
-    }
-
     time {
         color: $text-muted;
         font-size: $font-size-lg;
