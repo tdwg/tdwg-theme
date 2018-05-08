@@ -39,11 +39,12 @@
         <div class="col-12 col-md-9 order-md-1">
             <h1>{{ article.title }}{% if article.status == "draft" %} <span class="badge badge-danger">draft</span>{% endif %}</h1>
 
+            <p><time>{{ article.locale_date }}</time></p>
+
             <p>
-                <time class="mr-4">{{ article.locale_date }}</time>
-                {% for tag in article.tags %}
-                    <span class="badge badge-pill badge-light tdwg-tag">{{ tag }}</span> <span class="badge badge-pill badge-light tdwg-tag">{{ tag }}</span> <span class="badge badge-pill badge-light tdwg-tag">{{ tag }}</span>
-                {% endfor %}
+            {% for tag in article.tags %}
+                <span class="badge badge-pill badge-light tdwg-tag">{{ tag }}</span>
+            {% endfor %}
             </p>
 
             <div class="lead">
