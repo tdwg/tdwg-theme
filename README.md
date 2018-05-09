@@ -16,10 +16,12 @@ This theme makes use of the following Pelican plugins:
 
 * [pelican-page-order](https://github.com/akhayyat/pelican-page-order): to add `page_order` attribute to pages if one is not defined. **Required**: throws `'pelican.contents.Page object' has no attribute 'page_order'` if not installed.
 * [pelican-page-hierarchy](https://github.com/akhayyat/pelican-page-hierarchy): to create URL hierarchy for pages matching directory structure. **Required**: throws `'pelican.contents.Page object' has no attribute 'parents'` if not installed.
-* [tipue_search](https://github.com/getpelican/pelican-plugins/tree/master/tipue_search): for search page
-* [summary](https://github.com/getpelican/pelican-plugins/tree/master/summary): to only display non-generated summaries as lead paragraph
-* [pelican-cover-image](https://github.com/peterdesmet/pelican-cover-image): for cover images on pages
-* [pelican-github-edit](https://github.com/peterdesmet/pelican-github-edit): for a link to original Markdown file for pages/articles
+* [pelican-toc](https://github.com/ingwinlu/pelican-toc): to assign ids to headers in pages/articles and render a table of content.
+* [pelican-bootstrapify](https://github.com/ingwinlu/pelican-bootstrapify): to add Bootstrap classes to page/article content.
+* [pelican-github-edit](https://github.com/peterdesmet/pelican-github-edit): to add a link to edit pages/articles on GitHub.
+* [pelican-cover-image](https://github.com/peterdesmet/pelican-cover-image): to add cover image URL to pages/articles.
+* [tipue_search](https://github.com/getpelican/pelican-plugins/tree/master/tipue_search): to enable Javascript site search.
+* [summary](https://github.com/getpelican/pelican-plugins/tree/master/summary): to only display non-generated summaries as lead paragraph.
 
 Download these plugins to your plugins directory (like [here](https://github.com/tdwg/website/tree/master/plugins)) and define them in your website settings file (see [Pelican documentation](http://docs.getpelican.com/en/stable/plugins.html)):
 
@@ -27,10 +29,12 @@ Download these plugins to your plugins directory (like [here](https://github.com
 PLUGINS = [
     "pelican-page-order",
     "pelican-page-hierarchy",
-    "tipue_search",
-    "summary",
+    "pelican-toc",
+    "pelican-bootstrapify",
+    "pelican-github-edit",
     "pelican-cover-image",
-    "pelican-github-edit"
+    "tipue_search",
+    "summary"
 ]
 ```
 
