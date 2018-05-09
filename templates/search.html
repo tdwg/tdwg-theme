@@ -5,14 +5,11 @@
 {% block content %}
 <main class="container">
 {% if "tipue_search" in PLUGINS %}
-    <section>
-        <form action="search.html">
-            <input class="form-control form-control-lg" type="text" placeholder="Search" name="q" id="tipue_search_input">
-        </form>
-    </section>
-    <section>
-        <div id="tipue_search_content"></div>
-    </section>
+    <form class="mb-4" action="search.html">
+        <input class="form-control form-control-lg" type="text" placeholder="Search" name="q" id="tipue_search_input">
+    </form>
+    
+    <div id="tipue_search_content"></div>
 {% else %}
     <p>Search requires the Pelican plugin <a href="https://github.com/getpelican/pelican-plugins/tree/master/tipue_search">tipue_search</a>, which is not enabled.</p>
 {% endif %}

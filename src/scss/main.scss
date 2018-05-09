@@ -15,6 +15,7 @@
 body {
     // Allow long words (e.g. URLs) to wrap, so they don't break out of container
     word-wrap: break-word;
+    position: relative; // Required for scrollspy
 }
 
 pre, code {
@@ -73,6 +74,7 @@ pre, code {
 // On the homepage the jumbotron has a container.
 
 body > figure {
+    margin-bottom: 0;
     position: relative;
 
     div.jumbotron {
@@ -154,16 +156,8 @@ body > figure {
 main.container,
 main.container-fluid {
     padding-top: $grid-gutter-width; // Don't stick to top
+    padding-bottom: $grid-gutter-width; // Don't stick to footer
     min-height: calc(100vh - 54px); // Viewport height minus medium screen navbar height
-
-    section {
-        // Sections are used to group content and add some whitespace between them
-        margin: $grid-gutter-width 0;
-
-        &:first-of-type {
-            margin-top: 0; // Don't add margin to first section
-        }
-    }
 
     time {
         color: $text-muted;
@@ -174,6 +168,10 @@ main.container-fluid {
         font-size: 90%;
         font-weight: 600;
         text-transform: lowercase;
+    }
+
+    .lead {
+        margin-bottom: $grid-gutter-width;
     }
 
     .btn {
@@ -204,39 +202,46 @@ main.container-fluid {
         }
     }
 
-    .tdwg-content {
-        // Class applied to section with page and article content
-        // Some bootstrap classes are added with jQuery in base.html to better style content.
-    }
+    // Further styling can be done with the pelican-bootstrapify plugin, which adds bootstrap 
+    // classes to content.
 }
 
 
 // SIDEBAR 
 
-// The sidebar is only used for an archive by year navigation on index.html and period_archive.html 
-// on the main website, but also allows a two level navigation (.nav within .nav) if needed.
+// The sidebar is used to display the table of contents (with scrollspy) for pages and articles, and 
+// to navigate news by year on index.html and period_archive.html. There is also a template 
+// sidebar.html to display child pages two levels deep, but it is not used by the main website: 
+// subpages are displayed as .cards instead.
+// 
+// The sidebar should allow any number of levels (tested for three), but subitems are only shown if 
+// the parent item has class .active, keeping the navigation contained.
 // 
 // On small screens the sidebar will be full width (.col-12) with nav collapsed (.collapse).
 // On medium screens the sidebar will be vertical (.col-md-4) and appear on the right (.order-md-2)
-// of .twdg-content, which will take up remaining space (.col-md).
+// of the content, which will take up remaining space (.col-md).
 // 
-// To allow colour customization, all sidebar CSS is a mixin, that can be targetted with the class
+// To allow colour customization, all sidebar CSS is a mixin, which can be targetted with the class
 // .tdwg-sidebar-x, with "x" being one of the theme-colors (e.g. "primary").
-// 
-// On the main website, subpages are not listed in a SIDEBAR, but displayed as .cards.
 
 @mixin tdwg-sidebar($sidebar-color) {
     color: $sidebar-color;
 
-    @include media-breakpoint-down(sm) { // Collapsed sidebar, appears above .tdwg-content
+    @include media-breakpoint-down(sm) { // Collapsed sidebar
         border-bottom: 1px solid rgba($sidebar-color, 0.5);
-        margin-top: -$grid-gutter-width; // Overwrite .container and stick to navbar when collapsed
-        margin-bottom: $grid-gutter-width; // Reapply .container padding
-        padding: $grid-gutter-width / 2;
+        margin-bottom: 1rem;
+        padding: 0.5rem;
 
         nav {
-            margin-top: $grid-gutter-width / 2; // Add space between menu button and nav
+            margin-top: 0.5rem; // Add space between menu button and nav
         }
+    }
+
+    @include media-breakpoint-up(md) { // Sticky sidebar: scrolls with page, then sticks
+        position: sticky;
+        top: 2rem;
+        height: calc(100vh - 2rem);
+        overflow-y: auto;
     }
 
     .btn {

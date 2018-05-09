@@ -2,7 +2,7 @@
 {% set years = [] %}
 {% for article in articles %}
     {% if article.date.year not in years %}
-        {% do years.append(article.date.year) %}
+        {% set years = years.append(article.date.year) %}
     {% endif %}
 {% endfor %}
 
