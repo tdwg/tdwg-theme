@@ -38,7 +38,7 @@
     </div>
 
     {% for tag in page.tags %}
-        {# Create a list named of pages having a certain "tag", excluding page_index pages #}
+        {# Create a list of pages having a certain "tag", excluding page_index pages #}
         {% set tag_pages = [] %}
         {% for p in pages|sort(attribute="page_order") if tag in p.tags and p.template != "page_index" %}
             {% set tag_pages = tag_pages.append(p) %}
