@@ -4,8 +4,8 @@
 
 {# Set cover_image_background_url and cover_image_caption based on metadata #}
 {% set cover_image_background_url = THUMBOR_SERVICE + "/unsafe/1500x0/" + article.cover_image_url|urlencode() %}
-{% if article.cover_image_by and article.cover_image_link %}
-    {% set cover_image_caption = "Image by <a href=\"" + article.cover_image_link + "\">" + article.cover_image_by + "</a>" %}
+{% if article.cover_image_by and article.cover_image_ref %}
+    {% set cover_image_caption = "Image by <a href=\"" + article.cover_image_ref + "\">" + article.cover_image_by + "</a>" %}
 {% endif %}
 
 {% block content %}

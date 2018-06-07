@@ -4,8 +4,8 @@
 
 {# Set cover_image_background_url and cover_image_caption based on metadata #}
 {% set cover_image_background_url = THUMBOR_SERVICE + "/unsafe/1500x0/" + page.cover_image_url|urlencode() %}
-{% if page.cover_image_by and page.cover_image_link %}
-    {% set cover_image_caption = "Image by <a href=\"" + page.cover_image_link + "\">" + page.cover_image_by + "</a>" %}
+{% if page.cover_image_by and page.cover_image_ref %}
+    {% set cover_image_caption = "Image by <a href=\"" + page.cover_image_ref + "\">" + page.cover_image_by + "</a>" %}
 {% endif %}
 
 {# Find position of subpages marker in page.content, so this can be displayed as: content, subpages, content #}
