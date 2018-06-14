@@ -39,7 +39,15 @@
             </button>
 
             <nav class="collapse" id="tdwg-sidebar-nav">
-            {{ page.toc }}
+                {{ page.toc }}
+
+                <ul>
+                    {% for tag in tag_sections %}
+                    <li>
+                        <a href="#{{ tag|replace(' ','-')|lower()|urlencode() }}">{{ tag }}s</a>
+                    </li>
+                    {% endfor %}
+                </ul>
             </nav>
         </div>
 
@@ -61,7 +69,7 @@
                     {% set tag_pages = tag_pages.append(p) %}
                 {% endfor %}
 
-                <h2>{{ tag }}s</h2>
+                <h2 id="{{ tag|replace(' ','-')|lower()|urlencode() }}">{{ tag }}s</h2>
                 {% for row in tag_pages|batch(3) %}
                     <div class="row">
                     {% for subpage in row %}
@@ -82,4 +90,15 @@
         </div>
     </div>
 </main>
+{% endblock %}
+
+{% block javascript %}
+    {{ super() }}
+    <script>
+        $(document).ready(function() {
+            $("#tdwg-sidebar-nav ul").addClass("nav flex-column");
+            $("#tdwg-sidebar-nav li").addClass("nav-item");
+            $("#tdwg-sidebar-nav a").addClass("nav-link");
+        });
+    </script>
 {% endblock %}
