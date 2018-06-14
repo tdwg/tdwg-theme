@@ -8,8 +8,10 @@
     {% set cover_image_caption = "Image by <a href=\"" + page.cover_image_ref + "\">" + page.cover_image_by + "</a>" %}
 {% endif %}
 
-{# Find position of subpages marker in page.content, so this can be displayed as: content, subpages, content #}
-{% set subpages_position = page.content.find(SUBPAGES_MARKER) if SUBPAGES_MARKER is defined else -1 %}
+{% set tag_sections = [] %}
+{% if page.tag_sections %}
+    {% set tag_sections = page.tag_sections.split(", ") %}
+{% endif %}
 
 {% block content %}
 <figure>
@@ -38,54 +40,53 @@
 
             <nav class="collapse" id="tdwg-sidebar-nav">
                 {{ page.toc }}
+
+                <ul>
+                    {% for tag in tag_sections %}
+                    <li>
+                        <a href="#{{ tag|replace(' ','-')|lower()|urlencode() }}">{{ tag }}s</a>
+                    </li>
+                    {% endfor %}
+                </ul>
             </nav>
         </div>
 
         <div class="col-12 col-md-9 order-md-1">
             <h1>{{ page.title }}</h1>
 
-            <p>
-            {% for tag in page.tags %}
-                <span class="badge badge-pill badge-light tdwg-tag">{{ tag }}</span>
-            {% endfor %}
-            </p>
-
             <div class="lead">
                 {% if page.has_summary %}{{ page.summary }}{% endif %}
             </div>
 
-            <p>
-            {% if page.github %}
-                <a class="btn btn-lg btn-primary" href="{{ page.github }}"><i class="fa fa-github fa-fw"></i> Find us on GitHub</a>
-            {% endif %}
-            </p>
-
             <div>
-                {{ page.content[0:subpages_position] }}
+                {{ page.content }}
             </div>
-            
-            {% for row in page.children|sort(attribute="page_order")|batch(3) %}
-                <div class="row">
-                {% for subpage in row %}
-                    <div class="col-sm-4 d-flex align-items-stretch">
-                        <div class="card bg-light">
-                            <a href="{{ SITEURL }}/{{ subpage.url }}">
-                            <img class="card-img-top" src="{{ THUMBOR_SERVICE + '/unsafe/900x300/' + subpage.cover_image_url|urlencode() }}">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ subpage.title }}</h5>
-                            </div>
-                            </a>
-                        </div>
-                    </div>
+
+            {% for tag in tag_sections %}
+                {# Create a list named of pages having a certain "tag" #}
+                {% set tag_pages = [] %}
+                {% for p in pages|sort(attribute="page_order") if tag in p.tags %}
+                    {% set tag_pages = tag_pages.append(p) %}
                 {% endfor %}
-                </div>
-            {% endfor %}
 
-            {% if subpages_position != -1 %}
-            <div>
-                {{ page.content[subpages_position + subpages_marker|length:] }}
-            </div>
-            {% endif %}
+                <h2 id="{{ tag|replace(' ','-')|lower()|urlencode() }}">{{ tag }}s</h2>
+                {% for row in tag_pages|batch(3) %}
+                    <div class="row">
+                    {% for subpage in row %}
+                        <div class="col-sm-4 d-flex align-items-stretch">
+                            <div class="card bg-light">
+                                <a href="{{ SITEURL }}/{{ subpage.url }}">
+                                <img class="card-img-top" src="{{ THUMBOR_SERVICE + '/unsafe/900x300/' + subpage.cover_image_url|urlencode() }}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ subpage.title }}</h5>
+                                </div>
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+            {% endfor %}
         </div>
     </div>
 </main>
