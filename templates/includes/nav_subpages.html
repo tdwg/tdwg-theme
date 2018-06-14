@@ -6,34 +6,28 @@
     {% set top_page = page.parents[0] %}
 {% endif %}
 
-<div class="col-12 col-md-4 order-md-2 tdwg-sidebar-secondary">
-    <button class="btn d-md-none w-100" type="button" data-toggle="collapse" data-target="#tdwg-sidebar-nav">
-        <i class="fa fa-bars fa-lg"></i>
-    </button>
-
-    <nav class="collapse" id="tdwg-sidebar-nav">
-    {% if top_page.children %}
-        <ul class="nav flex-column">
-        {% for sidebar_1_page in top_page.children|sort(attribute="page_order") %}
-           <li class="nav-item{% if sidebar_1_page.divider %} tdwg-divider-{{ sidebar_1_page.divider }}{% endif %}">
-                <a class="nav-link d-flex justify-content-between align-items-center{% if sidebar_1_page == page %} active{% endif %}{% if sidebar_1_page == page.parent %} active-parent{% endif %}" href="{{ SITEURL }}/{{ sidebar_1_page.url}}">
-                    {{ sidebar_1_page.title }}
-                    {% if sidebar_1_page.children %}
-                        <i class="fa fa-chevron-down"></i>
-                    {% endif %}
-                </a>
+<nav class="collapse" id="tdwg-sidebar-nav">
+{% if top_page.children %}
+    <ul class="nav flex-column">
+    {% for sidebar_1_page in top_page.children|sort(attribute="page_order") %}
+       <li class="nav-item{% if sidebar_1_page.divider %} tdwg-divider-{{ sidebar_1_page.divider }}{% endif %}">
+            <a class="nav-link d-flex justify-content-between align-items-center{% if sidebar_1_page == page %} active{% endif %}{% if sidebar_1_page == page.parent %} active-parent{% endif %}" href="{{ SITEURL }}/{{ sidebar_1_page.url}}">
+                {{ sidebar_1_page.title }}
                 {% if sidebar_1_page.children %}
-                    <ul class="nav">
-                    {% for sidebar_2_page in sidebar_1_page.children|sort(attribute="page_order") %}
-                        <li class="nav-item">
-                            <a class="nav-link{% if sidebar_2_page == page %} active{% endif %}" href="{{ SITEURL }}/{{ sidebar_2_page.url}}">{{ sidebar_2_page.title }}</a>
-                        </li>
-                    {% endfor %}
-                    </ul>
+                    <i class="fa fa-chevron-down"></i>
                 {% endif %}
-            </li>
-        {% endfor %}
-        </ul>
-    {% endif %}
-    </nav>
-</div>
+            </a>
+            {% if sidebar_1_page.children %}
+                <ul class="nav">
+                {% for sidebar_2_page in sidebar_1_page.children|sort(attribute="page_order") %}
+                    <li class="nav-item">
+                        <a class="nav-link{% if sidebar_2_page == page %} active{% endif %}" href="{{ SITEURL }}/{{ sidebar_2_page.url}}">{{ sidebar_2_page.title }}</a>
+                    </li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        </li>
+    {% endfor %}
+    </ul>
+{% endif %}
+</nav>
