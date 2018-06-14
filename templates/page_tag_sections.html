@@ -8,6 +8,11 @@
     {% set cover_image_caption = "Image by <a href=\"" + page.cover_image_ref + "\">" + page.cover_image_by + "</a>" %}
 {% endif %}
 
+{% set tag_sections = [] %}
+{% if page.tag_sections %}
+    {% set tag_sections = page.tag_sections.split(", ") %}
+{% endif %}
+
 {% block content %}
 <figure>
     <div class="jumbotron jumbotron-fluid" style="background-image: url('{{ cover_image_background_url }}');"></div>
@@ -49,10 +54,10 @@
                 {{ page.content }}
             </div>
 
-            {% for tag in page.tags %}
-                {# Create a list named of pages having a certain "tag", excluding page_tagged_pages #}
+            {% for tag in tag_sections %}
+                {# Create a list named of pages having a certain "tag" #}
                 {% set tag_pages = [] %}
-                {% for p in pages|sort(attribute="page_order") if tag in p.tags and p.template != "page_tagged_pages" %}
+                {% for p in pages|sort(attribute="page_order") if tag in p.tags %}
                     {% set tag_pages = tag_pages.append(p) %}
                 {% endfor %}
 
