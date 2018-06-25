@@ -33,12 +33,12 @@
     </nav>
 
     <div class="row">
-        <div class="col-12 col-md-3 order-md-2 tdwg-sidebar-primary">
-            <button class="btn d-md-none w-100" type="button" data-toggle="collapse" data-target="#tdwg-sidebar-nav">
+        <div class="col-12 col-md-3 order-md-2 theme-sidebar-primary">
+            <button class="btn d-md-none w-100" type="button" data-toggle="collapse" data-target="#theme-sidebar-nav">
                 <i class="fa fa-bars fa-lg"></i>
             </button>
 
-            <nav class="collapse" id="tdwg-sidebar-nav">
+            <nav class="collapse" id="theme-sidebar-nav">
                 {{ page.toc }}
 
                 <ul>
@@ -96,9 +96,9 @@
     {{ super() }}
     <script>
         $(document).ready(function() {
-            $("#tdwg-sidebar-nav ul").addClass("nav flex-column");
-            $("#tdwg-sidebar-nav li").addClass("nav-item");
-            $("#tdwg-sidebar-nav a").addClass("nav-link");
+            $("#theme-sidebar-nav ul").addClass("nav flex-column");
+            $("#theme-sidebar-nav li").addClass("nav-item");
+            $("#theme-sidebar-nav a").addClass("nav-link");
         });
     </script>
 {% endblock %}

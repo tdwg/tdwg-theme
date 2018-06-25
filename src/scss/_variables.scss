@@ -2,9 +2,9 @@
 
 // Custom variables
 
-$tdwg-orange: #ca6500;
-$tdwg-blue: #617694;
-$tdwg-yellow: #ffc107;
+$theme-orange: #ca6500;
+$theme-blue: #617694;
+$theme-yellow: #ffc107;
 
 
 // Overwrites for Font Awesome variables
@@ -68,8 +68,8 @@ $colors: (
 ) !default;
 
 $theme-colors: (
-  primary: $tdwg-orange, // Used for links, active borders
-  secondary: $tdwg-blue, // Used for backgrounds (not used by Bootstrap default)
+  primary: $theme-orange, // Used for links, active borders
+  secondary: $theme-blue, // Used for backgrounds (not used by Bootstrap default)
   success: $green,
   info: $cyan,
   warning: $yellow,
@@ -78,7 +78,7 @@ $theme-colors: (
   dark: $gray-900,
 
   // Additional theme colors:
-  tertiary: $tdwg-yellow
+  tertiary: $theme-yellow
 );
 
 // Options

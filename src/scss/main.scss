@@ -1,6 +1,6 @@
-// Main SASS file for TDWG theme
+// Main SASS file for the theme
 
-// Note: all none-Bootstrap classes are named tdwg-* so they are easily recognizable
+// Note: all none-Bootstrap classes are named theme-* so they are easily recognizable
 
 // IMPORTS
 
@@ -35,11 +35,11 @@ pre, code {
 // swiped left and right. On medium screens and up, .navbar-brand + nav appear next to each other 
 // (.flex-md-row), with nav taking up all remaining width (flex-grow: 1 in .justify-content-start).
 
-.tdwg-navbar {
+.theme-navbar {
     background-color: theme-color("secondary");
 
     nav {
-        // Navbar navigation: the only nav in .tdwg-navbar
+        // Navbar navigation: the only nav in .theme-navbar
         flex-grow: 1; // Use up remaining width in .container
     
         @include media-breakpoint-down(sm) {
@@ -134,7 +134,7 @@ body > figure {
 .container {
     @include media-breakpoint-down(sm) {
         // Use container-fluid behaviour on small screens, so the content (including collapsed 
-        // .tdwg-sidebar if present) can use the full width. Jump between .xs and .sm will also 
+        // .theme-sidebar if present) can use the full width. Jump between .xs and .sm will also 
         // disappear.
         max-width: 100%!important;
     }
@@ -150,7 +150,7 @@ body > figure {
 // MAIN CONTAINER
 
 // The main container (<main class="container">) contains the page content directly or is further 
-// devided in a SIDEBAR (col-12 col-md-3 order-md-2 tdwg-sidebar-primary) and page content 
+// devided in a SIDEBAR (col-12 col-md-3 order-md-2 theme-sidebar-primary) and page content 
 // ("col-12 col-md-9 order-md-1").
 
 main.container,
@@ -164,7 +164,7 @@ main.container-fluid {
         font-size: $font-size-lg;
     }
 
-    .tdwg-tag { 
+    .theme-tag { 
         font-size: 90%;
         font-weight: 600;
         text-transform: lowercase;
@@ -222,9 +222,9 @@ main.container-fluid {
 // of the content, which will take up remaining space (.col-md).
 // 
 // To allow colour customization, all sidebar CSS is a mixin, which can be targetted with the class
-// .tdwg-sidebar-x, with "x" being one of the theme-colors (e.g. "primary").
+// .theme-sidebar-x, with "x" being one of the theme-colors (e.g. "primary").
 
-@mixin tdwg-sidebar($sidebar-color) {
+@mixin theme-sidebar($sidebar-color) {
     color: $sidebar-color;
 
     @include media-breakpoint-down(sm) { // Collapsed sidebar
@@ -254,7 +254,7 @@ main.container-fluid {
     }
 
     nav {
-        // Sidebar navigation: only nav in .tdwg-sidebar-x
+        // Sidebar navigation: only nav in .theme-sidebar-x
         @include media-breakpoint-up(md) {
             display: block!important; // Don't collapse nav on wider screens (= overwrite .collapse)
         }
@@ -272,13 +272,13 @@ main.container-fluid {
         }
 
         .nav-item {
-            &.tdwg-divider-above {
+            &.theme-divider-above {
                 margin-top: 0.5rem;
                 border-top: 1px solid rgba($sidebar-color, 0.5);
                 padding-top: 0.5rem;
             }
         
-            &.tdwg-divider-below {
+            &.theme-divider-below {
                 padding-bottom: 0.5rem;
                 border-bottom: 1px solid rgba($sidebar-color, 0.5);
                 margin-bottom: 0.5rem;
@@ -305,8 +305,8 @@ main.container-fluid {
 }
 
 @each $color, $value in $theme-colors {
-    .tdwg-sidebar-#{$color} {
-        @include tdwg-sidebar($value);
+    .theme-sidebar-#{$color} {
+        @include theme-sidebar($value);
     }
 }
 
@@ -333,7 +333,7 @@ body > footer {
         color: theme-color("secondary");
     }
 
-    .tdwg-license {
+    .theme-license {
         color: $gray-400;
         margin-top: $grid-gutter-width / 3;
         border-top: 1px solid $hr-border-color;
