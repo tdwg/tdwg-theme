@@ -2,17 +2,12 @@
 <html lang="{{ DEFAULT_LANG }}">
     <head>
         {% block head %}
-        <!-- Required meta tags -->
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <!-- Metadata -->
         <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
         <meta name="description" content="{{ SITESUBTITLE }}">
         <meta name="author" content="{{ AUTHOR }}">
-        
-        <!-- CSS -->
-        <link rel="stylesheet" href="{{ SITEURL }}/theme/css/main.css">
 
         <!-- Favicons -->
         <link rel="apple-touch-icon" sizes="180x180" href="{{ SITEURL }}/theme/icons/apple-touch-icon.png">
@@ -24,6 +19,9 @@
         <meta name="msapplication-TileColor" content="#ffffff">
         <meta name="msapplication-config" content="{{ SITEURL }}/theme/icons/browserconfig.xml">
         <meta name="theme-color" content="#ffffff">
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="{{ SITEURL }}/theme/css/main.css">
 
         <!-- Feeds -->
         {% if FEED_ALL_ATOM %}
