@@ -150,5 +150,14 @@ $breadcrumb-divider:                "/" !default;
 // Close
 // Code
 
-$code-color:                  theme-color("secondary");
-$code-bg:                     $gray-100 !default;
+$code-font-size:                    87.5% !default;
+$code-color:                        $gray-700;
+
+$kbd-padding-y:                     .2rem !default;
+$kbd-padding-x:                     .4rem !default;
+$kbd-font-size:                     $code-font-size !default;
+$kbd-color:                         $white !default;
+$kbd-bg:                            $gray-900 !default;
+
+$pre-color:                         $gray-700;
+$pre-scrollable-max-height:         340px !default;
