@@ -22,7 +22,20 @@ body {
 pre, code {
     // Allow long words (e.g. URLs) to break, so they don't break out of container
     // Note: word-wrap is not effective here, needs to be word-break
+    // color: $gray-700;
+    background-color: $gray-100;
+    border-radius: 3px;
     word-break: break-word;
+}
+
+pre {
+    font-size: 80%; // Slighty smaller than inline $code-font-size;
+    overflow: auto;
+    padding: $grid-gutter-width / 2;
+}
+
+code {
+    padding: $kbd-padding-y $kbd-padding-x;
 }
 
 
