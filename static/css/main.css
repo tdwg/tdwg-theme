@@ -8535,13 +8535,14 @@ pre, code {
   border-radius: 3px;
   word-break: break-word; }
 
+code {
+  padding: 0.2rem 0.4rem; }
+
 pre {
   font-size: 80%;
   overflow: auto;
-  padding: 15px; }
-
-code {
-  padding: 0.2rem 0.4rem; }
+  padding: 15px;
+  code-padding: 0; }
 
 .theme-navbar {
   background-color: #617694; }

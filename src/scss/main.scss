@@ -28,14 +28,18 @@ pre, code {
     word-break: break-word;
 }
 
+code {
+    padding: $kbd-padding-y $kbd-padding-x;
+}
+
 pre {
     font-size: 80%; // Slighty smaller than inline $code-font-size;
     overflow: auto;
     padding: $grid-gutter-width / 2;
-}
 
-code {
-    padding: $kbd-padding-y $kbd-padding-x;
+    code: {
+        padding: 0 // Do not pad <code> withing <pre> 
+    }
 }
 
 
