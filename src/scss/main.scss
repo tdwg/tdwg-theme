@@ -19,29 +19,6 @@ body {
     position: relative; // Required for scrollspy
 }
 
-pre, code {
-    // Allow long words (e.g. URLs) to break, so they don't break out of container
-    // Note: word-wrap is not effective here, needs to be word-break
-    // color: $gray-700;
-    background-color: $gray-100;
-    border-radius: 3px;
-    word-break: break-word;
-}
-
-code {
-    padding: $kbd-padding-y $kbd-padding-x;
-}
-
-pre {
-    font-size: 80%; // Slighty smaller than inline $code-font-size;
-    overflow: auto;
-    padding: $grid-gutter-width / 2;
-
-    code: {
-        padding: 0 // Do not pad <code> withing <pre> 
-    }
-}
-
 
 // NAVBAR
 
@@ -179,16 +156,11 @@ main.container-fluid {
     padding-right: $grid-gutter-width; // Increase default by 2
     min-height: calc(100vh - 54px); // Viewport height minus medium screen navbar height
 
-    time {
-        color: $text-muted;
-        font-size: $font-size-lg;
     }
 
-    .theme-tag { 
-        font-size: 90%;
-        font-weight: 600;
-        text-transform: lowercase;
     }
+
+    // Customize some Bootstrap classes
 
     .lead {
         margin-bottom: $grid-gutter-width;
@@ -199,13 +171,13 @@ main.container-fluid {
     }
 
     .card {
-        // Bootstrap class for styled content containers, used for subpages
+        // Bootstrap class for styled content containers, e.g. subpages as images
         // https://getbootstrap.com/docs/4.0/components/card/
         margin-bottom: $grid-gutter-width;
     }
 
     .media {
-        // Bootstrap class for image left & content right layout, used for news items
+        // Bootstrap class for image left & content right layout, e.g. news items
         // https://getbootstrap.com/docs/4.0/layout/media-object/
         padding-bottom: $grid-gutter-width / 2;
         border-bottom: 1px solid $hr-border-color;
@@ -224,6 +196,38 @@ main.container-fluid {
 
     // Further styling can be done with the pelican-bootstrapify plugin, which adds bootstrap 
     // classes to content.
+    // Non-Bootstrap elements
+
+    code {
+        background-color: $gray-100;
+        border-radius: 3px;
+        padding: $kbd-padding-y $kbd-padding-x;
+        word-break: break-word; // Allow long words (e.g. URLs) to break. word-wrap not effective here.
+    }
+
+    pre {
+        background-color: $gray-100;
+        border-radius: 3px;
+        font-size: 80%; // Slighty smaller than inline $code-font-size;
+        overflow: auto;
+        padding: $grid-gutter-width / 2;
+        word-break: break-word; // Allow long words (e.g. URLs) to break. word-wrap not effective here.
+
+        code: {
+            padding: 0 // Do not pad <code> withing <pre> 
+        }
+    }
+
+    time {
+        color: $text-muted;
+        font-size: $font-size-lg;
+    }
+
+    .theme-tag { 
+        font-size: 90%;
+        font-weight: 600;
+        text-transform: lowercase;
+    }
 }
 
 
