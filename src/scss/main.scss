@@ -216,7 +216,11 @@ main.container-fluid {
         code {
             padding: 0; // Do not pad <code> withing <pre> 
         }
+    }
 
+    table {
+        code {
+            word-break: normal!important; // To not unnecessarily wrap code in tables
         }
     }
 
