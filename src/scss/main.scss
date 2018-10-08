@@ -203,20 +203,15 @@ main.container-fluid {
 
     // Non-Bootstrap elements
 
-    code {
-        background-color: $gray-100;
+    code, pre {
+        background-color: $gray-200;
         border-radius: 3px;
         padding: $kbd-padding-y $kbd-padding-x;
-        word-break: break-word; // Allow long words (e.g. URLs) to break. word-wrap not effective here.
     }
 
     pre {
-        background-color: $gray-100;
-        border-radius: 3px;
         font-size: 80%; // Slighty smaller than inline $code-font-size;
         overflow: auto;
-        padding: $grid-gutter-width / 2;
-        word-break: break-word; // Allow long words (e.g. URLs) to break. word-wrap not effective here.
 
         code: {
             padding: 0 // Do not pad <code> withing <pre> 
