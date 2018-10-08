@@ -8619,6 +8619,11 @@ main.container-fluid {
   main.container table code,
   main.container-fluid table code {
     word-break: normal !important; }
+  main.container blockquote,
+  main.container-fluid blockquote {
+    border-left: 0.25rem solid #e9ecef;
+    color: #495057;
+    padding: 0 1rem; }
   main.container time,
   main.container-fluid time {
     color: #868e96;

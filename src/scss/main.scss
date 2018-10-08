@@ -213,6 +213,12 @@ main.container-fluid {
         }
     }
 
+    blockquote {
+        border-left: 0.25rem solid $gray-200;
+        color: $code-color;
+        padding: 0 1rem;
+    }
+
     time {
         color: $text-muted;
         font-size: $font-size-lg;
