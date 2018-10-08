@@ -78,8 +78,8 @@ pre {
         // https://github.com/twbs/bootstrap/issues/22471
         > .container,
         > .container-fluid {
-            padding-left: $navbar-padding-x;
-            padding-right: $navbar-padding-x;
+            padding-left: $grid-gutter-width / 2;
+            padding-right: $grid-gutter-width / 2;
         }
     }
 }
@@ -175,6 +175,8 @@ main.container,
 main.container-fluid {
     padding-top: $grid-gutter-width; // Don't stick to top
     padding-bottom: $grid-gutter-width; // Don't stick to footer
+    padding-left: $grid-gutter-width; // Increase default by 2
+    padding-right: $grid-gutter-width; // Increase default by 2
     min-height: calc(100vh - 54px); // Viewport height minus medium screen navbar height
 
     time {
