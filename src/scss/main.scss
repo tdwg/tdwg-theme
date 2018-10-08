@@ -307,22 +307,22 @@ main.container-fluid {
                 border-bottom: 1px solid rgba($sidebar-color, 0.5);
                 margin-bottom: 0.5rem;
             }
+        }
+        
+        .nav-link {
+            // .d-flex .justify-content-between .align-items-center are only required for 
+            // aligning the .fa-chavron-down correctly
+            color: $sidebar-color;
+            padding: 0.25rem 1rem;
 
-            .nav-link {
-                // .d-flex .justify-content-between .align-items-center are only required for 
-                // aligning the .fa-chavron-down correctly
-                color: $sidebar-color;
-                padding: 0.25rem 1rem;
+            &.active {
+                background-color: $sidebar-color;
+                color: $white;
+            }
 
-                &.active {
-                    background-color: $sidebar-color;
-                    color: $white;
-                }
-
-                &.active + .nav,
-                &.active-parent + .nav {
-                    display: block; // Show 2nd level nav if one its pages or parent is active
-                }
+            &.active + .nav,
+            &.active-parent + .nav {
+                display: block; // Show 2nd level nav if one its pages or parent is active
             }
         }
     }
