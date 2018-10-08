@@ -156,8 +156,15 @@ main.container-fluid {
     padding-right: $grid-gutter-width; // Increase default by 2
     min-height: calc(100vh - 54px); // Viewport height minus medium screen navbar height
 
+    // Add Bootstrap classes to some elements
+
+    table {
+        @extend .table;
+        @extend .table-striped;
     }
 
+    img {
+        @extend .img-fluid;
     }
 
     // Customize some Bootstrap classes
@@ -194,8 +201,6 @@ main.container-fluid {
         }
     }
 
-    // Further styling can be done with the pelican-bootstrapify plugin, which adds bootstrap 
-    // classes to content.
     // Non-Bootstrap elements
 
     code {
