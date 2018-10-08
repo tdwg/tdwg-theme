@@ -212,9 +212,11 @@ main.container-fluid {
     pre {
         font-size: 80%; // Slighty smaller than inline $code-font-size;
         overflow: auto;
+        
+        code {
+            padding: 0; // Do not pad <code> withing <pre> 
+        }
 
-        code: {
-            padding: 0 // Do not pad <code> withing <pre> 
         }
     }
 
