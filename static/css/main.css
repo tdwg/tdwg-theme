@@ -404,8 +404,7 @@ mark,
   .blockquote-footer::before {
     content: "\2014 \00A0"; }
 
-.img-fluid, main.container img,
-main.container-fluid img {
+.img-fluid {
   max-width: 100%;
   height: auto; }
 
@@ -1051,30 +1050,22 @@ pre {
   .offset-xl-11 {
     margin-left: 91.66667%; } }
 
-.table, main.container table,
-main.container-fluid table {
+.table {
   width: 100%;
   max-width: 100%;
   margin-bottom: 1rem;
   background-color: transparent; }
-  .table th, main.container table th,
-  main.container-fluid table th,
-  .table td, main.container table td,
-  main.container-fluid table td {
+  .table th,
+  .table td {
     padding: 0.75rem;
     vertical-align: top;
     border-top: 1px solid #dee2e6; }
-  .table thead th, main.container table thead th,
-  main.container-fluid table thead th {
+  .table thead th {
     vertical-align: bottom;
     border-bottom: 2px solid #dee2e6; }
-  .table tbody + tbody, main.container table tbody + tbody,
-  main.container-fluid table tbody + tbody {
+  .table tbody + tbody {
     border-top: 2px solid #dee2e6; }
-  .table .table, main.container table .table,
-  main.container-fluid table .table, .table main.container table, main.container .table table, main.container table table, .table
-  main.container-fluid table,
-  main.container-fluid .table table, main.container-fluid table table {
+  .table .table {
     background-color: #fff; }
 
 .table-sm th,
@@ -1090,9 +1081,8 @@ main.container-fluid table {
   .table-bordered thead td {
     border-bottom-width: 2px; }
 
-.table-striped tbody tr:nth-of-type(odd), main.container table tbody tr:nth-of-type(odd),
-main.container-fluid table tbody tr:nth-of-type(odd) {
-  background-color: rgba(0, 0, 0, 0.05); }
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f8f9fa; }
 
 .table-hover tbody tr:hover {
   background-color: rgba(0, 0, 0, 0.075); }
@@ -1207,14 +1197,12 @@ main.container-fluid table tbody tr:nth-of-type(odd) {
   .table-hover .table-active:hover > th {
     background-color: rgba(0, 0, 0, 0.075); }
 
-.table .thead-dark th, main.container table .thead-dark th,
-main.container-fluid table .thead-dark th {
+.table .thead-dark th {
   color: #fff;
   background-color: #212529;
   border-color: #32383e; }
 
-.table .thead-light th, main.container table .thead-light th,
-main.container-fluid table .thead-light th {
+.table .thead-light th {
   color: #495057;
   background-color: #e9ecef;
   border-color: #dee2e6; }
@@ -1228,8 +1216,7 @@ main.container-fluid table .thead-light th {
     border-color: #32383e; }
   .table-dark.table-bordered {
     border: 0; }
-  .table-dark.table-striped tbody tr:nth-of-type(odd), main.container table.table-dark tbody tr:nth-of-type(odd),
-  main.container-fluid table.table-dark tbody tr:nth-of-type(odd) {
+  .table-dark.table-striped tbody tr:nth-of-type(odd) {
     background-color: rgba(255, 255, 255, 0.05); }
   .table-dark.table-hover tbody tr:hover {
     background-color: rgba(255, 255, 255, 0.075); }
@@ -5981,13 +5968,10 @@ a.text-tertiary:hover, a.text-tertiary:focus {
     display: none; }
   .badge {
     border: 1px solid #000; }
-  .table, main.container table,
-  main.container-fluid table {
+  .table {
     border-collapse: collapse !important; }
-    .table td, main.container table td,
-    main.container-fluid table td,
-    .table th, main.container table th,
-    main.container-fluid table th {
+    .table td,
+    .table th {
       background-color: #fff !important; }
   .table-bordered th,
   .table-bordered td {
@@ -8619,21 +8603,22 @@ main.container-fluid {
     main.container .media time,
     main.container-fluid .media time {
       font-size: 80%; }
-  main.container code,
-  main.container-fluid code {
-    background-color: #f8f9fa;
+  main.container code, main.container pre,
+  main.container-fluid code,
+  main.container-fluid pre {
+    background-color: #e9ecef;
     border-radius: 3px;
-    padding: 0.2rem 0.4rem;
-    word-break: break-word; }
+    padding: 0.2rem 0.4rem; }
   main.container pre,
   main.container-fluid pre {
-    background-color: #f8f9fa;
-    border-radius: 3px;
     font-size: 80%;
-    overflow: auto;
-    padding: 15px;
-    word-break: break-word;
-    code-padding: 0; }
+    overflow: auto; }
+    main.container pre code,
+    main.container-fluid pre code {
+      padding: 0; }
+  main.container table code,
+  main.container-fluid table code {
+    word-break: normal !important; }
   main.container time,
   main.container-fluid time {
     color: #868e96;
