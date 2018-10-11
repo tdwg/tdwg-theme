@@ -63,7 +63,7 @@ The repository structure is that of a [Pelican theme](http://docs.getpelican.com
 
 ### Bootstrap
 
-This theme uses [Bootstrap v4.0](https://getbootstrap.com/docs/4.0/getting-started/introduction/) as a framework to create a responsive website. The **HTML** is entirely structured around Bootstrap classes for layout, content, components and utilities, with as little deviation as possible. The **CSS** starts from Bootstrap's SCSS/SASS, with custom variable overwrites in `src/scss/_variables.css` and custom CSS in `src/scss/main.scss`. These get bundled together with Bootstrap in a single `static/css/main.css`.
+This theme uses [Bootstrap v4.0](https://getbootstrap.com/docs/4.0/getting-started/introduction/) as a framework to create a responsive website. The **HTML** is entirely structured around Bootstrap classes for layout, content, components and utilities, with as little deviation as possible. The **CSS** starts from Bootstrap's SCSS/SASS, with custom variable overwrites in `src/scss/_variables.scss` and custom CSS in `src/scss/main.scss`. These get bundled together with Bootstrap in a single `static/css/main.css`.
 
 ### Update HTML
 
