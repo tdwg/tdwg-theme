@@ -8867,6 +8867,18 @@ main.container-fluid {
     main.container .media time,
     main.container-fluid .media time {
       font-size: 80%; }
+  main.container h2:before,
+  main.container h3:before,
+  main.container h4:before,
+  main.container h5:before,
+  main.container-fluid h2:before,
+  main.container-fluid h3:before,
+  main.container-fluid h4:before,
+  main.container-fluid h5:before {
+    /* Scrollspy overwrites margin/padding-top, so need to use :before */
+    display: block;
+    content: "";
+    margin-top: 2rem; }
   main.container code, main.container pre,
   main.container-fluid code,
   main.container-fluid pre {
