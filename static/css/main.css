@@ -8875,9 +8875,8 @@ main.container-fluid {
     border-left: 0.25rem solid #e9ecef;
     color: #495057;
     padding: 0 1rem; }
-  main.container h2:before, main.container h3:before,
-  main.container-fluid h2:before,
-  main.container-fluid h3:before {
+  main.container h2:before,
+  main.container-fluid h2:before {
     display: block;
     content: "";
     margin-top: 2rem; }
