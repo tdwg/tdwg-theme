@@ -18,10 +18,10 @@
     "watch:js": "onchange 'src/js/*.js' -- npm run copy:custom-js"
   },
   "dependencies": {
-    "bootstrap": "4.0",
+    "bootstrap": "4.1.3",
     "font-awesome": "^4.7.0",
-    "jquery": "^3.2.1",
-    "popper.js": "^1.11.1"
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.3"
   },
   "devDependencies": {
     "node-sass": "^4.5.3",
