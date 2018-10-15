@@ -8845,14 +8845,14 @@ main.container-fluid {
   padding-left: 30px;
   padding-right: 30px;
   min-height: calc(100vh - 54px); }
-  main.container .lead,
-  main.container-fluid .lead {
-    margin-bottom: 30px; }
   main.container .btn,
   main.container-fluid .btn {
     white-space: normal; }
   main.container .card,
   main.container-fluid .card {
+    margin-bottom: 30px; }
+  main.container .lead,
+  main.container-fluid .lead {
     margin-bottom: 30px; }
   main.container .media,
   main.container-fluid .media {
@@ -8867,21 +8867,25 @@ main.container-fluid {
     main.container .media time,
     main.container-fluid .media time {
       font-size: 80%; }
-  main.container h2:before,
-  main.container h3:before,
-  main.container h4:before,
-  main.container h5:before,
+  main.container .table-sm,
+  main.container-fluid .table-sm {
+    font-size: 95%; }
+  main.container blockquote,
+  main.container-fluid blockquote {
+    border-left: 0.25rem solid #e9ecef;
+    color: #495057;
+    padding: 0 1rem; }
+  main.container h2:before, main.container h3:before, main.container h4:before, main.container h5:before,
   main.container-fluid h2:before,
   main.container-fluid h3:before,
   main.container-fluid h4:before,
   main.container-fluid h5:before {
-    /* Scrollspy overwrites margin/padding-top, so need to use :before */
     display: block;
     content: "";
     margin-top: 2rem; }
-  main.container code, main.container pre,
-  main.container-fluid code,
-  main.container-fluid pre {
+  main.container pre, main.container code,
+  main.container-fluid pre,
+  main.container-fluid code {
     background-color: #e9ecef;
     border-radius: 3px;
     padding: 0.2rem 0.4rem; }
@@ -8898,11 +8902,6 @@ main.container-fluid {
   main.container table .theme-label,
   main.container-fluid table .theme-label {
     width: 120px; }
-  main.container blockquote,
-  main.container-fluid blockquote {
-    border-left: 0.25rem solid #e9ecef;
-    color: #495057;
-    padding: 0 1rem; }
   main.container time,
   main.container-fluid time {
     color: #868e96;
