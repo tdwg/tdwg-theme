@@ -158,10 +158,6 @@ main.container-fluid {
 
     // Customize some Bootstrap classes
 
-    .lead {
-        margin-bottom: $grid-gutter-width;
-    }
-
     .btn {
         white-space: normal; // Wrap button within container
     }
@@ -169,6 +165,10 @@ main.container-fluid {
     .card {
         // Bootstrap class for styled content containers, e.g. subpages as images
         // https://getbootstrap.com/docs/4.0/components/card/
+        margin-bottom: $grid-gutter-width;
+    }
+
+    .lead {
         margin-bottom: $grid-gutter-width;
     }
 
@@ -192,7 +192,13 @@ main.container-fluid {
 
     // Non-Bootstrap elements
 
-    code, pre {
+    blockquote {
+        border-left: 0.25rem solid $gray-200;
+        color: $code-color;
+        padding: 0 1rem;
+    }
+
+    pre, code {
         background-color: $gray-200;
         border-radius: 3px;
         padding: $kbd-padding-y $kbd-padding-x;
@@ -209,18 +215,12 @@ main.container-fluid {
 
     table {
         code {
-            word-break: normal!important; // To not unnecessarily wrap code in tables
+            word-break: normal!important; // Do not unnecessarily wrap code in tables
         }
 
         .theme-label {
-            width: 120px; // Term labels for Darwin Core
+            width: 120px; // For Darwin Core term labels
         }
-    }
-
-    blockquote {
-        border-left: 0.25rem solid $gray-200;
-        color: $code-color;
-        padding: 0 1rem;
     }
 
     time {
