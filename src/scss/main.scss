@@ -198,6 +198,14 @@ main.container-fluid {
         padding: 0 1rem;
     }
 
+    h2, h3, h4, h5 {
+        &:before {
+            // Scrollspy overwrites margin/padding-top, so need to use :before
+            display: block;
+            content: "";
+            margin-top: 2rem; // Extra margin above headers
+    }
+
     pre, code {
         background-color: $gray-200;
         border-radius: 3px;
