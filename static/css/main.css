@@ -8883,6 +8883,9 @@ main.container-fluid {
   main.container table code,
   main.container-fluid table code {
     word-break: normal !important; }
+  main.container table .theme-label,
+  main.container-fluid table .theme-label {
+    width: 120px; }
   main.container blockquote,
   main.container-fluid blockquote {
     border-left: 0.25rem solid #e9ecef;

@@ -211,6 +211,10 @@ main.container-fluid {
         code {
             word-break: normal!important; // To not unnecessarily wrap code in tables
         }
+
+        .theme-label {
+            width: 120px; // Term labels for Darwin Core
+        }
     }
 
     blockquote {
