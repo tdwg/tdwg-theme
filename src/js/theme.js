@@ -1,4 +1,4 @@
-/* Add bootstrap classes to elements that cannot (always) be controlled in template */
+// Add bootstrap classes to elements that cannot (always) be controlled in template
 $(document).ready(function() {
     $("#theme-sidebar-nav ul").addClass("nav flex-column");
     $("#theme-sidebar-nav li").addClass("nav-item");
