@@ -8782,23 +8782,20 @@ body {
   word-wrap: break-word;
   position: relative; }
 
-.theme-navbar {
-  background-color: #617694; }
-  .theme-navbar nav {
-    flex-grow: 1; }
-    @media (max-width: 767.98px) {
-      .theme-navbar nav {
-        font-size: .875rem;
-        max-width: 100%;
-        overflow: hidden; }
-        .theme-navbar nav .navbar-nav {
-          overflow-x: auto;
-          white-space: nowrap;
-          -webkit-overflow-scrolling: touch; } }
-  .theme-navbar.navbar-expand > .container,
-  .theme-navbar.navbar-expand > .container-fluid {
-    padding-left: 15px;
-    padding-right: 15px; }
+@media (max-width: 767.98px) {
+  .navbar-expand, .navbar-expand .container {
+    flex-direction: column; }
+  .navbar-expand .navbar-collapse {
+    align-items: flex-start !important;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    font-size: .875rem; }
+    .navbar-expand .navbar-collapse .dropdown-menu {
+      position: static;
+      font-size: .875rem; } }
 
 body > figure {
   margin-bottom: 0;

@@ -34,11 +34,11 @@
     </head>
 
     <body data-spy="scroll" data-target="#theme-sidebar-nav">
-        <header class="navbar navbar-expand navbar-dark theme-navbar">
-            <div class="container flex-column flex-md-row">
+        <nav class="navbar navbar-expand navbar-dark bg-secondary">
+            <div class="container">
                 <a class="navbar-brand mr-md-3" href="{{ SITEURL }}/">{{ SITENAME }}</a>
-                <nav>
-                    <ul class="navbar-nav">
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav mr-md-auto">
                     {% if DISPLAY_PAGES_ON_MENU %}
                         {% for top_page in pages|sort(attribute="page_order")|selectattr("parent", "none") %}
                             <li class="nav-item">
@@ -46,16 +46,18 @@
                             </li>
                         {% endfor %}
                     {% endif %}
-                        <li class="nav-item ml-auto">
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ SITEURL }}/{{ PAGE_LINKS['news'] }}">News</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ SITEURL }}/{{ PAGE_LINKS['search'] }}"><i class="fa fa-search"></i></a>
                         </li>
                     </ul>
-                </nav>
+                </div>
             </div>
-        </header>
+        </nav>
 
         {% block content %}
         {% endblock %}
