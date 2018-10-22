@@ -45,16 +45,17 @@ body {
             -webkit-overflow-scrolling: touch;
             
             .dropdown {
-                position: static; // Show absolute .dropdown-menu, even if container has 
+                // position: static; // Show absolute .dropdown-menu, even if container has 
                                   // overflow-y: hidden
             }
 
             .dropdown-menu { // Stretch to almost full width
                 font-size: .875rem;
-                left: $grid-gutter-width / 2;
-                margin-left: auto;
-                margin-right: auto;
-                right: $grid-gutter-width / 2;
+                // left: $grid-gutter-width / 2;
+                // margin-left: auto;
+                // margin-right: auto;
+                position: static;
+                // right: $grid-gutter-width / 2;
             }
 
             .form-inline {

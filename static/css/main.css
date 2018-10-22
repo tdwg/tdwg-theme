@@ -8793,14 +8793,9 @@ body {
     overflow-y: hidden;
     white-space: nowrap;
     -webkit-overflow-scrolling: touch; }
-    .navbar-expand .navbar-collapse .dropdown {
-      position: static; }
     .navbar-expand .navbar-collapse .dropdown-menu {
       font-size: .875rem;
-      left: 15px;
-      margin-left: auto;
-      margin-right: auto;
-      right: 15px; }
+      position: static; }
     .navbar-expand .navbar-collapse .form-inline {
       flex-flow: row; } }
 
