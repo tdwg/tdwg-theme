@@ -71,9 +71,9 @@
 
                 <h2 id="{{ tag|replace(' ','-')|lower()|urlencode() }}">{{ tag }}s</h2>
                 {% for row in tag_pages|batch(3) %}
-                    <div class="row">
+                    <div class="row theme-card-deck">
                     {% for subpage in row %}
-                        <div class="col-sm-4 d-flex align-items-stretch">
+                        <div class="col-sm-4">
                             <div class="card bg-light">
                                 <a href="{{ SITEURL }}/{{ subpage.url }}">
                                 <img class="card-img-top" src="{{ THUMBOR_SERVICE + '/unsafe/900x300/' + subpage.cover_image_url|urlencode() }}">

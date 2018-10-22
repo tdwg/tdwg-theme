@@ -163,12 +163,6 @@ main.container-fluid {
         white-space: normal; // Wrap button within container
     }
 
-    .card {
-        // Bootstrap class for styled content containers, e.g. subpages as images
-        // https://getbootstrap.com/docs/4.0/components/card/
-        margin-bottom: $grid-gutter-width;
-    }
-
     .lead {
         margin-bottom: $grid-gutter-width;
     }
@@ -240,6 +234,22 @@ main.container-fluid {
     time {
         color: $text-muted;
         font-size: $font-size-lg;
+    }
+
+    .theme-card-deck {
+        // Apply to .row: mimics Bootstrap .card-deck, stretching cards to equal height, but without
+        // stretching width when there are fewer cards on one row (cards remain equal width).
+
+        div[class*="col"] {
+            display: flex!important;
+            align-items: stretch!important;
+        
+            .card {
+                // Bootstrap class for styled content containers, e.g. subpages as images
+                // https://getbootstrap.com/docs/4.0/components/card/
+                margin-bottom: $grid-gutter-width; // Add spacing between rows of cards
+            }
+        }
     }
 
     .theme-tag { 

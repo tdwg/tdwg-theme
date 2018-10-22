@@ -42,16 +42,18 @@
     <section class="mb-4">
         <h2>Our most popular standards</h2>
 
-        <div class="card-deck">
+        <div class="row theme-card-deck">
         {# Select 3 standard pages defined in tags using page.url = standards/tag/ #}
         {% for tag in page.tags[0:3] %}
             {% for p in pages %}
                 {% if "standards/" + tag|string() + "/" == p.url %}
-                    <div class="card bg-light">
-                        <a href="{{ SITEURL }}/{{ p.url }}"><img class="card-img-top" src="{{ THUMBOR_SERVICE + '/unsafe/900x300/' + p.cover_image_url|urlencode() }}"></a>
-                        <div class="card-body">
-                            <h5 class="card-title"><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></h5>
-                            <p>{{ p.summary|striptags }}</p>
+                    <div class="col-sm-4">
+                        <div class="card bg-light">
+                            <a href="{{ SITEURL }}/{{ p.url }}"><img class="card-img-top" src="{{ THUMBOR_SERVICE + '/unsafe/900x300/' + p.cover_image_url|urlencode() }}"></a>
+                            <div class="card-body">
+                                <h5 class="card-title"><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></h5>
+                                <p>{{ p.summary|striptags }}</p>
+                            </div>
                         </div>
                     </div>
                 {% endif %}

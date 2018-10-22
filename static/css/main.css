@@ -8850,9 +8850,6 @@ main.container-fluid {
   main.container .btn,
   main.container-fluid .btn {
     white-space: normal; }
-  main.container .card,
-  main.container-fluid .card {
-    margin-bottom: 30px; }
   main.container .lead,
   main.container-fluid .lead {
     margin-bottom: 30px; }
@@ -8905,6 +8902,13 @@ main.container-fluid {
   main.container-fluid time {
     color: #868e96;
     font-size: 1.25rem; }
+  main.container .theme-card-deck div[class*="col"],
+  main.container-fluid .theme-card-deck div[class*="col"] {
+    display: flex !important;
+    align-items: stretch !important; }
+    main.container .theme-card-deck div[class*="col"] .card,
+    main.container-fluid .theme-card-deck div[class*="col"] .card {
+      margin-bottom: 30px; }
   main.container .theme-tag,
   main.container-fluid .theme-tag {
     font-size: 90%;
