@@ -4,8 +4,9 @@ $(document).ready(function() {
     $("#theme-sidebar-nav li").addClass("nav-item");
     $("#theme-sidebar-nav a").addClass("nav-link");
 
-    $("main.container table").addClass("table table-striped");
-    $("main.container-fluid table").addClass("table table-striped");
+
+    $("main.container table").addClass("table table-striped").wrap("<div class='table-responsive'></div>");
+    $("main.container-fluid table").addClass("table table-striped").wrap("<div class='table-responsive'></div>");
 
     $("main.container img").addClass("img-fluid");
     $("main.container-fluid img").addClass("img-fluid");
