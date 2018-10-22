@@ -31,7 +31,7 @@ body {
 .navbar-expand {
     @include media-breakpoint-down(sm) {
         
-        &, & .container {
+        &, & .container, & .container-fluid {
             flex-direction: column; // In .navbar or its .container, display the child elements
                                     // (.navbar-brand, .navbar-collapse) above each other
         }

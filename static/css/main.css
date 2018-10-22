@@ -8783,7 +8783,7 @@ body {
   position: relative; }
 
 @media (max-width: 767.98px) {
-  .navbar-expand, .navbar-expand .container {
+  .navbar-expand, .navbar-expand .container, .navbar-expand .container-fluid {
     flex-direction: column; }
   .navbar-expand .navbar-collapse {
     align-items: flex-start !important;
