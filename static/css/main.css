@@ -8787,15 +8787,22 @@ body {
     flex-direction: column; }
   .navbar-expand .navbar-collapse {
     align-items: flex-start !important;
+    font-size: .875rem;
     max-width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
     white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-    font-size: .875rem; }
+    -webkit-overflow-scrolling: touch; }
+    .navbar-expand .navbar-collapse .dropdown {
+      position: static; }
     .navbar-expand .navbar-collapse .dropdown-menu {
-      position: static;
-      font-size: .875rem; } }
+      font-size: .875rem;
+      left: 15px;
+      margin-left: auto;
+      margin-right: auto;
+      right: 15px; }
+    .navbar-expand .navbar-collapse .form-inline {
+      flex-flow: row; } }
 
 body > figure {
   margin-bottom: 0;
@@ -8837,11 +8844,11 @@ body > figure {
 
 main.container,
 main.container-fluid {
+  min-height: calc(100vh - 54px);
   padding-top: 30px;
-  padding-bottom: 30px;
   padding-left: 30px;
   padding-right: 30px;
-  min-height: calc(100vh - 54px); }
+  padding-bottom: 30px; }
   main.container .btn,
   main.container-fluid .btn {
     white-space: normal; }

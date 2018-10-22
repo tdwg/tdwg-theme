@@ -37,16 +37,28 @@ body {
         }
         .navbar-collapse {
             align-items: flex-start!important; // Keep all elements at top on open .dropdown-menu
+            font-size: .875rem;
             max-width: 100%;
             overflow-x: auto;
             overflow-y: hidden;
             white-space: nowrap;
             -webkit-overflow-scrolling: touch;
-            font-size: .875rem;
+            
+            .dropdown {
+                position: static; // Show absolute .dropdown-menu, even if container has 
+                                  // overflow-y: hidden
+            }
 
-            .dropdown-menu {
-                position: static; // position: absolute remains hidden in overflow-y: hidden
+            .dropdown-menu { // Stretch to almost full width
                 font-size: .875rem;
+                left: $grid-gutter-width / 2;
+                margin-left: auto;
+                margin-right: auto;
+                right: $grid-gutter-width / 2;
+            }
+
+            .form-inline {
+                flex-flow: row; // Force to remain as row
             }
         }
     }
@@ -141,11 +153,11 @@ body > figure {
 
 main.container,
 main.container-fluid {
+    min-height: calc(100vh - 54px); // Viewport height minus medium screen navbar height
     padding-top: $grid-gutter-width; // Don't stick to top
     padding-bottom: $grid-gutter-width; // Don't stick to footer
     padding-left: $grid-gutter-width; // Increase default by 2
     padding-right: $grid-gutter-width; // Increase default by 2
-    min-height: calc(100vh - 54px); // Viewport height minus medium screen navbar height
 
     // Customize some Bootstrap classes
 
