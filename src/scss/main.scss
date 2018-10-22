@@ -156,8 +156,6 @@ main.container-fluid {
     min-height: calc(100vh - 54px); // Viewport height minus medium screen navbar height
     padding-top: $grid-gutter-width; // Don't stick to top
     padding-bottom: $grid-gutter-width; // Don't stick to footer
-    padding-left: $grid-gutter-width; // Increase default by 2
-    padding-right: $grid-gutter-width; // Increase default by 2
 
     // Customize some Bootstrap classes
 
