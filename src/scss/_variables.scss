@@ -69,7 +69,7 @@ $colors: (
 
 $theme-colors: (
   primary: $theme-orange, // Used for links, active borders
-  secondary: $theme-blue, // Used for backgrounds (not used by Bootstrap default)
+  secondary: $theme-blue, // Used for backgrounds (only explicitly with -secondary)
   success: $green,
   info: $cyan,
   warning: $yellow,
