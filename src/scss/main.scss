@@ -121,11 +121,12 @@ body > figure {
 
 // ALL CONTAINERS
 
-// The main breakpoint in content width is between small (sm & down) and medium (md & up): this is 
-// where .col-md get displayed as columns.
-// Containers on small screens use full width (no jump between .xs and .sm). Containers on medium 
-// and up screens don't expand beyond the width of a .lg container (960px), so text lines remain 
-// readable.
+// The main breakpoint in content width is between small and medium screens at ≥768px.
+// Containers on small screens use full width (.container-fluid behaviour) without a jump between
+// .xs and .sm.
+// Containers on medium and up screens jump between .md, .lg and .xs (default bootstrap behaviour) 
+// and have a max-width of 1140px (default bootstrap behaviour). Since 1140px can be quite long for 
+// reading text, most templates use .col-md-3 sidebar and .col-md content in the main container.
 //
 // Note: these rules are applied to all .container, use .container-fluid to make use of full width 
 // on all screen sizes.
@@ -136,12 +137,6 @@ body > figure {
         // .theme-sidebar if present) can use the full width. Jump between .xs and .sm will also 
         // disappear.
         max-width: 100%!important;
-    }
-
-    @include media-breakpoint-up(md) {
-        // Don't extend the width of the container beyond .lg, so text lines don't become too long. 
-        // Jump between .md and .lg will also disappear.
-        max-width: 960px!important;
     }
 }
 
