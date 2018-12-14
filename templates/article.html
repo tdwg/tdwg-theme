@@ -26,7 +26,7 @@
     </nav>
     
     <div class="row">
-        <div class="col-12 col-md-3 order-md-2 theme-sidebar-primary">
+        <div class="col-md-3 order-md-2 theme-sidebar-primary">
             <button class="btn d-md-none w-100" type="button" data-toggle="collapse" data-target="#theme-sidebar-nav">
                 <i class="fa fa-bars fa-lg"></i>
             </button>
@@ -36,7 +36,6 @@
             </nav>
         </div>
 
-        <div class="col-12 col-md order-md-1">
             <h1>{{ article.title }}{% if article.status == "draft" %} <span class="badge badge-danger">draft</span>{% endif %}</h1>
 
             <p><time>{{ article.locale_date }}</time></p>
@@ -52,6 +51,7 @@
             </div>
 
             <div>
+        <div class="col-md-9 order-md-1">
                 {{ article.content }}
             </div>
         </div>

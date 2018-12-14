@@ -6,7 +6,7 @@
 <main class="container">
     <div class="row">
         {% block sidebar %}
-        <div class="col-12 col-md-3 order-md-2 theme-sidebar-secondary">
+        <div class="col-md-3 order-md-2 theme-sidebar-secondary">
             <button class="btn d-md-none w-100" type="button" data-toggle="collapse" data-target="#theme-sidebar-nav">
                 <i class="fa fa-bars fa-lg"></i>
             </button>
@@ -15,7 +15,7 @@
         </div>
         {% endblock %}
 
-        <div class="col-12 col-md order-md-1">
+        <div class="col-md-9 order-md-1">
             <h1>News in {{ period | reverse | join(' ') }}</h1>
 
             {% for article in dates %}
