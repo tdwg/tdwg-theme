@@ -10,7 +10,24 @@
 
 {% block content %}
 <figure>
-    <div class="jumbotron jumbotron-fluid" style="background-image: url('{{ cover_image_background_url }}');"></div>
+    <div class="jumbotron jumbotron-fluid" style="background-image: 
+        linear-gradient(rgba(97, 118, 148, 1), rgba(97, 118, 148, 0.75)),
+        url('{{ cover_image_background_url }}');">
+        <div class="container">
+            <h1>{{ article.title }}{% if article.status == "draft" %} <span class="badge badge-danger">draft</span>{% endif %}</h1>
+            <div class="row">
+                <div class="col-md-9">
+                    <time>{{ article.locale_date }}</time>
+                    <div class="lead">{% if article.has_summary %}{{ article.summary }}{% endif %}</div>
+                    <div class="mb-4">
+                    {% for tag in article.tags %}
+                        <span class="badge badge-pill badge-light">{{ tag }}</span>
+                    {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <figcaption>{{ cover_image_caption }}</figcaption>
 </figure>
 
@@ -26,7 +43,7 @@
     </nav>
     
     <div class="row">
-        <div class="col-12 col-md-3 order-md-2 theme-sidebar-primary">
+        <div class="col-md-3 order-md-2 theme-sidebar-primary">
             <button class="btn d-md-none w-100" type="button" data-toggle="collapse" data-target="#theme-sidebar-nav">
                 <i class="fa fa-bars fa-lg"></i>
             </button>
@@ -36,24 +53,10 @@
             </nav>
         </div>
 
-        <div class="col-12 col-md order-md-1">
-            <h1>{{ article.title }}{% if article.status == "draft" %} <span class="badge badge-danger">draft</span>{% endif %}</h1>
-
-            <p><time>{{ article.locale_date }}</time></p>
-
-            <p>
-            {% for tag in article.tags %}
-                <span class="badge badge-pill badge-light theme-tag">{{ tag }}</span>
-            {% endfor %}
-            </p>
-
-            <div class="lead">
-                {% if article.has_summary %}{{ article.summary }}{% endif %}
-            </div>
-
-            <div>
+        <div class="col-md-9 order-md-1">
+            <section>
                 {{ article.content }}
-            </div>
+            </section>
         </div>
     </div>
 </main>
