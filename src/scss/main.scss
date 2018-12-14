@@ -278,7 +278,7 @@ main.container-fluid {
 
     @include media-breakpoint-down(sm) { // Collapsed sidebar
         border-bottom: 1px solid rgba($sidebar-color, 0.5);
-        margin-bottom: 1rem;
+        margin-bottom: $grid-gutter-width;
         padding: 0.5rem;
 
         nav {
