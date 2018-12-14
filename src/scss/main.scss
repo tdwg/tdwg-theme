@@ -17,6 +17,12 @@ body {
     // Allow long words (e.g. URLs) to wrap, so they don't break out of container
     word-wrap: break-word;
     position: relative; // Required for scrollspy
+
+    // Customize some Bootstrap classes
+
+    .btn {
+        white-space: normal; // Wrap button within container
+    }
 }
 
 
@@ -154,10 +160,6 @@ main.container-fluid {
     padding-bottom: $grid-gutter-width; // Don't stick to footer
 
     // Customize some Bootstrap classes
-
-    .btn {
-        white-space: normal; // Wrap button within container
-    }
 
     .lead {
         margin-bottom: $grid-gutter-width;
