@@ -27,6 +27,11 @@
                     {% endfor %}
                     </div>
                 </div>
+                <div class="col-md-3">
+                    {% if page.github %}
+                        <a class="btn btn-outline-light btn-block" href="{{ page.github }}">Find us on GitHub <i class="fa fa-github fa-fw"></i></a>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>
