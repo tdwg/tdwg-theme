@@ -28,6 +28,9 @@
                     </div>
                 </div>
                 <div class="col-md-3">
+                    {% if page.website %}
+                        <a class="btn btn-primary btn-block" href="{{ page.website }}">{% if page.website_title %}{{ page.website_title }}{% else %}Website{% endif %} <i class="fa fa-external-link fa-fw"></i></a>
+                    {% endif %}
                     {% if page.github %}
                         <a class="btn btn-outline-light btn-block" href="{{ page.github }}">Find us on GitHub <i class="fa fa-github fa-fw"></i></a>
                     {% endif %}
