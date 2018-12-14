@@ -8816,6 +8816,7 @@ body > figure {
     body > figure div.jumbotron .container .badge {
       font-size: 100%;
       font-weight: 600;
+      margin-bottom: 0.25rem;
       text-transform: lowercase; }
   body > figure figcaption {
     background-color: rgba(255, 255, 255, 0.75);

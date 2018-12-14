@@ -121,6 +121,7 @@ body > figure {
             .badge {
                 font-size: 100%;
                 font-weight: 600;
+                margin-bottom: 0.25rem; // In case tags wrap to multiple lines
                 text-transform: lowercase;
             }
         }
