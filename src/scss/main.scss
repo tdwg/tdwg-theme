@@ -74,37 +74,54 @@ body {
 
 // COVER IMAGE
 
-// The cover image is a figure above the main container, spanning the full width.
-// The image itself is a div.jumbotron with a background-image, height is set with padding-bottom.
-// On the homepage the jumbotron has a container.
+// The cover image is a full width <figure> above the main container, functioning as a visually 
+// pleasing intro to a page/article. It is only used on the main website.
+// The <figure> contains a <div class="jumbotron"> and a <figcaption>. The image itself is a 
+// background-image on the jumbotron, with height set as padding-bottom. The jumbotron has a 
+// container with the h1, summary, tags, metadata of a page/article.
 
 body > figure {
     margin-bottom: 0;
     position: relative;
 
     div.jumbotron {
-        // background-image: applied in the template
+        // background-image: different for every page, so set in the template, incl. a variation on 
+        // this gradient css:
+        // linear-gradient(rgba(theme-color("secondary"), 0.25), rgba(theme-color("secondary"), 0.75));
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
         margin-bottom: 0;
-        padding-bottom: 18%; // A minimum height. Is set to default 4rem in home.html
+        padding-bottom: 4rem;
 
         .container {
             h1 {
                 color: $white;
                 font-size: 3rem;
-                text-shadow: 0.5px 0.5px 5px rgba(theme-color("secondary"), 0.75);
+                text-shadow: 0.2px 0.2px 1px rgba(theme-color("dark"), 0.75);
+            }
+
+            time {
+                color: theme-color("tertiary");
+                display: block;
+                font-size: $font-size-lg;
+                margin-bottom: $grid-gutter-width / 2;
             }
 
             .lead {
-                p {
-                    background-color: rgba(theme-color("secondary"), 0.75);
-                    color: $white;
-                    display: inline; // So background applies to text only
-                    font-size: ($lead-font-size * 1.2);
-                    padding: 0.1rem;
-                }
+                color: $white;
+                font-size: ($lead-font-size * 1.2);
+                text-shadow: 0.2px 0.2px 1px rgba(theme-color("dark"), 0.75);
+                
+                a {
+                    color: theme-color("tertiary");
+                }  
+            }
+
+            .badge {
+                font-size: 100%;
+                font-weight: 600;
+                text-transform: lowercase;
             }
         }
     }
@@ -229,11 +246,6 @@ main.container-fluid {
         }
     }
 
-    time {
-        color: $text-muted;
-        font-size: $font-size-lg;
-    }
-
     .theme-card-deck {
         // Apply to .row: mimics Bootstrap .card-deck, stretching cards to equal height, but without
         // stretching width when there are fewer cards on one row (cards remain equal width).
@@ -248,12 +260,6 @@ main.container-fluid {
                 margin-bottom: $grid-gutter-width; // Add spacing between rows of cards
             }
         }
-    }
-
-    .theme-tag { 
-        font-size: 90%;
-        font-weight: 600;
-        text-transform: lowercase;
     }
 }
 

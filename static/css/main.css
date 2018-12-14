@@ -19,18 +19,6 @@
   --white: #fff;
   --gray: #868e96;
   --gray-dark: #343a40;
-  --blue: #007bff;
-  --indigo: #6610f2;
-  --purple: #6f42c1;
-  --pink: #e83e8c;
-  --red: #dc3545;
-  --orange: #fd7e14;
-  --yellow: #ffc107;
-  --green: #28a745;
-  --teal: #20c997;
-  --cyan: #17a2b8;
-  --white: #fff;
-  --gray: #868e96;
   --primary: #ca6500;
   --secondary: #617694;
   --success: #28a745;
@@ -8781,6 +8769,8 @@ a.text-tertiary:hover, a.text-tertiary:focus {
 body {
   word-wrap: break-word;
   position: relative; }
+  body .btn {
+    white-space: normal; }
 
 @media (max-width: 767.98px) {
   .navbar-expand, .navbar-expand .container, .navbar-expand .container-fluid {
@@ -8807,17 +8797,26 @@ body > figure {
     background-repeat: no-repeat;
     background-size: cover;
     margin-bottom: 0;
-    padding-bottom: 18%; }
+    padding-bottom: 4rem; }
     body > figure div.jumbotron .container h1 {
       color: #fff;
       font-size: 3rem;
-      text-shadow: 0.5px 0.5px 5px rgba(97, 118, 148, 0.75); }
-    body > figure div.jumbotron .container .lead p {
-      background-color: rgba(97, 118, 148, 0.75);
+      text-shadow: 0.2px 0.2px 1px rgba(33, 37, 41, 0.75); }
+    body > figure div.jumbotron .container time {
+      color: #ffc107;
+      display: block;
+      font-size: 1.25rem;
+      margin-bottom: 15px; }
+    body > figure div.jumbotron .container .lead {
       color: #fff;
-      display: inline;
       font-size: 1.5rem;
-      padding: 0.1rem; }
+      text-shadow: 0.2px 0.2px 1px rgba(33, 37, 41, 0.75); }
+      body > figure div.jumbotron .container .lead a {
+        color: #ffc107; }
+    body > figure div.jumbotron .container .badge {
+      font-size: 100%;
+      font-weight: 600;
+      text-transform: lowercase; }
   body > figure figcaption {
     background-color: rgba(255, 255, 255, 0.75);
     bottom: 0;
@@ -8838,9 +8837,6 @@ main.container-fluid {
   min-height: calc(100vh - 54px);
   padding-top: 30px;
   padding-bottom: 30px; }
-  main.container .btn,
-  main.container-fluid .btn {
-    white-space: normal; }
   main.container .lead,
   main.container-fluid .lead {
     margin-bottom: 30px; }
@@ -8865,8 +8861,8 @@ main.container-fluid {
     border-left: 0.25rem solid #e9ecef;
     color: #495057;
     padding: 0 1rem; }
-  main.container h2:before,
-  main.container-fluid h2:before {
+  main.container h2:not(:first-child):before,
+  main.container-fluid h2:not(:first-child):before {
     display: block;
     content: "";
     margin-top: 2rem; }
@@ -8889,10 +8885,6 @@ main.container-fluid {
   main.container table .theme-label,
   main.container-fluid table .theme-label {
     width: 120px; }
-  main.container time,
-  main.container-fluid time {
-    color: #868e96;
-    font-size: 1.25rem; }
   main.container .theme-card-deck div[class*="col"],
   main.container-fluid .theme-card-deck div[class*="col"] {
     display: flex !important;
@@ -8900,18 +8892,13 @@ main.container-fluid {
     main.container .theme-card-deck div[class*="col"] .card,
     main.container-fluid .theme-card-deck div[class*="col"] .card {
       margin-bottom: 30px; }
-  main.container .theme-tag,
-  main.container-fluid .theme-tag {
-    font-size: 90%;
-    font-weight: 600;
-    text-transform: lowercase; }
 
 .theme-sidebar-primary {
   color: #ca6500; }
   @media (max-width: 767.98px) {
     .theme-sidebar-primary {
       border-bottom: 1px solid rgba(202, 101, 0, 0.5);
-      margin-bottom: 1rem;
+      margin-bottom: 30px;
       padding: 0.5rem; }
       .theme-sidebar-primary nav {
         margin-top: 0.5rem; } }
@@ -8957,7 +8944,7 @@ main.container-fluid {
   @media (max-width: 767.98px) {
     .theme-sidebar-secondary {
       border-bottom: 1px solid rgba(97, 118, 148, 0.5);
-      margin-bottom: 1rem;
+      margin-bottom: 30px;
       padding: 0.5rem; }
       .theme-sidebar-secondary nav {
         margin-top: 0.5rem; } }
@@ -9003,7 +8990,7 @@ main.container-fluid {
   @media (max-width: 767.98px) {
     .theme-sidebar-success {
       border-bottom: 1px solid rgba(40, 167, 69, 0.5);
-      margin-bottom: 1rem;
+      margin-bottom: 30px;
       padding: 0.5rem; }
       .theme-sidebar-success nav {
         margin-top: 0.5rem; } }
@@ -9049,7 +9036,7 @@ main.container-fluid {
   @media (max-width: 767.98px) {
     .theme-sidebar-info {
       border-bottom: 1px solid rgba(23, 162, 184, 0.5);
-      margin-bottom: 1rem;
+      margin-bottom: 30px;
       padding: 0.5rem; }
       .theme-sidebar-info nav {
         margin-top: 0.5rem; } }
@@ -9095,7 +9082,7 @@ main.container-fluid {
   @media (max-width: 767.98px) {
     .theme-sidebar-warning {
       border-bottom: 1px solid rgba(255, 193, 7, 0.5);
-      margin-bottom: 1rem;
+      margin-bottom: 30px;
       padding: 0.5rem; }
       .theme-sidebar-warning nav {
         margin-top: 0.5rem; } }
@@ -9141,7 +9128,7 @@ main.container-fluid {
   @media (max-width: 767.98px) {
     .theme-sidebar-danger {
       border-bottom: 1px solid rgba(220, 53, 69, 0.5);
-      margin-bottom: 1rem;
+      margin-bottom: 30px;
       padding: 0.5rem; }
       .theme-sidebar-danger nav {
         margin-top: 0.5rem; } }
@@ -9187,7 +9174,7 @@ main.container-fluid {
   @media (max-width: 767.98px) {
     .theme-sidebar-light {
       border-bottom: 1px solid rgba(248, 249, 250, 0.5);
-      margin-bottom: 1rem;
+      margin-bottom: 30px;
       padding: 0.5rem; }
       .theme-sidebar-light nav {
         margin-top: 0.5rem; } }
@@ -9233,7 +9220,7 @@ main.container-fluid {
   @media (max-width: 767.98px) {
     .theme-sidebar-dark {
       border-bottom: 1px solid rgba(33, 37, 41, 0.5);
-      margin-bottom: 1rem;
+      margin-bottom: 30px;
       padding: 0.5rem; }
       .theme-sidebar-dark nav {
         margin-top: 0.5rem; } }
@@ -9279,7 +9266,7 @@ main.container-fluid {
   @media (max-width: 767.98px) {
     .theme-sidebar-tertiary {
       border-bottom: 1px solid rgba(255, 193, 7, 0.5);
-      margin-bottom: 1rem;
+      margin-bottom: 30px;
       padding: 0.5rem; }
       .theme-sidebar-tertiary nav {
         margin-top: 0.5rem; } }

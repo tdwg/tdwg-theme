@@ -4,7 +4,10 @@
 
 {% block content %}
 <figure>
-    <div class="jumbotron jumbotron-fluid" style="background-image: url('{{ cover_image_background_url }}'); padding-bottom: 4rem;">
+    {# Homepage has slightly lighter gradient and container set at col-md-8 #}
+    <div class="jumbotron jumbotron-fluid" style="background-image: 
+        linear-gradient(rgba(97, 118, 148, 0.25), rgba(97, 118, 148, 0.75)),
+        url('{{ cover_image_background_url }}');">
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
@@ -87,7 +90,7 @@
                     <h5 class="card-header">{{ page.newsletter_title }}</h5>
                     <div class="card-body">
                         <p class="card-text">{{ page.newsletter_text }}</p>
-                        <a href="{{ page.newsletter_link }}" class="btn btn-primary">{{ page.newsletter_button }} <i class="fa fa-envelope-o"></i></a>
+                        <a href="{{ page.newsletter_link }}" class="btn btn-primary">{{ page.newsletter_button }} <i class="fa fa-envelope-o fa-fw"></i></a>
                     </div>
                 </div>
             </div>
