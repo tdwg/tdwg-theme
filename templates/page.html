@@ -59,10 +59,10 @@
             {% endif %}
             </p>
 
-            <div>
         <div class="col-md-9 order-md-1">
+            <section>
                 {{ page.content[0:subpages_position] }}
-            </div>
+            </section>
             
             {% for row in page.children|sort(attribute="page_order")|batch(3) %}
                 <div class="row theme-card-deck">
@@ -81,11 +81,11 @@
                 </div>
             {% endfor %}
 
+            <section>
             {% if subpages_position != -1 %}
-            <div>
                 {{ page.content[subpages_position + subpages_marker|length:] }}
-            </div>
             {% endif %}
+            </section>
         </div>
     </div>
 </main>

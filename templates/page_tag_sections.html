@@ -57,10 +57,10 @@
                 {% if page.has_summary %}{{ page.summary }}{% endif %}
             </div>
 
-            <div>
         <div class="col-md-9 order-md-1">
+            <section>
                 {{ page.content }}
-            </div>
+            </section>
 
             {% for tag in tag_sections %}
                 {# Create a list named of pages having a certain "tag" #}
