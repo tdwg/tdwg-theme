@@ -194,7 +194,7 @@ main.container-fluid {
     }
 
     h2 {
-        &:before {
+        &:not(:first-child):before {
             // Scrollspy overwrites margin/padding-top, so need to use :before
             display: block;
             content: "";
